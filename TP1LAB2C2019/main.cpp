@@ -13,6 +13,7 @@ using namespace std;
 ///modificar obra social fseek
 /// fseek(p, -sizeof reg , 1 ,p)
 //prueba santi git bash
+//proba fede el pull
 
 int main()
 {
