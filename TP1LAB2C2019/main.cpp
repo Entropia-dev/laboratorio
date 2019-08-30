@@ -9,11 +9,10 @@ using namespace std;
 #include "medicos.h"
 #include "menues.h"
 
-/// prueba fede main
-///modificar obra social fseek
-/// fseek(p, -sizeof reg , 1 ,p)
-//prueba santi git bash
-//proba fede el pull
+// prueba Santy Visual Studio Code
+
+// fseek(p, -sizeof reg , 1 ,p)
+
 
 int main()
 {
