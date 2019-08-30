@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1567106544 source:c:\users\kai anderson\desktop\tp1lab2c2016\main.cpp
+	<iostream>
+	<cstdlib>
+	"menues.h"
+
+1567106544 c:\users\kai anderson\desktop\tp1lab2c2016\menues.h
+
+1567108534 source:c:\users\kai anderson\desktop\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	"estructuras.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567111255 c:\users\kai anderson\desktop\tp1lab2c2019\menues.h
+
+1567109177 c:\users\kai anderson\desktop\tp1lab2c2019\estructuras.h
+
+1567111177 c:\users\kai anderson\desktop\tp1lab2c2019\pacientes.h
+
+1567106679 c:\users\kai anderson\desktop\tp1lab2c2019\medicos.h
+
+1567168513 source:c:\users\miran\desktop\lab2_2c\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	"estructuras.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567109178 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\estructuras.h
+
+1567169224 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\pacientes.h
+
+1567165276 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\medicos.h
+
+1567168612 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\menues.h
+
