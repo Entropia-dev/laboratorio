@@ -10,6 +10,7 @@ using namespace std;
 #include "menues.h"
 
 // prueba Santy Visual Studio Code
+// Santy prueba pull para Visual studio code
 
 // fseek(p, -sizeof reg , 1 ,p)
 
