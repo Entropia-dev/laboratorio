@@ -16,6 +16,9 @@ using namespace std;
 /// aveces falla el seleccionar genero en la carga de pacientes
 /// fseek(p, -sizeof reg , 1 ,p)
 /// falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne)
+/// averiguar la forma mas limpia de recorrer el archivo en modo lectura
+/// añadir funcion que lea un solo registro ?
+/// darle forma al menu principal ¿cambiar colores?
 
 int main()
 {
