@@ -9,16 +9,15 @@ using namespace std;
 #include "medicos.h"
 #include "menues.h"
 
-/// prueba Santy Visual Studio Code
-/// Santy prueba pull para Visual studio code
-/// notas:
-/// se necesita mejorar la validacion de fecha
-/// aveces falla el seleccionar genero en la carga de pacientes
-/// fseek(p, -sizeof reg , 1 ,p)
-/// falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne)
-/// averiguar la forma mas limpia de recorrer el archivo en modo lectura
-/// añadir funcion que lea un solo registro ?
-/// darle forma al menu principal ¿cambiar colores?
+
+/// Notas/Tareas:
+/// 1)Se necesita mejorar la validacion de fecha
+/// 2)a veces falla el seleccionar genero en la carga de pacientes
+/// 3)fseek(p, -sizeof reg , 1 ,p)
+/// 4)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne)
+/// 5)Averiguar la forma mas limpia de recorrer el archivo en modo lectura
+/// 6)Aniadir funcion que lea un solo registro ?
+/// 7)Darle forma al menu principal ï¿½cambiar colores?
 
 int main()
 {
