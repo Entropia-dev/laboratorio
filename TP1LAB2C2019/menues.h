@@ -99,6 +99,10 @@ int opc;
         break;
 
         case 3:
+            system("cls");
+            listarpacientepordni();
+            system("pause");
+            return;
         break;
 
         case 4:

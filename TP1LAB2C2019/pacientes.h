@@ -142,23 +142,26 @@ FILE *p;
 struct paciente reg;
     cout<<"INGRESE EL DNI DEL PACIENTE A MODIFICAR OBRA SOCIAL"<<endl;
     cin>>aux;
+    if(buscardnipaciente(aux)==false){cout<<"NO SE ENCONTRO EL DNI DEL PACIENTE A MODIFICAR INGRESE UN NUEVO DNI"<<endl;
+                                        cin>>aux;}
 
     if(buscardnipaciente(aux)==true){
     p=fopen("pacientes.dat","rb+");
+    if(p==NULL){cout<<"error en la funcion modificar obra social"<<endl; exit(1);}
         while(fread(&reg,sizeof reg,1,p)){
             if(aux==reg.dni){
-        fseek(p, -sizeof reg , 1 );
+        fseek(p, -sizeof reg , 1 );     ///retrocede el puntero por que la lectura al final del registro
         cout<<"INGRESE LA NUEVA OBRA SOCIAL DEL PACIENTE"<<endl;
-        cin>>reg.obra_social;
+        cin>>reg.obra_social;                                       ///se ingresa el dato a cargar
         if(reg.obra_social < 1 || reg.obra_social > 50 ){cout<<"ingrese una obra social valida"<<endl;
                                                             cin>>reg.obra_social;}
-        fwrite(&reg, sizeof(reg),1,p);
+        fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
         fclose(p);
                             }
             }
 
 
-            }else{cout<<"El dni del paciente no fue encontrado , intentelo nuevamente"<<endl;}
+            }
                 fclose(p);
 }
 
@@ -184,6 +187,33 @@ int pos=0;
         fclose(p);
         return pos;
 }
+
+
+void listarpacientepordni(){
+    struct paciente reg;
+    int aux;
+    FILE *p;
+
+        cout<<"INGRESE EL DNI DEL PACIENTE A LISTAR"<<endl;
+        cin>>aux;
+        if(buscardnipaciente(aux)==false){cout<<"DNI NO ENCONTRADO INGRESE UN DNI VALIDO"<<endl;
+                                            cin>>aux;}
+
+        p=fopen("pacientes.dat","rb");
+        if(p==NULL){cout<<"error en la funcion listar paciente x dni "<<endl; exit(1);}
+            while(fread(&reg,sizeof reg,1,p)){
+                if(aux==reg.dni){
+                listarpaciente(reg);
+                fclose(p);
+                return;
+                }
+            }
+                    fclose(p);
+                        return;
+}
+
+
+
 
 
 #endif // PACIENTES_H_INCLUDED
