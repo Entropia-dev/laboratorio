@@ -111,6 +111,8 @@ int opc;
         break;
 
         case 5:
+            eliminarpaciente();
+            return;
         break;
 
         case 0:
