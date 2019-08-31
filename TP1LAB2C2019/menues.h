@@ -93,6 +93,9 @@ int opc;
         break;
 
         case 2:
+            system("cls");
+            modificarobrasocial();
+            return;
         break;
 
         case 3:

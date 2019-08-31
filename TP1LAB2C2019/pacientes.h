@@ -136,7 +136,7 @@ system("pause");
 ///llevar el puntero de lectura a un struct anterior ?
 ///sobre escribir el campo viejo
 
-  /*  void modificarobrasocial(){
+void modificarobrasocial(){
 int aux;
 FILE *p;
 struct paciente reg;
@@ -144,19 +144,25 @@ struct paciente reg;
     cin>>aux;
 
     if(buscardnipaciente(aux)==true){
-    p=fopen("pacientes.dat","rb+"){
+    p=fopen("pacientes.dat","rb+");
         while(fread(&reg,sizeof reg,1,p)){
             if(aux==reg.dni){
-                fseek()
+        fseek(p, -sizeof reg , 1 );
+        cout<<"INGRESE LA NUEVA OBRA SOCIAL DEL PACIENTE"<<endl;
+        cin>>reg.obra_social;
+        if(reg.obra_social < 1 || reg.obra_social > 50 ){cout<<"ingrese una obra social valida"<<endl;
+                                                            cin>>reg.obra_social;}
+        fwrite(&reg, sizeof(reg),1,p);
+        fclose(p);
                             }
             }
-    }
 
-            }
 
+            }else{cout<<"El dni del paciente no fue encontrado , intentelo nuevamente"<<endl;}
+                fclose(p);
 }
 
-*/
+
 
 
 int buscarposiciondni(int aux){
