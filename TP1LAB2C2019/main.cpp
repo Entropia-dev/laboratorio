@@ -14,11 +14,8 @@ using namespace std;
 /// notas:
 /// se necesita mejorar la validacion de fecha
 /// aveces falla el seleccionar genero en la carga de pacientes
-/// opcines del menu paciente que faltan
-/// eliminar paciente (segun el archivo pdf del tp pide un "codigo de paciente" supongo que se usara el dni)
-/// modificar paciente (se pide modificar obra social ingresando dni)
 /// fseek(p, -sizeof reg , 1 ,p)
-
+/// falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne)
 
 int main()
 {
