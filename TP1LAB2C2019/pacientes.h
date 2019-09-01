@@ -130,7 +130,7 @@ paciente CargarPaciente()
     }
     cout<<"INGRESE LA OBRA SOCIAL DEL PACIENTE"<<endl;
     cin>>reg.obra_social;
-    if(reg.obra_social  >   1 || reg.obra_social > 50)
+    if(reg.obra_social  <   1 || reg.obra_social > 50)
     {
         cout<<"LA OBRA SOCIAL DEBE SER UN NUMERO ENTRE 1 Y 50, INGRESE UN NUMERO VALIDO"<<endl;
         cin>>reg.obra_social;

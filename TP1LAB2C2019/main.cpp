@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -23,8 +24,10 @@ using namespace std;
 /// 9)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
 
 
+
 int main()
 {
+
     system("COLOR 5f");
     MenuPrincipal();
     return 0;

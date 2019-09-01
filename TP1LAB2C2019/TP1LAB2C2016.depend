@@ -40,11 +40,12 @@
 
 1567168612 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\menues.h
 
-1567353905 source:c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\main.cpp
+1567354610 source:c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdio.h>
 	<stdlib.h>
+	<windows.h>
 	"estructuras.h"
 	"pacientes.h"
 	"medicos.h"
@@ -52,9 +53,9 @@
 
 1567194915 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\estructuras.h
 
-1567353858 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\pacientes.h
+1567354789 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\pacientes.h
 
 1567194915 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\medicos.h
 
-1567276590 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
+1567354712 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
 

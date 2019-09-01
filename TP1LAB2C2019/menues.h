@@ -26,7 +26,6 @@ void MenuPrincipal(){
             cout<<"5) CONFIGURACION"<<endl;
             cout<<"---------------"<<endl;
             cout<<"0) SALIR DEL PROGRAMA"<<endl;
-
             cin>>opc;
 
                 switch(opc){
