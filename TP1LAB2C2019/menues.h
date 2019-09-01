@@ -151,6 +151,8 @@ int opc;
 
         switch(opc){
         case 1:
+        altamedicos();
+        return;
         break;
 
         case 2:

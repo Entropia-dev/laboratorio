@@ -22,7 +22,10 @@ using namespace std;
 /// 7)Darle forma al menu principal
 /// 8)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
 /// 9)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
-/// 10)Falta por cargar el menu medicos en el .h menues
+/// 10)La carga medicos tiene el mismo error que el comentario 9
+/// 11)Ingrese especialidad del medico no deja cargar y aparece "ingrese un caracter entre el 1 y 20"
+/// 12)Cuando ingresas el caracter espera otro cin
+
 
 
 int main()

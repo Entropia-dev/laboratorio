@@ -41,11 +41,7 @@ bool buscarMatricula(int a)
 {
     FILE *p;
     p=fopen("medicos.dat","rb");
-    if (p==NULL)
-    {
-        cout<<"error de archivo en la funcion buscarMatricula"<<endl;
-        exit(1);
-    }
+
     struct medicos reg;
     while(fread(&reg,sizeof reg,1,p)==1)
     {
