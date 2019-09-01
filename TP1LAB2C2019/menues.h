@@ -151,14 +151,21 @@ int opc;
 
         switch(opc){
         case 1:
+            system("cls");
         altamedicos();
         return;
         break;
 
         case 2:
+             system("cls");
+            modificarmedicos();
+            return;
         break;
 
         case 3:
+            system("cls");
+            listartodoslosmedicos();
+            return;
         break;
 
         case 4:

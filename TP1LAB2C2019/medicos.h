@@ -63,6 +63,7 @@ void listarMedico(struct medicos reg)
     cout<<"Nombre del medico: "<<reg.nombre<<endl;
     cout<<"Especialidad: "<<reg.especialidad<<endl;
     cout<<"Sueldo: "<<reg.sueldo<<endl;
+    cout<<"Matricula: "<<reg.numero_matricula<<endl;
     cout<<"                   "<<endl;
     return;
 }
@@ -139,5 +140,46 @@ void altamedicos()
     GuardarMedico(reg);
     return;
 }
+
+void modificarmedicos(){
+int aux;
+FILE *p;
+struct medicos reg;
+cout<<"INGRESE UN NUMERO DE MATRICULA"<<endl;
+cin>>aux;
+if(buscarMatricula(aux)==false){cout<<"EL NUMERO DE MATRICULA NO EXISTE , INGRESE UN NUMERO VALIDO"<<endl;
+                                cin>>aux;}
+    p=fopen("medicos.dat","rb+");
+    while(fread(&reg,sizeof reg,1,p)){
+        if(reg.numero_matricula==aux){
+            cout<<"INGRESE EL NUEVO SUELDO DEL MEDICO"<<endl;
+            cin>>reg.sueldo;
+            fseek(p,-sizeof reg,1);
+             fwrite(&reg, sizeof(reg),1,p);
+             fclose(p);
+             return;
+            }
+
+        }
+            fclose(p);  return; ///por si en el segundo cin se vuelven a confundir
+}
+
+void listartodoslosmedicos(){
+    medicos reg;
+    FILE *p;
+    p=fopen("medicos.dat","rb");
+    if(p==NULL)
+    {
+        cout<<"error de funcion listar todos los medicos"<<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+            listarMedico(reg);
+    }
+    fclose(p);
+    system("pause");
+}
+
 
 #endif // MEDICOS_H_INCLUDED
