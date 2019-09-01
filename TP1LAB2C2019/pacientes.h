@@ -76,36 +76,9 @@ paciente CargarPaciente()
     cin.getline(reg.nombre, 50);
     cout<<"INGRESE EL GENERO DEL PACIENTE"<<endl;
     cin>>reg.genero;
-    if(reg.genero != 'M' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
-    if(reg.genero != 'F' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
-    if(reg.genero != 'O' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
-    if(reg.genero != 'm' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
-    if(reg.genero != 'f' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
-    if(reg.genero != 'o' )
-    {
-        cout<<"INGRESE UN GENERO VALIDO"<<endl;
-        cin>>reg.genero;
-    }
+
+    if(reg.genero =! 'F'  ) {cout<<"INGRESE UNA VARIABLE CORRECTA"<<endl;
+                                    cin>>reg.genero;}
 
     cout<<"INGRESE EL DIA DE NACIMIENTO DEL PACIENTE"<<endl;
     cin>>reg.fecha_nacimiento.dia;
