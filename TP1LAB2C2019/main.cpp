@@ -18,8 +18,9 @@ using namespace std;
 /// 4)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
 /// 5)Averiguar la forma mas limpia de recorrer el archivo en modo lectura.
 /// 6)Aniadir funcion que lea un solo registro ?.
-/// 7)Darle forma al menu principal �cambiar colores?.
-/// 8)Si se borra pacientes.dat la se rompe la carga
+/// 7)Darle forma al menu principal
+/// 8)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
+/// 9)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
 
 
 int main()

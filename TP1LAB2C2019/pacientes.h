@@ -7,11 +7,6 @@ bool buscardnipaciente(int a)
 {
     FILE *p;
     p=fopen("pacientes.dat","rb");
-    if (p==NULL)
-    {
-        cout<<"error de archivo en la funcion buscardnipaciente"<<endl;
-        exit(1);
-    }
     struct paciente reg;
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
