@@ -22,7 +22,7 @@ using namespace std;
 /// 7)Darle forma al menu principal
 /// 8)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
 /// 9)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
-
+/// 10)Falta por cargar el menu medicos en el .h menues
 
 
 int main()

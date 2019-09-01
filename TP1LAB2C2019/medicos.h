@@ -1,6 +1,12 @@
 #ifndef MEDICOS_H_INCLUDED
 #define MEDICOS_H_INCLUDED
 
+
+
+
+
+
+
 ///buscar la posicion de la matricula
 int BuscarPosMatricula(int aux)
 {
@@ -130,5 +136,12 @@ medicos CargarMedico()
     return reg;
 }
 
+void altamedicos()
+{
+    medicos reg;
+    reg=CargarMedico();
+    GuardarMedico(reg);
+    return;
+}
 
 #endif // MEDICOS_H_INCLUDED
