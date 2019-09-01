@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -18,9 +19,12 @@ using namespace std;
 /// 5)Averiguar la forma mas limpia de recorrer el archivo en modo lectura.
 /// 6)Aniadir funcion que lea un solo registro ?.
 /// 7)Darle forma al menu principal �cambiar colores?.
+/// 8)Si se borra pacientes.dat la se rompe la carga
+
 
 int main()
 {
+    system("COLOR 5f");
     MenuPrincipal();
     return 0;
 }
