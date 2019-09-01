@@ -25,6 +25,7 @@ using namespace std;
 /// 10)La carga medicos tiene el mismo error que el comentario 9
 /// 11)Ingrese especialidad del medico no deja cargar y aparece "ingrese un caracter entre el 1 y 20"
 /// 12)Cuando ingresas el caracter espera otro cin
+/// 13) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
 
 
 

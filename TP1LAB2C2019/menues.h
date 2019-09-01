@@ -169,6 +169,9 @@ int opc;
         break;
 
         case 4:
+            system("cls");
+            listarmedicoxmatricula();
+            return;
         break;
 
         case 0:

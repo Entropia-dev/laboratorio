@@ -182,4 +182,25 @@ void listartodoslosmedicos(){
 }
 
 
+void listarmedicoxmatricula(){
+struct medicos reg;
+FILE *p;
+int aux;
+cout<<"INGRESE LA MATRICULA A LISTAR"<<endl;
+cin>>aux;
+if(buscarMatricula(aux)==false){cout<<"NO SE ENCONTRO LA MATRICULA BUSCADA, INGRESE UNA NUEVA MATRICULA"<<endl;
+                                    cin>>aux;}
+
+    p=fopen("medicos.dat","rb");
+    while(fread(&reg,sizeof reg,1,p)){
+        if(reg.numero_matricula==aux){
+            listarMedico(reg);
+            fclose(p);
+            system("pause");
+            }
+        }
+                fclose(p);
+}
+
+
 #endif // MEDICOS_H_INCLUDED
