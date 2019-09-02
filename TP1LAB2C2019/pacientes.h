@@ -3,21 +3,22 @@
 
 
 
-bool buscardnipaciente(int a)
+int buscardnipaciente(int a)
 {
     FILE *p;
     p=fopen("pacientes.dat","rb");
     struct paciente reg;
+    if (p==NULL){return a;}
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
         if(reg.dni==a)
         {
             fclose(p);
-            return true;
+            return 1;
         }
     }
     fclose(p);
-    return false;
+    return -1;
 }
 
 void listarpaciente(paciente reg)
@@ -56,38 +57,42 @@ paciente CargarPaciente()
     struct paciente reg;
     int aux;
 
-    cout<<"INGRESE EL DNI DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL DNI DEL PACIENTE: ";
     cin>>reg.dni;
     aux=reg.dni;
     if(reg.dni<1) {}
-    if(buscardnipaciente(aux)==true)
+    if(buscardnipaciente(aux)==1)
     {
-        cout<<"el dni del paciente no puede estar duplicado , ingrese un numero valido"<<endl;
+        cout<<" El dni del paciente no puede estar duplicado!"<<endl;
+        cout<<endl;
+        cout<<endl;
+        cout<<" Ingrese un numero valido: "<<endl;
         cin>>reg.dni;
     }
 
-    cout<<"INGRESE EL APELLIDO DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL APELLIDO DEL PACIENTE: ";
     cin.ignore();
     cin.getline(reg.apellido, 50);
-    cout<<"INGRESE EL NOMBRE DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL NOMBRE DEL PACIENTE: ";
 
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
-    cout<<"INGRESE EL GENERO DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL GENERO DEL PACIENTE      Femenino * Masculino * Otro "<<endl;
+    cout<<"                                       F            M            O  ";
     cin>>reg.genero;
 
-    if(reg.genero =! 'F'  ) {cout<<"INGRESE UNA VARIABLE CORRECTA"<<endl;
+    if(reg.genero =! 'F'  ) {cout<<"INGRESE UNA VARIABLE CORRECTA!";
                                     cin>>reg.genero;}
 
-    cout<<"INGRESE EL DIA DE NACIMIENTO DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL DIA DE NACIMIENTO DEL PACIENTE: ";
     cin>>reg.fecha_nacimiento.dia;
     if(reg.fecha_nacimiento.dia>31 || reg.fecha_nacimiento.dia<1)
     {
-        cout<<"INGRESE UN NUMERO DE NACIMIENTO VALIDO"<<endl;
+        cout<<"INGRESE UN NUMERO DE NACIMIENTO VALIDO: ";
         cin>>reg.fecha_nacimiento.dia;
     }
-    cout<<"INGRESE EL MES DE NACIMIENTO DEL PACIENTE"<<endl;
+    cout<<"INGRESE EL MES DE NACIMIENTO DEL PACIENTE  (Un numero entre 1 y 12) : ";
     cin>>reg.fecha_nacimiento.mes;
     if(reg.fecha_nacimiento.mes > 12 || reg.fecha_nacimiento.mes < 1)
     {
@@ -101,7 +106,7 @@ paciente CargarPaciente()
         cout<<"INGRESE UN ANIO DE NACIMIENTO VALIDO"<<endl;
         cin>>reg.fecha_nacimiento.anio;
     }
-    cout<<"INGRESE LA OBRA SOCIAL DEL PACIENTE"<<endl;
+    cout<<"INGRESE LA OBRA SOCIAL DEL PACIENTE (numero de 1 a 50): "<<endl;
     cin>>reg.obra_social;
     if(reg.obra_social  <   1 || reg.obra_social > 50)
     {
