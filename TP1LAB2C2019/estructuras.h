@@ -25,4 +25,16 @@ int especialidad;
 float sueldo;
 };
 
+
+
+/// FUNCION PARA REPOSICIONAR EL PUNTERO DE LA CONSOLA
+ void gotoxy(int x,int y){
+      HANDLE hcon;
+      hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+      COORD dwPos;
+      dwPos.X = x;
+      dwPos.Y= y;
+      SetConsoleCursorPosition(hcon,dwPos);
+ }
+
 #endif // ESTRUCTURAS_H_INCLUDED

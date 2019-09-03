@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include  <windows.h>
 
 using namespace std;
 
