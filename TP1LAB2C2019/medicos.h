@@ -114,6 +114,7 @@ medicos CargarMedico()
 
     cin.getline(reg.nombre, 50);
     cout<<"INGRESE LA ESPECIALIDAD DEL MEDICO: "<<endl;
+    cin>>reg.especialidad;
     if(reg.especialidad < 0 || reg.especialidad > 20 )
     {
         cout<<"INGRESE UN CARACTER VALIDO ENTRE 1 Y 20"<<endl;
