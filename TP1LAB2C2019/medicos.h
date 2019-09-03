@@ -113,6 +113,7 @@ medicos CargarMedico()
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
+
     cout<<"INGRESE LA ESPECIALIDAD DEL MEDICO: "<<endl;
     cin>>reg.especialidad;
     if(reg.especialidad < 0 || reg.especialidad > 20 )
@@ -120,8 +121,6 @@ medicos CargarMedico()
         cout<<"INGRESE UN CARACTER VALIDO ENTRE 1 Y 20"<<endl;
         cin>>reg.especialidad;
     }
-    cin>>reg.especialidad;
-
     cout<<"INGRESE El SUELDO: "<<endl;
     cin>>reg.sueldo;
     if(reg.sueldo<0)

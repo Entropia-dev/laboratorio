@@ -18,14 +18,12 @@ using namespace std;
 /// 3)fseek(p, -sizeof reg , 1 ,p).
 /// 4)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
 /// 5)Averiguar la forma mas limpia de recorrer el archivo en modo lectura.
-/// 6)Aniadir funcion que lea un solo registro ?.
-/// 7)Darle forma al menu principal
-/// 8)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
-/// 9)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
-/// 10)La carga medicos tiene el mismo error que el comentario 9
-/// 11)Ingrese especialidad del medico no deja cargar y aparece "ingrese un caracter entre el 1 y 20"
-/// 12)Cuando ingresas el caracter espera otro cin
-/// 13) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
+/// 5.B)Aniadir funcion que lea un solo registro ?.
+/// 6)Darle forma al menu principal
+/// 7)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
+/// 8)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
+/// 9)La carga medicos tiene el mismo error que el comentario 9
+/// 10) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
 
 
 
