@@ -3,22 +3,23 @@
 
 
 
-int buscardnipaciente(int a)
+bool buscardnipaciente(int a)
 {
     FILE *p;
     p=fopen("pacientes.dat","rb");
     struct paciente reg;
-    if (p==NULL){return a;}
+    if (p==NULL){return a;}                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
+                                                    ///else {Cout<<“error de escritura”; exit(1);}}
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
         if(reg.dni==a)
         {
             fclose(p);
-            return 1;
+            return true;
         }
     }
     fclose(p);
-    return -1;
+    return false;
 }
 
 void listarpaciente(paciente reg)
@@ -296,4 +297,21 @@ void eliminarpaciente()
         }
     }
 }
+
+
+int contarregistrospaciente(){
+FILE *p;
+long int peso_archivo;
+int cantidad_registros;
+struct paciente reg;
+    p=fopen("pacientes.dat","ab");
+     fseek(p, 0 , SEEK_END);
+    peso_archivo=ftell(p);
+   cantidad_registros = peso_archivo / sizeof reg;
+    return cantidad_registros;
+
+}
+
+
+
 #endif // PACIENTES_H_INCLUDED

@@ -97,7 +97,9 @@ int opc;
     system("cls");
 
     while(true){
-                    gotoxy(50,2);
+
+            cout<<"cantidad de registros"<<contarregistrospaciente();
+            gotoxy(50,2);
             cout<<"----------------------------------"<<endl;
             gotoxy(50,3);
             cout<<"||CLINICA SAN SIMON             ||"<<endl;
