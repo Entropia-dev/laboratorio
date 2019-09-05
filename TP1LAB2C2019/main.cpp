@@ -23,13 +23,6 @@ using namespace std;
 /// 2) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
 /// 3)Aniadir funcion que lea un solo registro ?.
 
-/// TODAS ESTAS SE SOLUCIONAN CON UNA FUNCION QUE CUENTE REGISTROS EN ARCHIVO Y REVISE
-/// SI ESTA DEVUELVE CERO REGISTROS SE PUEDE EVITAR EL NULL PERO SI EL NUMERO ES DISTINTO DE
-/// CERO O UN NUMERO MAYOR QUE CERO SE TIENE QUE DEVOLVER EXIT
-/// 1)Si a buscar dni paciente se le agrega un p==NULL la primera carga falla
-/// 2)Las funciones relacionadas a pacientes cuando no hay ninguno cargado tiran exit  ¿otro tipo de salida?
-/// 3)La carga medicos tiene el mismo error que el comentario 9
-/// nota:El contador de registros puede ser utilizado al principio de cada menu para inicializar los archivos
 /// EJEMPLO DE FSEEK : fseek(p, -sizeof reg , 1 ,p).
 
 

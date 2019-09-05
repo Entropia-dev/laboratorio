@@ -308,6 +308,7 @@ long int peso_archivo;
 int cantidad_registros;
 struct paciente reg;
     p=fopen("pacientes.dat","ab");
+        if(p==NULL){cout<<"error al inicializar el archivo pacientes"<<endl; exit(1);}
      fseek(p, 0 , SEEK_END);
     peso_archivo=ftell(p);
    cantidad_registros = peso_archivo / sizeof reg;

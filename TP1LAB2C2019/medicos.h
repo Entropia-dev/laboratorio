@@ -4,6 +4,19 @@
 
 
 
+int contarregistrosmedicos(){
+FILE *p;
+long int peso_archivo;
+int cantidad_registros;
+struct medicos reg;
+    p=fopen("medicos.dat","ab");
+    if(p==NULL){cout<<"error al inicializar el archivo medicos "; exit(1);}
+     fseek(p, 0 , SEEK_END);
+    peso_archivo=ftell(p);
+   cantidad_registros = peso_archivo / sizeof reg;
+    return cantidad_registros;
+
+}
 
 
 
@@ -48,11 +61,11 @@ bool buscarMatricula(int a)
         if(reg.numero_matricula==a)
         {
             fclose(p);
-            return true;
+            return true;    ///retorna verdadero si la matricula ya existe en el archivo
         }
     }
     fclose(p);
-    return false;///por que retorna falso??
+    return false;   ///retorna falso en caso de no encontrar la matricula buscada
 }
 
 

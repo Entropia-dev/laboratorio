@@ -93,12 +93,13 @@ void MenuPrincipal(){
 
 void MenuPacientes(){
 int opc;
+int cant_pacientes;
 
     system("cls");
 
     while(true){
 
-          ///  cout<<"cantidad de registros"<<contarregistrospaciente();
+            cant_pacientes=contarregistrospaciente();   /// solo se usa para inicializar el archivo
             gotoxy(50,2);
             cout<<"----------------------------------"<<endl;
             gotoxy(50,3);
@@ -180,9 +181,10 @@ int opc;
 
 void MenuMedicos(){
 int opc;
+int cant_medicos;
 
     system("cls");
-
+                    cant_medicos=contarregistrosmedicos();  /// solo se usa para inicializar el archivo
     while(true){
         cout<<"MENU MEDICOS"<<endl;
         cout<<"--------------"<<endl;
