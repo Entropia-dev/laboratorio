@@ -8,7 +8,8 @@ bool buscardnipaciente(int a)
     FILE *p;
     p=fopen("pacientes.dat","rb");
     struct paciente reg;
-    if (p==NULL){return a;}                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
+    if (p==NULL){ exit(1);
+                            }                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
                                                     ///else {Cout<<“error de escritura”; exit(1);}}
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
@@ -61,8 +62,9 @@ paciente CargarPaciente()
     cout<<"INGRESE EL DNI DEL PACIENTE: ";
     cin>>reg.dni;
     aux=reg.dni;
-    if(reg.dni<1) {}
-    if(buscardnipaciente(aux)==1)
+    if(reg.dni<1) {cout<<"INGRESE UN NUMERO DE DNI VALIDO:"<<endl;
+                    cin>>reg.dni;}
+    if(buscardnipaciente(aux)==false)
     {
         cout<<" El dni del paciente no puede estar duplicado"<<endl;
         cout<<" Ingrese un numero valido: "<<endl;

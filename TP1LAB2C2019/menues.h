@@ -98,7 +98,7 @@ int opc;
 
     while(true){
 
-            cout<<"cantidad de registros"<<contarregistrospaciente();
+          ///  cout<<"cantidad de registros"<<contarregistrospaciente();
             gotoxy(50,2);
             cout<<"----------------------------------"<<endl;
             gotoxy(50,3);
