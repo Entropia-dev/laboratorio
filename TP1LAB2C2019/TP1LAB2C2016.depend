@@ -40,12 +40,13 @@
 
 1567168612 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\menues.h
 
-1567642920 source:c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\main.cpp
+1567721839 source:c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
+	"libreria_angel.h"
 	"estructuras.h"
 	"pacientes.h"
 	"medicos.h"
@@ -53,11 +54,11 @@
 
 1567536150 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\estructuras.h
 
-1567642920 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\pacientes.h
+1567721098 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\pacientes.h
 
-1567535512 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\medicos.h
+1567723029 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\medicos.h
 
-1567642920 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
+1567722101 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
 
 1567704836 source:c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\main.cpp
 	<iostream>
@@ -77,4 +78,6 @@
 1567692531 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\medicos.h
 
 1567692532 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\menues.h
+
+1567722376 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\libreria_angel.h
 

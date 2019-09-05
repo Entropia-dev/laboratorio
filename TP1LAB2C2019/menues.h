@@ -100,6 +100,7 @@ int cant_pacientes;
     while(true){
 
             cant_pacientes=contarregistrospaciente();   /// solo se usa para inicializar el archivo
+
             gotoxy(50,2);
             cout<<"----------------------------------"<<endl;
             gotoxy(50,3);
