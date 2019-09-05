@@ -64,9 +64,7 @@ paciente CargarPaciente()
     if(reg.dni<1) {}
     if(buscardnipaciente(aux)==1)
     {
-        cout<<" El dni del paciente no puede estar duplicado!"<<endl;
-        cout<<endl;
-        cout<<endl;
+        cout<<" El dni del paciente no puede estar duplicado"<<endl;
         cout<<" Ingrese un numero valido: "<<endl;
         cin>>reg.dni;
     }
@@ -93,21 +91,21 @@ paciente CargarPaciente()
         cout<<"INGRESE UN NUMERO DE NACIMIENTO VALIDO: ";
         cin>>reg.fecha_nacimiento.dia;
     }
-    cout<<"INGRESE EL MES DE NACIMIENTO DEL PACIENTE  (Un numero entre 1 y 12) : ";
+    cout<<"INGRESE EL MES DE NACIMIENTO DEL PACIENT: ";
     cin>>reg.fecha_nacimiento.mes;
     if(reg.fecha_nacimiento.mes > 12 || reg.fecha_nacimiento.mes < 1)
     {
-        cout<< "INGRESE UN MES DE NACIMIENTO VALIDO"<<endl;
+        cout<< "INGRESE UN MES DE NACIMIENTO VALIDO (Un numero entre 1 y 12) "<<endl;
         cin>>reg.fecha_nacimiento.mes;
     }
     cout<<"INGRESE EL ANIO DE NACIMIENTO DEL PACIENTE"<<endl;
     cin>>reg.fecha_nacimiento.anio;
     if(reg.fecha_nacimiento.anio < 1900 || reg.fecha_nacimiento.anio > 2019 )
     {
-        cout<<"INGRESE UN ANIO DE NACIMIENTO VALIDO"<<endl;
+        cout<<"INGRESE UN ANIO DE NACIMIENTO VALIDO (AÑO ENTRE 1900 Y 2019)"<<endl;
         cin>>reg.fecha_nacimiento.anio;
     }
-    cout<<"INGRESE LA OBRA SOCIAL DEL PACIENTE (numero de 1 a 50): "<<endl;
+    cout<<"INGRESE LA OBRA SOCIAL DEL PACIENTE: "<<endl;
     cin>>reg.obra_social;
     if(reg.obra_social  <   1 || reg.obra_social > 50)
     {
@@ -117,6 +115,9 @@ paciente CargarPaciente()
 
     reg.estado=true;
 
+        system("cls");
+        cout<<"PACIENTE AGREGADO CON EXITO"<<endl;
+        system("pause");
     return reg;
 }
 
