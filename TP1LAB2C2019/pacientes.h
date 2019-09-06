@@ -55,7 +55,7 @@ void GuardarPaciente(struct paciente reg)
 
 paciente CargarPaciente()
 {
-
+    bool auxGen=true;
     struct paciente reg;
     int aux;
 
@@ -79,7 +79,7 @@ paciente CargarPaciente()
         cout<<"||Ingrese un numero valido: "<<endl;
         cin>>reg.dni;
     }
-    gotoxy(30,6);
+    gotoxy(30,9);
     cout<<"||INGRESE EL APELLIDO DEL PACIENTE:                                       ||"<<endl;
     gotoxy(65,6);
     cin.ignore();
@@ -92,13 +92,54 @@ paciente CargarPaciente()
     cin.getline(reg.nombre, 50);
     gotoxy(30,8);
     cout<<"||INGRESE EL GENERO DEL PACIENTE      Femenino * Masculino * Otro         ||"<<endl;
+
     gotoxy(30,9);
     cout<<"||                                      F            M            O:      ||";
     gotoxy(99,9);
-    cin>>reg.genero;
 
-    if(reg.genero =! 'F'  ) {gotoxy(30,10); cout<<"INGRESE UNA VARIABLE CORRECTA!";
-                                    cin>>reg.genero;}
+        		cin>>reg.genero;
+
+        if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
+
+	}
+	else {
+
+		while( auxGen == true ){
+
+
+			cout<<"INGRESE UN GENERO VALIDO";
+                		cin>>reg.genero;
+			 if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
+
+
+
+
+				auxGen = false;
+
+			}  // IF
+
+
+		}	 // WHILE
+
+
+	}  // ELSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     gotoxy(30,10);
     cout<<"||INGRESE EL DIA DE NACIMIENTO DEL PACIENTE:                              ||";
     gotoxy(74,10);

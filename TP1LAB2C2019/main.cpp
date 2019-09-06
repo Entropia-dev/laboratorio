@@ -15,9 +15,8 @@ using namespace std;
 
 /// Notas/Tareas :
 /// IMPORTANTES:
-/// 1)Se necesita validar el genero del paciente
-/// 2)Se necesita mejorar la validacion de fecha. (Preguntar el viernes)
-/// 3)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
+/// 1)Se necesita mejorar la validacion de fecha. (Preguntar el viernes)
+/// 2)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
 
 /// Esteticos :
 /// IMPORTANTE : Leer "Libreria angel"
@@ -36,7 +35,7 @@ using namespace std;
 /// comparo el cpodigo con el codigo leido
 /// cierro el archivo y devolver la pocision del registro que encontre
 /// si no existe
-/// devolver -1
+/// devolver -1.4
 
 /// articulo leer articulo
 ///
