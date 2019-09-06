@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="controles.h" />
 		<Unit filename="estructuras.h" />
 		<Unit filename="fecha_val.h" />
 		<Unit filename="libreria_angel.h" />
