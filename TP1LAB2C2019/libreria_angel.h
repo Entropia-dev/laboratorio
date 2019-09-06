@@ -1,5 +1,6 @@
 #ifndef LIBRERIA_ANGEL_H_INCLUDED
 #define LIBRERIA_ANGEL_H_INCLUDED
+
 enum Color{
 cNEGRO=0,
 cAZUL=1,
@@ -18,22 +19,27 @@ cMAGENTA_CLARO=13,
 cAMARILLO=14,
 cBLANCO=15
 };
+
 void clrscr(void){
     system("cls");
 }
+
 void pause(void){
     system("pause >nul");
 }
+
 void gotoxy(short x, short y){
     COORD a;
     a.X = x;
     a.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),a);
 }
+
 void textcolor(short colorTexto=15, short colorFondo=0){
     short color = colorTexto + colorFondo * 16;
     SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE), color);
 }
+
 void recuadro(short iniX, short iniY, short ancho, short alto, short colorLinea=cBLANCO, short colorFondo=cMAGENTA){
     int i, j;
     for(i=iniX; i<=iniX+ancho; i++){

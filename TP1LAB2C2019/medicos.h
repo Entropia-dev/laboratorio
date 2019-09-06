@@ -13,6 +13,7 @@ struct medicos reg;
     if(p==NULL){cout<<"error al inicializar el archivo medicos "; exit(1);}
      fseek(p, 0 , SEEK_END);
     peso_archivo=ftell(p);
+    fclose(p);
    cantidad_registros = peso_archivo / sizeof reg;
     return cantidad_registros;
 

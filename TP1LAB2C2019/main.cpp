@@ -27,6 +27,22 @@ using namespace std;
 
 /// EJEMPLO DE FSEEK : fseek(p, -sizeof reg , 1 ,p).
 
+
+/// cargar uno mostrar / uno mostrar todos / modificar un articulo / buscar articulo / verificar si existe
+/// hacer que buscar articulo devuelva un entero / devuelve un registro de articulo leer un registro (pasarle la posicion de registro)/
+/// para buscar el un registro
+/// si existe
+///leer registro a registro
+/// comparo el cpodigo con el codigo leido
+/// cierro el archivo y devolver la pocision del registro que encontre
+/// si no existe
+/// devolver -1
+
+/// articulo leer articulo
+///
+
+
+
 /** ideas para los puntos de la segunda parte
 
 struct controles
