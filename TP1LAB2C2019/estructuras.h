@@ -25,7 +25,15 @@ int especialidad;
 float sueldo;
 };
 
-
+struct controles {
+int id;
+int dni;
+int nro_matricula;
+float costo;
+fecha fecha_control;
+int duracion;
+bool estado;
+};
 
 /// FUNCION PARA REPOSICIONAR EL PUNTERO DE LA CONSOLA
  void gotoxy(int x,int y){
