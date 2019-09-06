@@ -12,7 +12,8 @@ using namespace std;
 #include "medicos.h"
 #include "menues.h"
 
-/// prueba de actualizacion de notas
+/// prueba de actualizacion de parrot
+
 
 /// Notas/Tareas :
 /// IMPORTANTES:
