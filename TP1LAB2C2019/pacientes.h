@@ -8,8 +8,7 @@ bool buscardnipaciente(int a)
     FILE *p;
     p=fopen("pacientes.dat","rb");
     struct paciente reg;
-    if (p==NULL){ exit(1);
-                            }                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
+    if (p==NULL){ exit(1);}                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
                                                     ///else {Cout<<“error de escritura”; exit(1);}}
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
@@ -59,29 +58,21 @@ paciente CargarPaciente()
     struct paciente reg;
     int aux;
 
-                   gotoxy(30,2);
             cout<<"----------------------------------------------------------------------------"<<endl;
-            gotoxy(30,3);
             cout<<"||                        CLINICA SAN SIMON                               ||"<<endl;
-            gotoxy(30,4);
             cout<<"----------------------------------------------------------------------------"<<endl;
-            gotoxy(30,5);
             cout<<"||INGRESE EL DNI DEL PACIENTE:                                            ||"<<endl;
-            gotoxy(60,5);
             cin>>reg.dni;
     aux=reg.dni;
-    if(reg.dni<1) {gotoxy(30,6); cout<<"||INGRESE UN NUMERO DE DNI VALIDO:                                            ||"<<endl;
+    if(reg.dni<1) {;cout<<"||INGRESE UN NUMERO DE DNI VALIDO:                                            ||"<<endl;
                     cin>>reg.dni;}
     if(buscardnipaciente(aux)==true)
-    {   gotoxy(30,7);
+    {
         cout<<"||El dni del paciente no puede estar duplicado"<<endl;
-        gotoxy(30,8);
         cout<<"||Ingrese un numero valido: "<<endl;
         cin>>reg.dni;
     }
-    gotoxy(30,9);
     cout<<"||INGRESE EL APELLIDO DEL PACIENTE:                                       ||"<<endl;
-    gotoxy(65,6);
     cin.ignore();
     cin.getline(reg.apellido, 50);
     while(reg.apellido[0]== '\0' ){
@@ -89,9 +80,7 @@ paciente CargarPaciente()
      cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
      cin.getline(reg.apellido,50);
     }
-    gotoxy(30,7);
     cout<<"||INGRESE EL NOMBRE DEL PACIENTE:                                         ||"<<endl;
-    gotoxy(64,7);
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
@@ -100,12 +89,9 @@ paciente CargarPaciente()
      cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
      cin.getline(reg.nombre ,50);
     }
-    gotoxy(30,8);
     cout<<"||INGRESE EL GENERO DEL PACIENTE      Femenino * Masculino * Otro         ||"<<endl;
 
-    gotoxy(30,9);
     cout<<"||                                      F            M            O:      ||";
-    gotoxy(99,9);
         		cin>>reg.genero;
         if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
 	}
@@ -119,43 +105,11 @@ paciente CargarPaciente()
 		}	 // WHILE
 	}  // ELSE
 
-    gotoxy(30,10);
-    cout<<"||INGRESE EL DIA DE NACIMIENTO DEL PACIENTE:                              ||";
-    gotoxy(74,10);
-    cin>>reg.fecha_nacimiento.dia;
-    if(reg.fecha_nacimiento.dia>31 || reg.fecha_nacimiento.dia<1)
-    {
-        gotoxy(30,11);
-        cout<<"||INGRESE UN NUMERO DE NACIMIENTO VALIDO: ";
-        cin>>reg.fecha_nacimiento.dia;
-    }
-    gotoxy(30,11);
-    cout<<"||INGRESE EL MES DE NACIMIENTO DEL PACIENTE:                              ||";
-    gotoxy(74,11);
-    cin>>reg.fecha_nacimiento.mes;
-    if(reg.fecha_nacimiento.mes > 12 || reg.fecha_nacimiento.mes < 1)
-    {
-        gotoxy(30,11);
-        cout<< "||INGRESE UN MES DE NACIMIENTO VALIDO (Un numero entre 1 y 12): "<<endl;
-        cin>>reg.fecha_nacimiento.mes;
-    }
-    gotoxy(30,12);
-    cout<<"||INGRESE EL ANIO DE NACIMIENTO DEL PACIENTE:                             ||"<<endl;
-    gotoxy(75,12);
-    cin>>reg.fecha_nacimiento.anio;
-    if(reg.fecha_nacimiento.anio < 1900 || reg.fecha_nacimiento.anio > 2019 )
-    {
-        gotoxy(30,13);
-        cout<<"||INGRESE UN ANIO DE NACIMIENTO VALIDO (AÑO ENTRE 1900 Y 2019)"<<endl;
-        cin>>reg.fecha_nacimiento.anio;
-    }
-    gotoxy(30,13);
+    reg.fecha_nacimiento=cargar_fecha();
     cout<<"||INGRESE LA OBRA SOCIAL DEL PACIENTE:                                    ||"<<endl;
-    gotoxy(68,13);
     cin>>reg.obra_social;
     if(reg.obra_social  <   1 || reg.obra_social > 50)
     {
-        gotoxy(30,15);
         cout<<"||LA OBRA SOCIAL DEBE SER UN NUMERO ENTRE 1 Y 50, INGRESE UN NUMERO VALIDO"<<endl;
         cin>>reg.obra_social;
     }
@@ -163,13 +117,9 @@ paciente CargarPaciente()
     reg.estado=true;
 
 
-        gotoxy(30,14);
         cout<<"||------------------------------------------------------------------------||"<<endl;
-        gotoxy(30,15);
         cout<<"||PACIENTE AGREGADO CON EXITO                                             ||"<<endl;
-        gotoxy(30,16);
         cout<<"||------------------------------------------------------------------------||"<<endl;
-        gotoxy(30,17);
         system("pause");
     return reg;
 }

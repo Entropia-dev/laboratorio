@@ -8,21 +8,20 @@ using namespace std;
 
 #include "libreria_angel.h"
 #include "estructuras.h"
+#include "fecha_val.h"
 #include "pacientes.h"
 #include "medicos.h"
 #include "menues.h"
-
-/// prueba de actualizacion de parrot
-
-
+/// arreglar la matricula negativa y chequear el duplicado
+/// validar que la fecha no pide el re ingreso completo de datos
+/// agregar fecha validada correctamente
+/// volver a dar formato a los menues
+/// corregir caracteres vacios de nombre y apellido pacientes
 /// Notas/Tareas :
 /// IMPORTANTES:
-/// 1)Se necesita mejorar la validacion de fecha. (Preguntar el viernes)
 /// 2)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
 
 /// Esteticos :
-/// IMPORTANTE : Leer "Libreria angel"
-/// 2)Darle forma al menu principal (a mitad de camino )  ¿como mostrar los listados y las cargas?
 /// 3) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
 /// 4)Aniadir funcion que lea un solo registro ?. CONSULTAR
 

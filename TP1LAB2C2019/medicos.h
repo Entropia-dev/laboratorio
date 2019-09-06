@@ -101,18 +101,17 @@ void GuardarMedico(struct medicos reg)
 
 }
 
-
-
 medicos CargarMedico()
 {
 
- recuadro(50, 1, 40, 16, cBLANCO, cMAGENTA);
     struct medicos reg;
     int aux;
-         gotoxy(51,3);
     cout<<"INGRESE LA MATRICULA DEL MEDICO"<<endl;
-            gotoxy(51,4);
     cin>>reg.numero_matricula;
+    if(reg.numero_matricula<0){
+        cout<<"ingrese un numero de matricula valida"<<endl;
+        cin>>reg.numero_matricula;
+    }
     aux=reg.numero_matricula;
 
     if(buscarMatricula(aux)==true)
@@ -120,36 +119,37 @@ medicos CargarMedico()
         cout<<"la matricula del medico no puede estar duplicado , ingrese un numero valido"<<endl;
         cin>>reg.numero_matricula;
     }
-    gotoxy(51,5);
     cout<<"INGRESE EL APELLIDO DEL MEDICO: "<<endl;
-    gotoxy(51,6);
     cin.ignore();
     cin.getline(reg.apellido, 50);
-            gotoxy(51,7);
+     while(reg.apellido[0]== '\0' ){
+     cout<<endl;
+     cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
+     cin.getline(reg.apellido,50);
+    }
     cout<<"INGRESE EL NOMBRE DEL MEDICO: "<<endl;
-        gotoxy(51,8);
+     while(reg.apellido[0]== '\0' ){
+     cout<<endl;
+     cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
+     cin.getline(reg.nombre,50);
+    }
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
-     gotoxy(51,9);
     cout<<"INGRESE LA ESPECIALIDAD DEL MEDICO: "<<endl;
-      gotoxy(51,10);
     cin>>reg.especialidad;
     if(reg.especialidad < 0 || reg.especialidad > 20 )
     {
         cout<<"INGRESE UN CARACTER VALIDO ENTRE 1 Y 20"<<endl;
         cin>>reg.especialidad;
     }
-    gotoxy(51,11);
     cout<<"INGRESE El SUELDO: "<<endl;
-    gotoxy(51,12);
     cin>>reg.sueldo;
     if(reg.sueldo<0)
     {
         cout<<"INGRESE UN MONTO VALIDO"<<endl;
         cin>>reg.sueldo;
     }
-        gotoxy(51,13);
         cout<<"MEDICO CARGADO CON EXITO"<<endl;
     system("pause");
     return reg;

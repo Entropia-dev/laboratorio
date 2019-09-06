@@ -33,6 +33,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="estructuras.h" />
+		<Unit filename="fecha_val.h" />
 		<Unit filename="libreria_angel.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="medicos.h" />

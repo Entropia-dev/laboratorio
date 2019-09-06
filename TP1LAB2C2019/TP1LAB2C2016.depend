@@ -84,3 +84,28 @@
 
 1567771612 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\libreria_angel.h
 
+1567789911 source:c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"libreria_angel.h"
+	"estructuras.h"
+	"fecha_val.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\libreria_angel.h
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\estructuras.h
+
+1567789664 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\fecha_val.h
+
+1567790351 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\pacientes.h
+
+1567790014 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\medicos.h
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\menues.h
+

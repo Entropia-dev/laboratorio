@@ -7,6 +7,8 @@ void MenuControles();
 void MenuReportes();
 void MenuConfiguracion();
 
+int aux=contarregistrosmedicos();
+int aux1=contarregistrospaciente();
 
 void MenuPrincipal(){
 
