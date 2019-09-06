@@ -84,61 +84,40 @@ paciente CargarPaciente()
     gotoxy(65,6);
     cin.ignore();
     cin.getline(reg.apellido, 50);
+    while(reg.apellido[0]== '\0' ){
+     cout<<endl;
+     cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
+     cin.getline(reg.apellido,50);
+    }
     gotoxy(30,7);
     cout<<"||INGRESE EL NOMBRE DEL PACIENTE:                                         ||"<<endl;
     gotoxy(64,7);
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
+    while(reg.nombre[0]== '\0' ){
+     cout<<endl;
+     cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
+     cin.getline(reg.nombre ,50);
+    }
     gotoxy(30,8);
     cout<<"||INGRESE EL GENERO DEL PACIENTE      Femenino * Masculino * Otro         ||"<<endl;
 
     gotoxy(30,9);
     cout<<"||                                      F            M            O:      ||";
     gotoxy(99,9);
-
         		cin>>reg.genero;
-
         if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
-
 	}
 	else {
-
 		while( auxGen == true ){
-
-
 			cout<<"INGRESE UN GENERO VALIDO";
                 		cin>>reg.genero;
 			 if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
-
-
-
-
 				auxGen = false;
-
 			}  // IF
-
-
 		}	 // WHILE
-
-
 	}  // ELSE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     gotoxy(30,10);
     cout<<"||INGRESE EL DIA DE NACIMIENTO DEL PACIENTE:                              ||";
