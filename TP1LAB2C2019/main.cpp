@@ -11,6 +11,7 @@ using namespace std;
 #include "fecha_val.h"
 #include "pacientes.h"
 #include "medicos.h"
+#include "controles.h"
 #include "menues.h"
 /// arreglar la matricula negativa y chequear el duplicado
 /// validar que la fecha no pide el re ingreso completo de datos

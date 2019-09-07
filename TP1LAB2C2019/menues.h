@@ -8,8 +8,12 @@ void MenuControles();
 void MenuReportes();
 void MenuConfiguracion();
 
+//Verifica por primera vez la matricula porque el archivo no existiria sin esa funcion y evitar exit 1.
+//revisa que no este protegido contra lectura
 int aux=contarregistrosmedicos();
 int aux1=contarregistrospaciente();
+int aux2=contarregistroscontroles();  //para que iniclice el arhivo y despues el autonumerico
+
 
 void MenuPrincipal()
 {
@@ -104,14 +108,12 @@ void MenuPrincipal()
 void MenuPacientes()
 {
     int opc;
-    int cant_pacientes;
 
     system("cls");
 
     while(true)
     {
 
-        cant_pacientes=contarregistrospaciente();   /// solo se usa para inicializar el archivo
 
         gotoxy(50,2);
         cout<<"----------------------------------"<<endl;
@@ -196,10 +198,8 @@ void MenuPacientes()
 void MenuMedicos()
 {
     int opc;
-    int cant_medicos;
-
     system("cls");
-    cant_medicos=contarregistrosmedicos();  /// solo se usa para inicializar el archivo
+
     while(true)
     {
         cout<<"MENU MEDICOS"<<endl;
@@ -271,27 +271,27 @@ void MenuControles()
         {
         case 1:
             system("cls");
-            nuevo_control();
+            //nuevo_control();
             return;
             break;
         case 2:
             system("cls");
-            modificar_control();
+            //modificar_control();
             return;
             break;
         case 3:
             system("cls");
-            listar_control_x_id();
+           // listar_control_x_id();
             return;
             break;
         case 4:
             system("cls");
-            listar_todos_controles();
+            //listar_todos_controles();
             return;
             break;
         case 5:
             system("cls");
-            cancelar_control();
+            //cancelar_control();
             return;
             break;
         case 0:
