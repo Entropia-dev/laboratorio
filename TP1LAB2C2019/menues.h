@@ -10,9 +10,9 @@ void MenuConfiguracion();
 
 //Verifica por primera vez la matricula porque el archivo no existiria sin esa funcion y evitar exit 1.
 //revisa que no este protegido contra lectura
-int aux=contarregistrosmedicos();
-int aux1=contarregistrospaciente();
-int aux2=contarregistroscontroles();  //para que iniclice el arhivo y despues el autonumerico
+//int aux=contarregistrosmedicos();
+//int aux1=contarregistrospaciente();
+//int aux2=contarregistroscontroles();  //para que iniclice el arhivo y despues el autonumerico
 
 
 void MenuPrincipal()

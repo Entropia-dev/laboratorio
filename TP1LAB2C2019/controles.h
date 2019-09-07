@@ -20,10 +20,10 @@ int contarregistroscontroles(){
 }
 
 
-modificar_control();
-listar_control_x_id();
-listar_todos_controles();
-cancelar_control();
+void modificar_control();
+void listar_control_x_id();
+void listar_todos_controles();
+void cancelar_control();
 
 
 

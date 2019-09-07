@@ -83,6 +83,7 @@ int main()
 {
 
     system("COLOR 5f");
+    inicializar_archivos();
     MenuPrincipal();
     return 0;
 }
