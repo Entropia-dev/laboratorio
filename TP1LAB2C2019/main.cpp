@@ -78,12 +78,30 @@ despues usar las bases de las funciones pacientes/medicos
 
 **/
 
+void inicializar_archivos(){
+FILE *p;
+p=fopen("inicio.dat","rb");
+
+        if(p==NULL){
+          FILE *a=fopen("pacientes.dat","ab");
+                                 fclose(a);
+            FILE *b=fopen("medicos.dat","ab");
+                                fclose(b);
+                FILE *c=fopen("controles.dat","ab");
+                            fclose(c);
+                    FILE *p=fopen("inicio.dat","ab");
+                        fclose(p);
+                            return;
+            }else{return;}
+
+}
+
 
 int main()
 {
 
     system("COLOR 5f");
-    inicializar_archivos();
+    inicializar_archivos ();
     MenuPrincipal();
     return 0;
 }

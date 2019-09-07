@@ -61,7 +61,7 @@
 
 1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
 
-1567780911 source:c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\main.cpp
+1567897043 source:c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdio.h>
@@ -69,21 +69,23 @@
 	<windows.h>
 	"libreria_angel.h"
 	"estructuras.h"
+	"fecha_val.h"
 	"pacientes.h"
 	"medicos.h"
+	"controles.h"
 	"menues.h"
 
-1567692053 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\estructuras.h
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\estructuras.h
 
-1567781507 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\pacientes.h
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\pacientes.h
 
-1567772003 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\medicos.h
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\medicos.h
 
-1567769561 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\menues.h
+1567898192 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\menues.h
 
 1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\libreria_angel.h
 
-1567771612 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\libreria_angel.h
+1567897013 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\libreria_angel.h
 
 1567789911 source:c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\main.cpp
 	<iostream>
@@ -164,4 +166,8 @@
 1567872491 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\controles.h
 
 1567872663 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\menues.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\fecha_val.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\controles.h
 

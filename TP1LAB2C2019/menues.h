@@ -202,16 +202,30 @@ void MenuMedicos()
 
     while(true)
     {
-        cout<<"MENU MEDICOS"<<endl;
-        cout<<"--------------"<<endl;
-        cout<<"1) NUEVO MEDICO"<<endl;
-        cout<<"2) MODIFICAR MEDICO"<<endl;
-        cout<<"3) LISTAR TODOS LOS MEDICOS"<<endl;
-        cout<<"4) LISTAR MEDICO POR MATRICULA"<<endl;
-        cout<<"-------------"<<endl;
-        cout<<"0) VOLVER AL MENU PRINCIPAL"<<endl;
-        cin>>opc;
 
+                gotoxy(50,2);
+        cout<<"||------------------------------||"<<endl;
+        gotoxy(50,3);
+        cout<<"||MENU MEDICOS                  ||"<<endl;
+        gotoxy(50,4);
+        cout<<"||------------------------------||"<<endl;
+               gotoxy(50,5);
+        cout<<"||1) NUEVO MEDICO               ||"<<endl;
+        gotoxy(50,6);
+        cout<<"||2) MODIFICAR MEDICO           ||"<<endl;
+        gotoxy(50,7);
+        cout<<"||3) LISTAR TODOS LOS MEDICOS   ||"<<endl;
+            gotoxy(50,8);
+        cout<<"||4) LISTAR MEDICO POR MATRICULA||"<<endl;
+            gotoxy(50,9);
+        cout<<"||------------------------------||"<<endl;
+            gotoxy(50,10);
+        cout<<"||0) VOLVER AL MENU PRINCIPAL   ||"<<endl;
+            gotoxy(50,11);
+    cout<<"||------------------------------||"<<endl;
+    gotoxy(50,12);
+
+    cin>>opc;
         switch(opc)
         {
         case 1:
@@ -256,15 +270,36 @@ void MenuMedicos()
 
 void MenuControles()
 {
+    system("cls");
     while(true)
     {
-        cout<<"MENU CONTROLES "<<endl;
-        cout<<endl;
-        cout<<"1) NUEVO CONTROL"<<endl;
-        cout<<"2) MODIFICAR CONTROL"<<endl;
-        cout<<"3) LISTAR CONTROL POR ID"<<endl;
-        cout<<"4) LISTAR TODOS LOS CONTROLES"<<endl;
-        cout<<"5) CANCELAR CONTROL"<<endl;
+         gotoxy(50,2);
+         cout<<"||-----------------------------||"<<endl;
+         gotoxy(50,3);
+        cout<<"||CLINICA SAN SIMON            ||"<<endl;
+         gotoxy(50,4);
+        cout<<"||-----------------------------||"<<endl;
+         gotoxy(50,5);
+        cout<<"||MENU CONTROLES               ||"<<endl;
+        gotoxy(50,6);
+        cout<<"||-----------------------------||"<<endl;
+         gotoxy(50,7);
+        cout<<"||1) NUEVO CONTROL             ||"<<endl;
+         gotoxy(50,8);
+        cout<<"||2) MODIFICAR CONTROL         ||"<<endl;
+         gotoxy(50,9);
+        cout<<"||3) LISTAR CONTROL POR ID     ||"<<endl;
+         gotoxy(50,10);
+        cout<<"||4) LISTAR TODOS LOS CONTROLES||"<<endl;
+         gotoxy(50,11);
+        cout<<"||5) CANCELAR CONTROL          ||"<<endl;
+         gotoxy(50,12);
+        cout<<"||-----------------------------||"<<endl;
+         gotoxy(50,13);
+        cout<<"||0) VOLVER AL MENU ANTERIOR   ||"<<endl;
+        gotoxy(50,14);
+         cout<<"||-----------------------------||"<<endl;
+         gotoxy(50,15);
         int opc;
         cin>>opc;
         switch(opc)

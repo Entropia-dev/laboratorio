@@ -78,22 +78,5 @@ void recuadro(short iniX, short iniY, short ancho, short alto, short colorLinea=
     }
 }
 
-void inicializar_archivos(){
-FILE *p;
-p=fopen("inicio.dat","rb");
-
-        if(p==NULL){
-          FILE *a=fopen("pacientes.dat","ab");
-                                 fclose(a);
-            FILE *b=fopen("medicos.dat","ab");
-                                fclose(b);
-                FILE *c=fopen("controles.dat","ab");
-                            fclose(c);
-                    FILE *d=fopen("inicio.dat","ab");
-                        fclose(d);
-
-            }else{cout<<"archivos ya inicializados"<<endl; system("pause"); return;}
-
-}
 
 #endif // LIBRERIA_ANGEL_H_INCLUDED
