@@ -6,9 +6,8 @@
 
 using namespace std;
 
-#include "libreria_angel.h"
 #include "estructuras.h"
-#include "fecha_val.h"
+#include "libreria_angel.h"
 #include "pacientes.h"
 #include "medicos.h"
 #include "controles.h"
@@ -78,21 +77,27 @@ despues usar las bases de las funciones pacientes/medicos
 
 **/
 
-void inicializar_archivos(){
-FILE *p;
-p=fopen("inicio.dat","rb");
+void inicializar_archivos()
+{
+    FILE *p;
+    p=fopen("inicio.dat","rb");
 
-        if(p==NULL){
-          FILE *a=fopen("pacientes.dat","ab");
-                                 fclose(a);
-            FILE *b=fopen("medicos.dat","ab");
-                                fclose(b);
-                FILE *c=fopen("controles.dat","ab");
-                            fclose(c);
-                    FILE *p=fopen("inicio.dat","ab");
-                        fclose(p);
-                            return;
-            }else{return;}
+    if(p==NULL)
+    {
+        FILE *a=fopen("pacientes.dat","ab");
+        fclose(a);
+        FILE *b=fopen("medicos.dat","ab");
+        fclose(b);
+        FILE *c=fopen("controles.dat","ab");
+        fclose(c);
+        FILE *p=fopen("inicio.dat","ab");
+        fclose(p);
+        return;
+    }
+    else
+    {
+        return;
+    }
 
 }
 

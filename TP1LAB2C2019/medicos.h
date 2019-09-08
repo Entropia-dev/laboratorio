@@ -4,17 +4,22 @@
 
 
 
-int contarregistrosmedicos(){
-FILE *p;
-long int peso_archivo;
-int cantidad_registros;
-struct medicos reg;
+int contarregistrosmedicos()
+{
+    FILE *p;
+    long int peso_archivo;
+    int cantidad_registros;
+    struct medicos reg;
     p=fopen("medicos.dat","ab");
-    if(p==NULL){cout<<"error al inicializar el archivo medicos "; exit(1);}
-     fseek(p, 0 , SEEK_END);
+    if(p==NULL)
+    {
+        cout<<"error al inicializar el archivo medicos ";
+        exit(1);
+    }
+    fseek(p, 0, SEEK_END);
     peso_archivo=ftell(p);
     fclose(p);
-   cantidad_registros = peso_archivo / sizeof reg;
+    cantidad_registros = peso_archivo / sizeof reg;
     return cantidad_registros;
 
 }
@@ -108,7 +113,8 @@ medicos CargarMedico()
     int aux;
     cout<<"INGRESE LA MATRICULA DEL MEDICO"<<endl;
     cin>>reg.numero_matricula;
-    if(reg.numero_matricula<0){
+    if(reg.numero_matricula<0)
+    {
         cout<<"ingrese un numero de matricula valida"<<endl;
         cin>>reg.numero_matricula;
     }
@@ -122,16 +128,18 @@ medicos CargarMedico()
     cout<<"INGRESE EL APELLIDO DEL MEDICO: "<<endl;
     cin.ignore();
     cin.getline(reg.apellido, 50);
-     while(reg.apellido[0]== '\0' ){
-     cout<<endl;
-     cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
-     cin.getline(reg.apellido,50);
+    while(reg.apellido[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
+        cin.getline(reg.apellido,50);
     }
     cout<<"INGRESE EL NOMBRE DEL MEDICO: "<<endl;
-     while(reg.apellido[0]== '\0' ){
-     cout<<endl;
-     cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
-     cin.getline(reg.nombre,50);
+    while(reg.apellido[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
+        cin.getline(reg.nombre,50);
     }
     ///si esta entre dos getline no lleva ignore
 
@@ -150,7 +158,7 @@ medicos CargarMedico()
         cout<<"INGRESE UN MONTO VALIDO"<<endl;
         cin>>reg.sueldo;
     }
-        cout<<"MEDICO CARGADO CON EXITO"<<endl;
+    cout<<"MEDICO CARGADO CON EXITO"<<endl;
     system("pause");
     return reg;
 }
@@ -163,30 +171,38 @@ void altamedicos()
     return;
 }
 
-void modificarmedicos(){
-int aux;
-FILE *p;
-struct medicos reg;
-cout<<"INGRESE UN NUMERO DE MATRICULA"<<endl;
-cin>>aux;
-if(buscarMatricula(aux)==false){cout<<"EL NUMERO DE MATRICULA NO EXISTE , INGRESE UN NUMERO VALIDO"<<endl;
-                                cin>>aux;}
+void modificarmedicos()
+{
+    int aux;
+    FILE *p;
+    struct medicos reg;
+    cout<<"INGRESE UN NUMERO DE MATRICULA"<<endl;
+    cin>>aux;
+    if(buscarMatricula(aux)==false)
+    {
+        cout<<"EL NUMERO DE MATRICULA NO EXISTE , INGRESE UN NUMERO VALIDO"<<endl;
+        cin>>aux;
+    }
     p=fopen("medicos.dat","rb+");
-    while(fread(&reg,sizeof reg,1,p)){
-        if(reg.numero_matricula==aux){
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula==aux)
+        {
             cout<<"INGRESE EL NUEVO SUELDO DEL MEDICO"<<endl;
             cin>>reg.sueldo;
             fseek(p,-sizeof reg,1);
-             fwrite(&reg, sizeof(reg),1,p);
-             fclose(p);
-             return;
-            }
-
+            fwrite(&reg, sizeof(reg),1,p);
+            fclose(p);
+            return;
         }
-            fclose(p);  return; ///por si en el segundo cin se vuelven a confundir
+
+    }
+    fclose(p);
+    return; ///por si en el segundo cin se vuelven a confundir
 }
 
-void listartodoslosmedicos(){
+void listartodoslosmedicos()
+{
     medicos reg;
     FILE *p;
     p=fopen("medicos.dat","rb");
@@ -197,31 +213,37 @@ void listartodoslosmedicos(){
     }
     while(fread(&reg,sizeof reg,1,p))
     {
-            listarMedico(reg);
+        listarMedico(reg);
     }
     fclose(p);
     system("pause");
 }
 
 
-void listarmedicoxmatricula(){
-struct medicos reg;
-FILE *p;
-int aux;
-cout<<"INGRESE LA MATRICULA A LISTAR"<<endl;
-cin>>aux;
-if(buscarMatricula(aux)==false){cout<<"NO SE ENCONTRO LA MATRICULA BUSCADA, INGRESE UNA NUEVA MATRICULA"<<endl;
-                                    cin>>aux;}
+void listarmedicoxmatricula()
+{
+    struct medicos reg;
+    FILE *p;
+    int aux;
+    cout<<"INGRESE LA MATRICULA A LISTAR"<<endl;
+    cin>>aux;
+    if(buscarMatricula(aux)==false)
+    {
+        cout<<"NO SE ENCONTRO LA MATRICULA BUSCADA, INGRESE UNA NUEVA MATRICULA"<<endl;
+        cin>>aux;
+    }
 
     p=fopen("medicos.dat","rb");
-    while(fread(&reg,sizeof reg,1,p)){
-        if(reg.numero_matricula==aux){
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula==aux)
+        {
             listarMedico(reg);
             fclose(p);
             system("pause");
-            }
         }
-                fclose(p);
+    }
+    fclose(p);
 }
 
 

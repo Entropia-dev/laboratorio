@@ -8,8 +8,11 @@ bool buscardnipaciente(int a)
     FILE *p;
     p=fopen("pacientes.dat","rb");
     struct paciente reg;
-    if (p==NULL){ exit(1);}                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
-                                                    ///else {Cout<<“error de escritura”; exit(1);}}
+    if (p==NULL)
+    {
+        exit(1);
+    }                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
+    ///else {Cout<<“error de escritura”; exit(1);}}
     while(fread(&reg,sizeof(paciente),1,p)==1)
     {
         if(reg.dni==a)
@@ -58,14 +61,18 @@ paciente CargarPaciente()
     struct paciente reg;
     int aux;
 
-            cout<<"----------------------------------------------------------------------------"<<endl;
-            cout<<"||                        CLINICA SAN SIMON                               ||"<<endl;
-            cout<<"----------------------------------------------------------------------------"<<endl;
-            cout<<"||INGRESE EL DNI DEL PACIENTE:                                            ||"<<endl;
-            cin>>reg.dni;
+    cout<<"----------------------------------------------------------------------------"<<endl;
+    cout<<"||                        CLINICA SAN SIMON                               ||"<<endl;
+    cout<<"----------------------------------------------------------------------------"<<endl;
+    cout<<"||INGRESE EL DNI DEL PACIENTE:                                            ||"<<endl;
+    cin>>reg.dni;
     aux=reg.dni;
-    if(reg.dni<1) {;cout<<"||INGRESE UN NUMERO DE DNI VALIDO:                                            ||"<<endl;
-                    cin>>reg.dni;}
+    if(reg.dni<1)
+    {
+        ;
+        cout<<"||INGRESE UN NUMERO DE DNI VALIDO:                                            ||"<<endl;
+        cin>>reg.dni;
+    }
     if(buscardnipaciente(aux)==true)
     {
         cout<<"||El dni del paciente no puede estar duplicado"<<endl;
@@ -75,35 +82,41 @@ paciente CargarPaciente()
     cout<<"||INGRESE EL APELLIDO DEL PACIENTE:                                       ||"<<endl;
     cin.ignore();
     cin.getline(reg.apellido, 50);
-    while(reg.apellido[0]== '\0' ){
-     cout<<endl;
-     cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
-     cin.getline(reg.apellido,50);
+    while(reg.apellido[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
+        cin.getline(reg.apellido,50);
     }
     cout<<"||INGRESE EL NOMBRE DEL PACIENTE:                                         ||"<<endl;
     ///si esta entre dos getline no lleva ignore
 
     cin.getline(reg.nombre, 50);
-    while(reg.nombre[0]== '\0' ){
-     cout<<endl;
-     cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
-     cin.getline(reg.nombre ,50);
+    while(reg.nombre[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
+        cin.getline(reg.nombre,50);
     }
     cout<<"||INGRESE EL GENERO DEL PACIENTE      Femenino * Masculino * Otro         ||"<<endl;
 
     cout<<"||                                      F            M            O:      ||";
-        		cin>>reg.genero;
-        if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
-	}
-	else {
-		while( auxGen == true ){
-			cout<<"INGRESE UN GENERO VALIDO";
-                		cin>>reg.genero;
-			 if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
-				auxGen = false;
-			}  // IF
-		}	 // WHILE
-	}  // ELSE
+    cin>>reg.genero;
+    if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
+    {
+    }
+    else
+    {
+        while( auxGen == true )
+        {
+            cout<<"INGRESE UN GENERO VALIDO";
+            cin>>reg.genero;
+            if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
+            {
+                auxGen = false;
+            }  // IF
+        }	 // WHILE
+    }  // ELSE
 
     reg.fecha_nacimiento=cargar_fecha();
     cout<<"||INGRESE LA OBRA SOCIAL DEL PACIENTE:                                    ||"<<endl;
@@ -117,10 +130,10 @@ paciente CargarPaciente()
     reg.estado=true;
 
 
-        cout<<"||------------------------------------------------------------------------||"<<endl;
-        cout<<"||PACIENTE AGREGADO CON EXITO                                             ||"<<endl;
-        cout<<"||------------------------------------------------------------------------||"<<endl;
-        system("pause");
+    cout<<"||------------------------------------------------------------------------||"<<endl;
+    cout<<"||PACIENTE AGREGADO CON EXITO                                             ||"<<endl;
+    cout<<"||------------------------------------------------------------------------||"<<endl;
+    system("pause");
     return reg;
 }
 
@@ -303,16 +316,21 @@ void eliminarpaciente()
 }
 
 
-int contarregistrospaciente(){
-FILE *p;
-long int peso_archivo;
-int cantidad_registros;
-struct paciente reg;
+int contarregistrospaciente()
+{
+    FILE *p;
+    long int peso_archivo;
+    int cantidad_registros;
+    struct paciente reg;
     p=fopen("pacientes.dat","rb");
-        if(p==NULL){cout<<"error al inicializar el archivo pacientes"<<endl; exit(1);}
-     fseek(p, 0 , SEEK_END);
+    if(p==NULL)
+    {
+        cout<<"error al inicializar el archivo pacientes"<<endl;
+        exit(1);
+    }
+    fseek(p, 0, SEEK_END);
     peso_archivo=ftell(p);
-   cantidad_registros = peso_archivo / sizeof reg;
+    cantidad_registros = peso_archivo / sizeof reg;
     return cantidad_registros;
 
 }
