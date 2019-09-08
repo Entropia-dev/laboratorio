@@ -1,6 +1,0 @@
-#ifndef FECHA_VAL_H_INCLUDED
-#define FECHA_VAL_H_INCLUDED
-
-
-
-#endif // FECHA_VAL_H_INCLUDED
