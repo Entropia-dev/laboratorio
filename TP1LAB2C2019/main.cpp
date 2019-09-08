@@ -12,15 +12,11 @@ using namespace std;
 #include "medicos.h"
 #include "controles.h"
 #include "menues.h"
-/// arreglar la matricula negativa y chequear el duplicado
-/// validar que la fecha no pide el re ingreso completo de datos
-/// agregar fecha validada correctamente
-/// volver a dar formato a los menues
-/// corregir caracteres vacios de nombre y apellido pacientes
+
+
+
 /// Notas/Tareas :
 /// IMPORTANTES:
-/// 2)Falta comprobar que esten todas las validaciones de pacientes (ya funcionan todas las opciones del menu correctametne).
-
 /// Esteticos :
 /// 3) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
 /// 4)Aniadir funcion que lea un solo registro ?. CONSULTAR
@@ -36,34 +32,12 @@ using namespace std;
 /// comparo el cpodigo con el codigo leido
 /// cierro el archivo y devolver la pocision del registro que encontre
 /// si no existe
-/// devolver -1.4
+/// devolver -1
 
 /// articulo leer articulo
-///
-
 
 
 /** ideas para los puntos de la segunda parte
-
-struct controles
-
-
-Campo
-Tipo
-ID
-entero
-DNI
-entero
-NroMatricula
-entero
-Costo
-float
-Fecha
-struct Fecha
-Duración
-entero
-Estado
-bool
 
 el campo auto numerico se puede hacer con una funcion como la de inicializar los archivos
 como en "contar registros paciente"
