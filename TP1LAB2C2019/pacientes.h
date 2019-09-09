@@ -1,7 +1,122 @@
 #ifndef PACIENTES_H_INCLUDED
 #define PACIENTES_H_INCLUDED
 
+void listarpaciente(paciente reg)
+{
 
+    cout<<"Apellido del paciente: "<<reg.apellido<<endl;
+    cout<<"Nombre del paciente: "<<reg.nombre<<endl;
+    cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
+    cout<<"Dni del paciente: "<<reg.dni<<endl;
+    cout<<"Obra social del paciende: "<<reg.obra_social<<endl;
+    cout<<"Genero del paciende: "<<reg.genero<<endl;
+    return;
+}
+
+int buscarposiciondni(int aux)
+{
+    int pos=0;
+    paciente reg;
+    FILE *p;
+    p=fopen("pacientes.dat","rb");
+    if( p == NULL)
+    {
+        cout<<"ERROR EN FUNCION BUSCAR POS X DNI" <<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.dni == aux)
+        {
+            fclose(p);
+            return pos;
+        }
+
+        pos++;
+    }
+
+
+    fclose(p);
+    return pos;
+}
+
+
+
+bool sobreescribir_paciente(paciente reg, int pos){
+  FILE *p;
+  p = fopen("pacientes.dat", "rb+");
+  if (p == NULL){
+    return false;
+  }
+  fseek(p, sizeof(paciente)*pos, 0);
+  bool i=fwrite(&reg, sizeof(paciente), 1, p);
+  fclose(p);
+  return i;
+}
+
+
+
+paciente leerpaciente(int pos){
+  paciente reg;
+  FILE *p;
+  p = fopen("pacientes.dat", "rb");
+  if (p==NULL){
+        reg.dni  = -1;
+    return reg;
+  }
+  fseek(p, sizeof(paciente)*pos, SEEK_SET);     /// se ubica el puntero de lectura en la pocision
+  bool leyo=fread(&reg, sizeof(paciente), 1, p);    ///peso del archivo * cantidad de registros
+  if (leyo == false){                                   ///desde el inicio del archivo
+    reg.dni = -1;
+  }
+  fclose(p);
+  return reg;
+}
+
+
+
+
+int contarregistrospaciente()
+{
+    FILE *p;
+    long int peso_archivo;
+    int cantidad_registros;
+    struct paciente reg;
+    p=fopen("pacientes.dat","rb");
+    if(p==NULL)
+    {
+        cout<<"error al inicializar el archivo pacientes"<<endl;
+        exit(1);
+    }
+    fseek(p, 0, SEEK_END);
+    peso_archivo=ftell(p);
+    cantidad_registros = peso_archivo / sizeof reg;
+    return cantidad_registros;
+
+}
+
+
+void modificarobrasocial(){
+    int dni;;
+  int pos;
+  cout << "INGRESE EL DNI DEL PACIENTE A MODIFICAR: ";
+  cin >> dni;
+  pos = buscarposiciondni(dni);
+  if (pos >= 0){
+    paciente reg;
+    reg = leerpaciente(pos);
+    listarpaciente(reg);
+    cout << endl << "NUEVA OBRA SOCIAL: ";
+    cin >> reg.obra_social;
+    if (sobreescribir_paciente(reg, pos) == true){
+      cout << endl << "OBRA SOCIAL MODIFICADA."<<endl;
+      system("pause");
+    }
+  }
+  else{
+    cout << "No existe el registro.";
+  }
+}
 
 bool buscardnipaciente(int a)
 {
@@ -25,17 +140,7 @@ bool buscardnipaciente(int a)
     return false;
 }
 
-void listarpaciente(paciente reg)
-{
-    cout<<"====================="<<endl;
-    cout<<"Apellido del paciente: "<<reg.apellido<<endl;
-    cout<<"Nombre del paciente: "<<reg.nombre<<endl;
-    cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
-    cout<<"Dni del paciente: "<<reg.dni<<endl;
-    cout<<"Obra social del paciende: "<<reg.obra_social<<endl;
-    cout<<"Genero del paciende: "<<reg.genero<<endl;
-    return;
-}
+
 
 void GuardarPaciente(struct paciente reg)
 {
@@ -148,23 +253,14 @@ void altaPaciente()
 
 void listartodoslospacientes()
 {
-    paciente reg;
-    FILE *p;
-    p=fopen("pacientes.dat","rb");
-    if(p==NULL)
-    {
-        cout<<"error de funcion listar todos los pacientes"<<endl;
-        exit(1);
-    }
-    while(fread(&reg,sizeof reg,1,p))
-    {
-
-        if(reg.estado==true)
-        {
-            listarpaciente(reg);
-        }
-    }
-    fclose(p);
+    system("cls");
+    int cant = contarregistrospaciente(), i;
+  paciente reg;
+  for(i=0; i<cant; i++){
+    reg = leerpaciente(i); ///leer paciente
+    listarpaciente(reg);        /// listar paciente
+    cout << "----------------------" << endl;
+  }
     system("pause");
 }
 
@@ -173,78 +269,11 @@ void listartodoslospacientes()
 ///llevar el puntero de lectura a un struct anterior ?
 ///sobre escribir el campo viejo
 
-void modificarobrasocial()
-{
-    int aux;
-    FILE *p;
-    struct paciente reg;
-    cout<<"INGRESE EL DNI DEL PACIENTE A MODIFICAR OBRA SOCIAL"<<endl;
-    cin>>aux;
-    if(buscardnipaciente(aux)==false)
-    {
-        cout<<"NO SE ENCONTRO EL DNI DEL PACIENTE A MODIFICAR INGRESE UN NUEVO DNI"<<endl;
-        cin>>aux;
-    }
-
-    if(buscardnipaciente(aux)==true)
-    {
-        p=fopen("pacientes.dat","rb+");
-        if(p==NULL)
-        {
-            cout<<"error en la funcion modificar obra social"<<endl;
-            exit(1);
-        }
-        while(fread(&reg,sizeof reg,1,p))
-        {
-            if(aux==reg.dni)
-            {
-                fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
-                cout<<"INGRESE LA NUEVA OBRA SOCIAL DEL PACIENTE"<<endl;
-                cin>>reg.obra_social;                                       ///se ingresa el dato a cargar
-                if(reg.obra_social < 1 || reg.obra_social > 50 )
-                {
-                    cout<<"ingrese una obra social valida"<<endl;
-                    cin>>reg.obra_social;
-                }
-                fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
-                fclose(p);
-            }
-        }
-
-
-    }
-    fclose(p);
-}
 
 
 
 
-int buscarposiciondni(int aux)
-{
-    int pos=0;
-    paciente reg;
-    FILE *p;
-    p=fopen("pacientes.dat","rb");
-    if( p == NULL)
-    {
-        cout<<"ERROR EN FUNCION BUSCAR POS X DNI" <<endl;
-        exit(1);
-    }
-    while(fread(&reg,sizeof reg,1,p))
-    {
-        if(reg.dni == aux)
-        {
-            fclose(p);
-            return pos;
-        }
 
-        pos++;
-    }
-
-
-    fclose(p);
-    return pos;
-}
 
 
 void listarpacientepordni()
@@ -316,24 +345,6 @@ void eliminarpaciente()
 }
 
 
-int contarregistrospaciente()
-{
-    FILE *p;
-    long int peso_archivo;
-    int cantidad_registros;
-    struct paciente reg;
-    p=fopen("pacientes.dat","rb");
-    if(p==NULL)
-    {
-        cout<<"error al inicializar el archivo pacientes"<<endl;
-        exit(1);
-    }
-    fseek(p, 0, SEEK_END);
-    peso_archivo=ftell(p);
-    cantidad_registros = peso_archivo / sizeof reg;
-    return cantidad_registros;
-
-}
 
 
 
