@@ -20,10 +20,7 @@ using namespace std;
 
 
 /// Notas/Tareas :
-/// IMPORTANTES:
-/// Esteticos :
-/// 3) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
-/// 4)Aniadir funcion que lea un solo registro ?. CONSULTAR
+///IMPORTANTE : TERMINAR LOS LISTADOS DE LA PARTE 2
 
 /// EJEMPLO DE FSEEK : fseek(p, -sizeof reg , 1 ,p).
 
@@ -37,23 +34,6 @@ using namespace std;
 /// cierro el archivo y devolver la pocision del registro que encontre
 /// si no existe
 /// devolver -1
-
-/// articulo leer articulo
-
-
-/** ideas para los puntos de la segunda parte
-
-el campo auto numerico se puede hacer con una funcion como la de inicializar los archivos
-como en "contar registros paciente"
-
-el dni como en buscardnipacientes
-
-para el nro de matricula se va a necesitar buscar matricula
-buscar funcion "CTIME"
-
-despues usar las bases de las funciones pacientes/medicos
-
-**/
 
 void inicializar_archivos()
 {
