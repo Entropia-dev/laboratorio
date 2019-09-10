@@ -1,0 +1,201 @@
+# depslib dependency file v1.0
+1567106544 source:c:\users\kai anderson\desktop\tp1lab2c2016\main.cpp
+	<iostream>
+	<cstdlib>
+	"menues.h"
+
+1567106544 c:\users\kai anderson\desktop\tp1lab2c2016\menues.h
+
+1567108534 source:c:\users\kai anderson\desktop\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	"estructuras.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567111255 c:\users\kai anderson\desktop\tp1lab2c2019\menues.h
+
+1567109177 c:\users\kai anderson\desktop\tp1lab2c2019\estructuras.h
+
+1567111177 c:\users\kai anderson\desktop\tp1lab2c2019\pacientes.h
+
+1567106679 c:\users\kai anderson\desktop\tp1lab2c2019\medicos.h
+
+1567168513 source:c:\users\miran\desktop\lab2_2c\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	"estructuras.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567109178 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\estructuras.h
+
+1567169224 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\pacientes.h
+
+1567165276 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\medicos.h
+
+1567168612 c:\users\miran\desktop\lab2_2c\tp1lab2c2019\menues.h
+
+1567807042 source:c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"libreria_angel.h"
+	"estructuras.h"
+	"fecha_val.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567808071 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\estructuras.h
+
+1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\pacientes.h
+
+1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\medicos.h
+
+1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\menues.h
+
+1567897043 source:c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"libreria_angel.h"
+	"estructuras.h"
+	"fecha_val.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\estructuras.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\pacientes.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\medicos.h
+
+1567898192 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\menues.h
+
+1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\libreria_angel.h
+
+1567897013 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\libreria_angel.h
+
+1567789911 source:c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"libreria_angel.h"
+	"estructuras.h"
+	"fecha_val.h"
+	"pacientes.h"
+	"medicos.h"
+	"menues.h"
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\libreria_angel.h
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\estructuras.h
+
+1567789664 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\fecha_val.h
+
+1567790351 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\pacientes.h
+
+1567790014 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\medicos.h
+
+1567785674 c:\users\windows 10 pro\documents\utn\laboratorio\tp1lab2c2019\menues.h
+
+1567807042 c:\users\kai anderson\desktop\parciallaboratorio\laboratorio\tp1lab2c2019\fecha_val.h
+
+1568111658 source:c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<ctime>
+	<vector>
+	"estructuras.h"
+	"libreria_angel.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1568116004 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\libreria_angel.h
+
+1568095488 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\estructuras.h
+
+1567808544 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\fecha_val.h
+
+1568122073 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\pacientes.h
+
+1568122078 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\medicos.h
+
+1568118105 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\menues.h
+
+1568084600 source:c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"estructuras.h"
+	"libreria_angel.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1568084626 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\libreria_angel.h
+
+1568084626 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\estructuras.h
+
+1567959878 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\fecha_val.h
+
+1568085153 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\pacientes.h
+
+1568084626 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\medicos.h
+
+1568084626 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\controles.h
+
+1568084626 c:\users\kai anderson\desktop\parciallaboratorio\tp1lab2c2019\menues.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\fecha_val.h
+
+1567896905 c:\users\miran\desktop\clone\laboratorio\tp1lab2c2019\controles.h
+
+1568053789 source:c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"estructuras.h"
+	"libreria_angel.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1568067340 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\estructuras.h
+
+1568053789 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\libreria_angel.h
+
+1568081427 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\pacientes.h
+
+1568069342 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\medicos.h
+
+1568080723 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\controles.h
+
+1568079312 c:\users\windows 10 pro\documents\utn\backup lab2\tp1lab2c2019\menues.h
+
+1568095488 c:\users\banegas 01\desktop\santi info\utn\laboratorio 2-2c-2019\tp1-primerparcial\tp1lab2c2019\controles.h
+

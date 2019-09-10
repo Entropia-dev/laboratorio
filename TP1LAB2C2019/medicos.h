@@ -1,0 +1,389 @@
+#ifndef MEDICOS_H_INCLUDED
+#define MEDICOS_H_INCLUDED
+
+//Si quieren modificar el orden del codigo y les da error,solo deben agregar el prototipo de las funciones
+//que no reconoce el compilador.Lo ideal es agregar  todas pero mientras que no de error no hace falta
+//poner todos los prototipos.(ya puse todas)
+
+
+void listarMedico(struct medicos);
+bool buscarMatricula(int);
+medicos CargarMedico();
+void GuardarMedico(struct medicos);
+void modificarmedicos();
+void altamedicos();
+int BuscarPosMatricula(int);
+int contarregistroscontroles();
+void listarmedicoxmatricula();
+void listartodoslosmedicos();
+
+
+
+//-------------------------------------------------------------------------------------------------------------------
+//
+// **********************  SECCION REFERENTE AL LISTADO DE MEDICOS  *************************
+//
+//-------------------------------------------------------------------------------------------------------------------
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+
+void listartodoslosmedicos(){
+
+    medicos reg;
+    FILE *p;
+    p=fopen("medicos.dat","rb");
+    if(p==NULL)
+    {
+        cout<<"error de funcion listar todos los medicos"<<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        listarMedico(reg);
+    }
+    fclose(p);
+    system("pause");
+}
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+void listarmedicoxmatricula(){
+
+    struct medicos reg;
+    FILE *p;
+    int aux;
+    cout<<"INGRESE LA MATRICULA A LISTAR"<<endl;
+    cin>>aux;
+    if(buscarMatricula(aux)==false)
+    {
+        cout<<"NO SE ENCONTRO LA MATRICULA BUSCADA, INGRESE UNA NUEVA MATRICULA"<<endl;
+        cin>>aux;
+    }
+
+    p=fopen("medicos.dat","rb");
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula==aux)
+        {
+            listarMedico(reg);
+            fclose(p);
+            system("pause");
+        }
+    }
+    fclose(p);
+}
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+void listarMedico(struct medicos reg){
+
+    cout<<"====================="<<endl;
+    cout<<"Apellido del medico: "<<reg.apellido<<endl;
+    cout<<"Nombre del medico: "<<reg.nombre<<endl;
+    cout<<"Especialidad: "<<reg.especialidad<<endl;
+    cout<<"Sueldo: "<<reg.sueldo<<endl;
+    cout<<"Matricula: "<<reg.numero_matricula<<endl;
+    cout<<"                   "<<endl;
+    return;
+}
+
+
+
+//-------------------------------------------------------------------------------------------------------------------
+//
+// **********************   SECCION DE ALTA/BAJA/MODIFICACION Y BUSQUEDA DE MEDICOS  *********************
+//
+//-------------------------------------------------------------------------------------------------------------------
+
+
+void altamedicos(){
+
+    medicos reg;
+    reg=CargarMedico();
+    GuardarMedico(reg);
+    return;
+}
+
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+medicos CargarMedico(){
+
+
+    struct medicos reg;
+    int aux;
+    cout<<"INGRESE LA MATRICULA DEL MEDICO"<<endl;
+    cin>>reg.numero_matricula;
+    if(reg.numero_matricula<0)
+    {
+        cout<<"ingrese un numero de matricula valida"<<endl;
+        cin>>reg.numero_matricula;
+    }
+    aux=reg.numero_matricula;
+
+    if(buscarMatricula(aux)==true)
+    {
+        cout<<"la matricula del medico no puede estar duplicado , ingrese un numero valido"<<endl;
+        cin>>reg.numero_matricula;
+    }
+    cout<<"INGRESE EL APELLIDO DEL MEDICO: "<<endl;
+    cin.ignore();
+    cin.getline(reg.apellido, 50);
+    while(reg.apellido[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
+        cin.getline(reg.apellido,50);
+    }
+    cout<<"INGRESE EL NOMBRE DEL MEDICO: "<<endl;
+    while(reg.apellido[0]== '\0' )
+    {
+        cout<<endl;
+        cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
+        cin.getline(reg.nombre,50);
+    }
+    ///si esta entre dos getline no lleva ignore
+
+    cin.getline(reg.nombre, 50);
+    cout<<"INGRESE LA ESPECIALIDAD DEL MEDICO: "<<endl;
+    cin>>reg.especialidad;
+    if(reg.especialidad < 0 || reg.especialidad > 20 )
+    {
+        cout<<"INGRESE UN CARACTER VALIDO ENTRE 1 Y 20"<<endl;
+        cin>>reg.especialidad;
+    }
+    cout<<"INGRESE El SUELDO: "<<endl;
+    cin>>reg.sueldo;
+    if(reg.sueldo<0)
+    {
+        cout<<"INGRESE UN MONTO VALIDO"<<endl;
+        cin>>reg.sueldo;
+    }
+    cout<<"MEDICO CARGADO CON EXITO"<<endl;
+    system("pause");
+    return reg;
+}
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+void GuardarMedico(struct medicos reg){
+
+    FILE *p;
+    p = fopen("medicos.dat", "ab");
+    if (p == NULL)
+    {
+        cout<<"error en funcion guardarMedico"<<endl;
+        exit(1);
+    }
+
+
+    fwrite(&reg, sizeof(reg),1,p);
+    fclose(p);
+    return ;
+
+}
+
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+
+void modificarmedicos(){
+
+    int aux;
+    FILE *p;
+    struct medicos reg;
+
+    cout<<"INGRESE UN NUMERO DE MATRICULA"<<endl;
+    cin>>aux;
+    if(buscarMatricula(aux)==false)
+    {
+        cout<<"EL NUMERO DE MATRICULA NO EXISTE , INGRESE UN NUMERO VALIDO"<<endl;
+        cin>>aux;
+    }
+    p=fopen("medicos.dat","rb+");
+    if(p==NULL)
+    {
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula==aux)
+        {
+            cout<<"INGRESE EL NUEVO SUELDO DEL MEDICO"<<endl;
+            cin>>reg.sueldo;
+            fseek(p,-sizeof reg,1);
+            fwrite(&reg, sizeof(reg),1,p);
+            fclose(p);
+            return;
+        }
+
+    }
+    fclose(p);
+    return; ///por si en el segundo cin se vuelven a confundir
+}
+
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+
+int contarregistrosmedicos(){
+
+    FILE *p;
+    long int peso_archivo;
+    int cantidad_registros;
+    struct medicos reg;
+    p=fopen("medicos.dat","ab");
+    if(p==NULL)
+    {
+        cout<<"error al inicializar el archivo medicos ";
+        exit(1);
+    }
+    fseek(p, 0, SEEK_END);
+    peso_archivo=ftell(p);
+    fclose(p);
+    cantidad_registros = peso_archivo / sizeof reg;
+    return cantidad_registros;
+
+}
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+///buscar la posicion de la matricula
+int BuscarPosMatricula(int aux){
+
+    int pos=0;
+    medicos reg;
+    FILE *p;
+    p=fopen("medicos.dat","rb");
+    if( p == NULL)
+    {
+        cout<<"ERROR EN FUNCION BUSCAR POS X MATRICULA" <<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula == aux)
+        {
+            fclose(p);
+            return pos;
+        }
+
+        pos++;
+    }
+
+
+    fclose(p);
+    return pos;
+}
+
+
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+
+///busca el numero de matricula del medico
+
+bool buscarMatricula(int a){
+
+    struct medicos reg;
+    FILE *p;
+    p=fopen("medicos.dat","rb");
+    if(p==NULL)
+    {
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p)==1)
+    {
+        if(reg.numero_matricula==a)
+        {
+            fclose(p);
+            return true;    ///retorna verdadero si la matricula ya existe en el archivo
+        }
+    }
+    fclose(p);
+    return false;   ///retorna falso en caso de no encontrar la matricula buscada
+}
+
+
+
+
+
+#endif // MEDICOS_H_INCLUDED
