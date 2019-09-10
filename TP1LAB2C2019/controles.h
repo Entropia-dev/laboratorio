@@ -62,8 +62,17 @@ if (p==NULL){
 
 void nuevo_control(){
     struct controles reg;
+        /// prueba de obtencion de datos de sistema
+    time_t now = time(0);
+            tm * time = localtime(&now);
 
-    cout<<"DNI DEL PACIENTE: ";
+   /// cout<<"dia del mes"<<time->tm_mday;      obtiene el dia del mes de sistema
+ ///  cout<<"numero de mes"<<time->tm_mon+1;    obtiene el numero de mes (de 0 a 11)
+  ///  cout<<"anio del sistema"<<time ->tm_year + 1900;  obtiene cuantos años pasaron desde 1900 hasta el año de sistema
+
+
+
+cout<<"DNI DEL PACIENTE: ";
 cin>>reg.dni;
 //int auxDni=reg.dni;
 if(buscardnipaciente(reg.dni)==false){
@@ -80,6 +89,8 @@ cout<<"COSTO: ";cin>>reg.costo;
 cout<<"FECHA DEL CONTROL "<<endl;
 cout<<"DIA: ";cin>>reg.fecha_control.dia; cout<<"MES: ";cin>>reg.fecha_control.mes;cout<<"ANIO: ";cin>>reg.fecha_control.anio;
 cout<<"DURACION: ";cin>>reg.duracion;
+if(reg.duracion < 0){cout<<"la duracion del control debe ser un numero positivo , inserte una duracion valida "<<endl;
+                     cin>>reg.duracion;}
 reg.id=nuevoID();
 guardarControles(reg);
 cout<<"EL CONTROL SE REGISTRO EXITOSAMENTE! ";
