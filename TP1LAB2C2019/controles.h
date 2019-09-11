@@ -6,7 +6,15 @@ void listar_control_x_id();
 void listar_todos_controles();
 void cancelar_control();
 
-
+void mostrarcontrol(controles reg){
+cout<<"ID DEL CONTROL :"<<reg.id<<endl;
+cout<<"FECHA DEL CONTROL :"<<reg.fecha_control.dia<<"/"<<reg.fecha_control.mes<<"/"<<reg.fecha_control.anio<<endl;
+cout<<"DURACION DEL CONTROL :"<<reg.duracion<<endl;
+cout<<"DNI DEL PACIENTE: "<<reg.dni<<endl;
+cout<<"NUMERO DE MATRICULA DEL MEDICO: "<<reg.nro_matricula<<endl;
+cout<<"CONSTO DEL CONTROL: "<<reg.costo<<endl;
+cout<<"------------------------------------------------------------------------------"<<endl;
+}
 
 //====================================================================================================================
 // FUNCION    : int ObtenerId(FILE *archivo,int tamStru).
@@ -101,7 +109,7 @@ cout<<"DIA: ";cin>>reg.fecha_control.dia; cout<<"MES: ";cin>>reg.fecha_control.m
 cout<<"DURACION: ";cin>>reg.duracion;
 if(reg.duracion < 0){cout<<"la duracion del control debe ser un numero positivo , inserte una duracion valida "<<endl;
                      cin>>reg.duracion;}
-reg.id=nuevoID();
+reg.id=contarregistroscontroles()+1;
 guardarControles(reg);
 cout<<"EL CONTROL SE REGISTRO EXITOSAMENTE! ";
 system("pause");
@@ -113,14 +121,16 @@ struct controles reg;
 FILE*p=fopen("controles.dat","rb");
 if (p==NULL){cout<<"NO HAY CONTROLES REGISTRADOS!";exit(1);}
 while(fread(&reg,sizeof reg, 1, p)==1){
-    cout<<"ID: " <<reg.id<<endl;
-    cout<<"DNI: "<<reg.dni<<endl;
-    cout<<"MATRICULA: "<<reg.nro_matricula<<endl;
-    cout<<"COSTO: "<<reg.costo<<endl;
-    cout<<"FECHA: "<<reg.fecha_control.dia<<reg.fecha_control.mes<<reg.fecha_control.anio<<endl;
+        if(reg.estado==true){
+    cout<<"ID DEL CONTROL: " <<reg.id<<endl;
+    cout<<"DNI DEL PACIENTE: "<<reg.dni<<endl;
+    cout<<"MATRICULA DEL MEDICO: "<<reg.nro_matricula<<endl;
+    cout<<"COSTO DEL CONTROL: "<<reg.costo<<endl;
+    cout<<"FECHA: "<<reg.fecha_control.dia<<"/"<<reg.fecha_control.mes<<"/"<<reg.fecha_control.anio<<endl;
     cout<<"DURACION: "<<reg.duracion<<endl;
     cout<<"=================================================================================================="<<endl;
 }
+    }
 system("pause");
 }
 
@@ -153,6 +163,7 @@ int contarregistroscontroles()
 //DEVUELVE    : un struct de tipo controles
 //-------------------------------------------------------------------------------------------------------------------
 
+/*
 controles leer_registro_controles(){
 struct controles reg;
 FILE *p;
@@ -160,12 +171,14 @@ p=fopen("controles.dat","rb");
 if(p==NULL){cout<<"error de archivo en funcion leer_registro_controles"<<endl;
                                 exit(1);}
 fread(&reg,sizeof reg, 1 , p);
+fclose(p);
 return reg;
 }
+**/
 
-modificarControl(int comparador){
-FILE*p=fopen("controles.dat")
-}
+// modificarControl(int comparador){
+// FILE*p=fopen("controles.dat")
+// }
 
 
 
@@ -179,7 +192,7 @@ FILE*p=fopen("controles.dat")
 //====================================================================================================================
 
 
- void buscarId(){
+ /*void buscarId(){
  struct controles reg;
  int id;
  int pos=0;
@@ -197,6 +210,159 @@ FILE*p=fopen("controles.dat")
  return -1;
  }
 
+**/
 
+ bool buscar_codigo_control(int id_control){
+struct controles reg;
+int pos =0;
+int r=0;
+FILE *p;
+p=fopen("controles.dat","rb");
+if(p==NULL){cout<<"error de archivo en la funcion buscar_control"<<endl;
+				exit(1);}
+
+while(fread(&reg,sizeof reg, 1 , p)){
+
+    if(reg.id == id_control){
+            fclose(p);
+        return true ;
+    }
+                }
+fclose(p);
+return false;
+}
+
+/*
+bool sobreescribir_control (controles reg, int pos){
+  FILE *p;
+  p = fopen("controles.dat", "rb+");
+  if (p == NULL){
+    return false;
+  }
+  fseek(p, sizeof(controles)*pos, 0);
+  bool i=fwrite(&reg, sizeof(controles), 1, p);
+  fclose(p);
+  return i;
+}
+**/
+
+void modificar_control(){
+
+    int aux;
+    FILE *p;
+    struct controles reg;
+    cout<<"INGRESE LA ID DEL PROCEDIMIENTO A MODIFCAR"<<endl;
+    cin>>aux;
+    if(buscar_codigo_control(aux)== -1)
+    {
+        cout<<"NO SE ENCONTRO LA ID DE PROCEDIMIENTO BUSCADA INGRESE OTRA ID"<<endl;
+        cin>>aux;
+    }
+
+    if(buscar_codigo_control(aux) == true )
+    {
+        p=fopen("controles.dat","rb+");
+        if(p==NULL)
+        {
+            cout<<"error en la funcion modificar_control"<<endl;
+            exit(1);
+        }
+        while(fread(&reg,sizeof reg,1,p))
+        {
+            if(aux==reg.id)
+            {
+                fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
+                cout<<"INGRESE LA NUEVA DURACION DEL CONTROL"<<endl;
+                cin>>reg.duracion;                                       ///se ingresa el dato a cargar
+                if(reg.duracion < 0)
+                {
+                    cout<<"la duracion no puede ser un numero negativo"<<endl;
+                    cin>>reg.duracion;
+                }
+                fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
+                fclose(p);
+            }
+        }
+
+
+    }
+    fclose(p);
+}
+
+
+
+void cancelar_control(){
+
+    int aux;
+    FILE *p;
+    struct controles reg;
+    cout<<"INGRESE LA ID DEL PROCEDIMIENTO A CANCELAR"<<endl;
+    cin>>aux;
+    if(buscar_codigo_control(aux)== -1)
+    {
+        cout<<"NO SE ENCONTRO EL ID DE PROCEDIMIENTO A MODIFICAR INGRESE UN NUEVO DNI"<<endl;
+        cin>>aux;
+    }
+
+    if(buscar_codigo_control(aux) == true )
+    {
+        p=fopen("controles.dat","rb+");
+        if(p==NULL)
+        {
+            cout<<"error en la funcion modificar_control"<<endl;
+            exit(1);
+        }
+        while(fread(&reg,sizeof reg,1,p))
+        {
+            if(aux==reg.id)
+            {
+                fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
+                reg.estado=false;
+                fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
+                fclose(p);
+                cout<<"PROCEDIMIENTO CANCELADO CON EXITO"<<endl;
+                system("pause");
+            }
+        }
+
+
+    }
+    fclose(p);
+}
+
+void listar_control_x_id(){
+
+    int aux;
+    FILE *p;
+    struct controles reg;
+    cout<<"INGRESE LA ID DEL CONTROL A LISTAR"<<endl;
+    cin>>aux;
+    if(buscar_codigo_control(aux)== -1)
+    {
+        cout<<"NO SE ENCONTRO LA ID A LISTAR INGRESE OTRA ID"<<endl;
+        cin>>aux;
+    }
+
+    if(buscar_codigo_control(aux) == true )
+    {
+        p=fopen("controles.dat","rb+");
+        if(p==NULL)
+        {
+            cout<<"error en la funcion listar control x id "<<endl;
+            exit(1);
+        }
+        while(fread(&reg,sizeof reg,1,p))
+        {
+            if(aux==reg.id)
+            {
+            mostrarcontrol(reg);
+            system("pause");
+            }
+        }
+
+
+    }
+    fclose(p);
+}
 
 #endif // CONTROLES_H_INCLUDED

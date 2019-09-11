@@ -331,12 +331,12 @@ void MenuControles(){
             break;
         case 2:
             system("cls");
-            //modificar_control();
+            modificar_control();
             return;
             break;
         case 3:
             system("cls");
-            // listar_control_x_id();
+             listar_control_x_id();
             return;
             break;
         case 4:
@@ -346,7 +346,7 @@ void MenuControles(){
             break;
         case 5:
             system("cls");
-            //cancelar_control();
+            cancelar_control();
             return;
             break;
         case 0:
