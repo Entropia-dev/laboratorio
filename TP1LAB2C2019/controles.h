@@ -148,7 +148,7 @@ int contarregistroscontroles()
 
 //====================================================================================================================
 // FUNCION    : controles leer_registro_controles.
-// ACCION     : lee un registro controles de disco y lo en una variable reg.
+// ACCION     : lee un registro controles de disco y lo devuelve en una variable reg.
 // PARAMETROS :
 //DEVUELVE    : un struct de tipo controles
 //-------------------------------------------------------------------------------------------------------------------
@@ -163,6 +163,39 @@ fread(&reg,sizeof reg, 1 , p);
 return reg;
 }
 
+modificarControl(int comparador){
+FILE*p=fopen("controles.dat")
+}
+
+
+
+//====================================================================================================================
+// FUNCION    :   void buscarId()
+// ACCION     :   abrir el archivo controles y buscar
+// PARAMETROS :   La opción Modificar Control deberá solicitar
+//              el ID del Control y deberá permitir modificar la duración de un control.
+//
+//DEVUELVE    :
+//====================================================================================================================
+
+
+ void buscarId(){
+ struct controles reg;
+ int id;
+ int pos=0;
+ cout<<"INGRESE EL ID DEL CONTROL A MODIFICAR: ";cin>>comparador;
+ FILE*p=fopen("controles.dat","rb");
+ if(p==NULL)cout<<" ARCHIVO INEXISTENTE!"<<exit(1);
+ while(fread(&reg,sizeof reg,1,p)==1){
+
+    if (id==reg.id){
+    pos=modificarControl(reg.id);
+    fclose(p);
+    return pos;
+    }pos++;
+ }fclose(p);
+ return -1;
+ }
 
 
 
