@@ -1,6 +1,13 @@
 #ifndef CONTROLES_H_INCLUDED
 #define CONTROLES_H_INCLUDED
 
+void modificar_control();
+void listar_control_x_id();
+void listar_todos_controles();
+void cancelar_control();
+
+
+
 //====================================================================================================================
 // FUNCION    : int ObtenerId(FILE *archivo,int tamStru).
 // ACCION     : Obtiene la posicion actual del archivo.
@@ -60,6 +67,9 @@ if (p==NULL){
 
 }
 
+
+
+
 void nuevo_control(){
     struct controles reg;
         /// prueba de obtencion de datos de sistema
@@ -113,6 +123,8 @@ while(fread(&reg,sizeof reg, 1, p)==1){
 }
 system("pause");
 }
+
+
 int contarregistroscontroles()
 {
 
@@ -134,10 +146,22 @@ int contarregistroscontroles()
 }
 
 
-void modificar_control();
-void listar_control_x_id();
-void listar_todos_controles();
-void cancelar_control();
+//====================================================================================================================
+// FUNCION    : controles leer_registro_controles.
+// ACCION     : lee un registro controles de disco y lo en una variable reg.
+// PARAMETROS :
+//DEVUELVE    : un struct de tipo controles
+//-------------------------------------------------------------------------------------------------------------------
+
+controles leer_registro_controles(){
+struct controles reg;
+FILE *p;
+p=fopen("controles.dat","rb");
+if(p==NULL){cout<<"error de archivo en funcion leer_registro_controles"<<endl;
+                                exit(1);}
+fread(&reg,sizeof reg, 1 , p);
+return reg;
+}
 
 
 
