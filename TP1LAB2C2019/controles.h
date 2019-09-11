@@ -120,7 +120,7 @@ int contarregistroscontroles()
     struct controles reg;
 
     FILE *p;
-    p=fopen("controles.dat","ab");  // porque solo lo necesitamos en caso de que no existe ademas.
+    p=fopen("controles.dat","rb");
     if(p==NULL)
     {
         cout<<"error de archivo ";
