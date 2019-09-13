@@ -253,3 +253,30 @@
 
 1568397677 c:\users\kai anderson\desktop\tp_santi_ultima_version\tp1lab2c2019\menues.h
 
+1568369758 source:c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<ctime>
+	<vector>
+	"estructuras.h"
+	"libreria_angel.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1568369758 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\estructuras.h
+
+1568369760 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\libreria_angel.h
+
+1568386348 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\pacientes.h
+
+1568369758 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\medicos.h
+
+1568397623 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\controles.h
+
+1568397677 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\menues.h
+
