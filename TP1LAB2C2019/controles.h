@@ -22,6 +22,9 @@ controles leer_control(int pos)
     return reg;
 }
 
+
+
+
 void listar_control(struct controles reg)
 {
     if(reg.estado==true)
@@ -286,62 +289,35 @@ bool buscar_codigo_control(int id_control)
     return false;
 }
 
-/*
+
 bool sobreescribir_control (controles reg, int pos){
   FILE *p;
   p = fopen("controles.dat", "rb+");
   if (p == NULL){
     return false;
   }
-  fseek(p, sizeof(controles)*pos, 0);
-  bool i=fwrite(&reg, sizeof(controles), 1, p);
+  int aux=pos-1;
+  fseek(p, sizeof(controles)*aux, 0);
+    fwrite(&reg, sizeof(controles), 1, p);
   fclose(p);
-  return i;
 }
-**/
+
 
 void modificar_control()
 {
-
     int aux;
-    FILE *p;
     struct controles reg;
     cout<<"INGRESE LA ID DEL PROCEDIMIENTO A MODIFCAR"<<endl;
     cin>>aux;
-    if(buscar_codigo_control(aux)== -1)
+    if(buscar_codigo_control(aux)== false)
     {
         cout<<"NO SE ENCONTRO LA ID DE PROCEDIMIENTO BUSCADA INGRESE OTRA ID"<<endl;
         cin>>aux;
     }
-
-    if(buscar_codigo_control(aux) == true )
-    {
-        p=fopen("controles.dat","rb+");
-        if(p==NULL)
-        {
-            cout<<"error en la funcion modificar_control"<<endl;
-            exit(1);
-        }
-        while(fread(&reg,sizeof reg,1,p))
-        {
-            if(aux==reg.id)
-            {
-                fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
+                reg=leer_control(aux);
                 cout<<"INGRESE LA NUEVA DURACION DEL CONTROL"<<endl;
-                cin>>reg.duracion;                                       ///se ingresa el dato a cargar
-                if(reg.duracion < 0)
-                {
-                    cout<<"la duracion no puede ser un numero negativo"<<endl;
-                    cin>>reg.duracion;
-                }
-                fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
-                fclose(p);
-            }
-        }
-
-
-    }
-    fclose(p);
+                cin>>reg.duracion;
+                sobreescribir_control(reg,aux);
 }
 
 
