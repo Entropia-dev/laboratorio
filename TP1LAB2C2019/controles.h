@@ -77,7 +77,7 @@ if(p!=NULL)
 }*/
 /////////////////////////////////////////////
 
-int nuevoID()
+int nuevoID()   ///cuenta la cantidad de controles en el archivo controles . dat y le suma +1 para poder auto generar la nueva id
 {
     struct controles reg;
     FILE *p;
@@ -100,7 +100,7 @@ int nuevoID()
 //DEVUELVE    : Numero de registros donde esta ubicado.Devuelve -1 si algo sale mal
 //-------------------------------------------------------------------------------------------------------------------
 
-void guardarControles(struct controles reg)
+void guardarControles(struct controles reg) /// recibe por parametro el registro "reg" de tipo controles y lo guarda en el archivo controles . dat
 {
     FILE *p;
     p = fopen("controles.dat","ab");
@@ -119,7 +119,7 @@ void guardarControles(struct controles reg)
 
 
 void nuevo_control()
-{
+{                           ///carga y alta de un registro de tipo controles falta validar la fecha
     struct controles reg;
     /// prueba de obtencion de datos de sistema
     time_t now = time(0);
@@ -186,8 +186,8 @@ void listarControles()
 }
 
 
-int contarregistroscontroles()
-{
+int contarregistroscontroles()  ///cuenta los registros en el archivo y los devuelve , como por ejemplo para usar la variable obtenida
+{                               /// como tope de un for en una funcion de lectura.
 
     long int tam_archivo;
     struct controles reg;
@@ -263,7 +263,7 @@ return -1;
 
 **/
 
-bool buscar_codigo_control(int id_control)
+bool buscar_codigo_control(int id_control)  ///busca el id de control ingresado para saber si ya existe o no en el archivo "controles.dat"
 {
     struct controles reg;
     int pos =0;
@@ -290,13 +290,13 @@ bool buscar_codigo_control(int id_control)
 }
 
 
-bool sobreescribir_control (controles reg, int pos){
+bool sobreescribir_control (controles reg, int pos){    ///guarda un nuevo registro reg en la posicion que se le indique
   FILE *p;
   p = fopen("controles.dat", "rb+");
   if (p == NULL){
     return false;
   }
-  int aux=pos-1;
+  int aux=pos-1;                                ///se le resta 1 a la posicion para evitar el -sizeof
   fseek(p, sizeof(controles)*aux, 0);
     fwrite(&reg, sizeof(controles), 1, p);
   fclose(p);
@@ -309,15 +309,15 @@ void modificar_control()
     struct controles reg;
     cout<<"INGRESE LA ID DEL PROCEDIMIENTO A MODIFCAR"<<endl;
     cin>>aux;
-    if(buscar_codigo_control(aux)== false)
+    if(buscar_codigo_control(aux)== false)  ///chequea que el codigo de control ya exista , en todo caso se solicita el ingreso de uno valido
     {
         cout<<"NO SE ENCONTRO LA ID DE PROCEDIMIENTO BUSCADA INGRESE OTRA ID"<<endl;
         cin>>aux;
     }
-                reg=leer_control(aux);
+                reg=leer_control(aux);  ///se lee el control en la posicion "aux" (el orden de los registros es igual a su id)
                 cout<<"INGRESE LA NUEVA DURACION DEL CONTROL"<<endl;
-                cin>>reg.duracion;
-                sobreescribir_control(reg,aux);
+                cin>>reg.duracion;  ///se carga el campo que se desea modificar en el registro previamente leido
+                sobreescribir_control(reg,aux);     /// se sobreescribe el archivo con la nueva informacion
 }
 
 
