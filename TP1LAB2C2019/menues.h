@@ -150,8 +150,8 @@ void MenuPacientes(){
         gotoxy(64,17);
         cin>>opc;
 
-        switch(opc)
-        {
+        switch(opc){
+
         case 1:
             system("cls");
             altaPaciente();
@@ -161,17 +161,21 @@ void MenuPacientes(){
         case 2:
             system("cls");
             modificarobrasocial();
+            gotoxy(20,27);
+            system("pause");
             return;
             break;
 
         case 3:
             system("cls");
             listarpacientepordni();
+            gotoxy(20,27);
             system("pause");
             return;
             break;
 
         case 4:
+                system("cls");
             listartodoslospacientes();
             return;
             break;
@@ -336,7 +340,7 @@ void MenuControles(){
             break;
         case 3:
             system("cls");
-             listar_control_x_id();
+            listar_control_x_id();
             return;
             break;
         case 4:

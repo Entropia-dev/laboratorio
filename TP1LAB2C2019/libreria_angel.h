@@ -178,60 +178,205 @@ void recuadro(short iniX, short iniY, short ancho, short alto, short colorLinea=
 
 ////////////////////////////////Funciones varias///////////////////////////////////
 
-fecha cargar_fecha()
-{
+fecha cargar_fecha(){
+
+
     struct fecha reg;
     bool bisiesto = false;
-    int auxiliar=0;
+    int aux=0;
 
-    cout << "Introduce el dia: ";
+    gotoxy(21,10);
+    cout << "Introduce el dia:           ";
+    gotoxy(38,10);
     cin >> reg.dia;
-    cout << "Introduce el mes: ";
+    gotoxy(21,11);
+    cout << "Introduce el mes:           ";
+    gotoxy(38,11);
     cin >> reg.mes;
-    cout << "Introduce el anio: ";
+    gotoxy(21,12);
+    cout << "Introduce el anio:          ";
+    gotoxy(39,12);
     cin >> reg.anio;
 
-//comprobamos si el año es bisiesto
-    if(reg.anio%4==0 && reg.anio%100!=100 || reg.anio%400==0)
-        bisiesto = true;
+    //Pasos:
 
-    //comprobamos que los datos ingresados esten en un rango valido
-    if(reg.dia>0 && reg.dia<32 && reg.mes>0 && reg.mes<13 && reg.anio>0)
-    {
-        if(reg.mes==1 || reg.mes==3 || reg.mes==5 || reg.mes==7 || reg.mes==8 || reg.mes==10 || reg.mes==12)
-        {
-            return reg;
-        }
-        else
-        {
-            if(reg.mes==2 && reg.dia<30 && bisiesto)    ///verifica que el dia en un bisiesto sea correcto
-                auxiliar++; ///
-            else if(reg.mes==2 && reg.dia<29 && !bisiesto)  /// verifica el mes
-                auxiliar++;
-            else if(reg.mes!=2 && reg.dia<31)   ///verifica el año
-                auxiliar ++;
-            if(auxiliar == 3)
-            {
-                return reg;
-            }
-            else
-                cout << "\ Ingrese un dia valido"<<endl;
-            cin>>reg.dia;
-            cout<<"ingrese un mes valido"<<endl;
-            cin>>reg.mes;
-            cout<<"ingrese un anio valido"<<endl;
-            cin>>reg.anio;
-            return reg;
-        }
-    }
-    else
-        cout << "\ Ingrese un dia valido"<<endl;
-    cin>>reg.dia;
-    cout<<"ingrese un mes valido"<<endl;
-    cin>>reg.mes;
-    cout<<"ingrese un anio valido"<<endl;
-    cin>>reg.anio;
-    return reg;
-}
+    //1)Comprobamos el año,como sigue:SI EL AÑO ES BISIESTO significa que el año tiene 365.A priori ,eso NO ESTÁ MAL.
+    //El dia adicional se le suma a  Febrero.
+
+    //2)Verificar por mes y toda la logica que se muestra en los ifs.
+
+
+
+    while ( aux == 0 ){    // REPITO ABSOLUTAMENTE TODO MIENTRAS QUE "AUX" SEA == 0. CUANDO ES ALGUNA FECHA VALIDA,AUX=1;
+
+//Comprobamos si el año es bisiesto
+    if((reg.anio%4==0 && reg.anio%100!=100) || reg.anio%400==0){
+        bisiesto = true;}else{bisiesto=false;}
+
+
+    if ( reg.mes == 1 || reg.mes == 3 ||
+         reg.mes == 5 || reg.mes == 7 ||
+         reg.mes == 8 || reg.mes == 10 || reg.mes == 12){
+
+            if ( reg.dia > 0 && reg.dia < 32  ){
+                aux++;}else{
+        //while (reg.dia < 1 && reg.dia > 31){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
+                                 gotoxy(72,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Introduce el mes:           ";
+                                gotoxy(38,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Introduce el anio:          ";
+                                gotoxy(39,12);
+                                cin >> reg.anio;
+                            //}  // while del else del rango de dias.
+
+                      } // else del if de rango dias.
+
+             }else if( reg.mes == 4 || reg.mes == 6 ||
+                       reg.mes == 9 || reg.mes == 11 ){
+
+            if (reg.dia >0 && reg.dia < 31 ){
+                aux++;}else{
+    //while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
+                                 gotoxy(72,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Introduce el mes:           ";
+                                gotoxy(38,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Introduce el anio:          ";
+                                gotoxy(39,12);
+                                cin >> reg.anio;
+                            } // while del else del rango de dias.
+
+                     // } // else del if de rango dias.
+
+                }else if ( reg.mes == 2){
+
+                      if (bisiesto == true){
+
+                         if ( reg.dia >0 && reg.dia <30 ){
+                            aux++;}else{
+   // while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+                                gotoxy(21,10);
+                                cout << "Dia Bisiesto Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
+                                 gotoxy(81,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Introduce el mes:           ";
+                                gotoxy(38,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Introduce el anio:          ";
+                                gotoxy(39,12);
+                                cin >> reg.anio;
+                              //  }  // while del else del rango de dias.
+
+                           }  // else del if de rango dias.
+                      } // bisiesto == true VERDADERO
+
+                       else{ // bisiesto == true FALSO
+
+                    if ( reg.dia >0 && reg.dia < 29){
+                            aux++;}else{
+       // while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
+                                 gotoxy(72,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Introduce el mes:           ";
+                                gotoxy(38,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Introduce el anio:          ";
+                                gotoxy(39,12);
+                                cin >> reg.anio;
+                               // } // while del else del rango de dias.
+
+                           }  // else del rango de reg.dias
+
+                    } // bisiesto == true FALSO
+
+
+
+                 }else{ // else if de reg.mes== 2
+
+
+                    //SI NO ES NADA DE LO ANTERIOR,ES PORQUE ES UN MES INVALIDO.
+
+   // while (reg.mes < 1 && reg.mes > 12){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                            gotoxy(21,11);
+                            cout<<"                                                                ";
+                            gotoxy(21,12);
+                            cout<<"                                                                ";
+                            gotoxy(21,10);
+                            cout << "Mes Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
+                             gotoxy(72,10);
+                            cin >> reg.dia;
+                            gotoxy(21,11);
+                            cout << "Introduce el mes:           ";
+                            gotoxy(38,11);
+                            cin >> reg.mes;
+                            gotoxy(21,12);
+                            cout << "Introduce el anio:          ";
+                            gotoxy(39,12);
+                            cin >> reg.anio;
+                           // }// while del else del rango de dias.
+
+                 }
+
+
+    } //  ************************  WHILE DE AUX *******************************
+
+        return reg;
+
+} // CARGAR FECHA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif // LIBRERIA_ANGEL_H_INCLUDED
