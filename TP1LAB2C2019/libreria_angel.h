@@ -186,16 +186,16 @@ fecha cargar_fecha(){
     int aux=0;
 
     gotoxy(21,10);
-    cout << "Introduce el dia:           ";
-    gotoxy(38,10);
+    cout << "Dia de Nacimiento:           ";
+    gotoxy(39,10);
     cin >> reg.dia;
     gotoxy(21,11);
-    cout << "Introduce el mes:           ";
-    gotoxy(38,11);
+    cout << "Mes de Nacimiento:           ";
+    gotoxy(39,11);
     cin >> reg.mes;
     gotoxy(21,12);
-    cout << "Introduce el anio:          ";
-    gotoxy(39,12);
+    cout << "Anio de Nacimiento:          ";
+    gotoxy(40,12);
     cin >> reg.anio;
 
     //Pasos:
@@ -227,16 +227,16 @@ fecha cargar_fecha(){
                                 gotoxy(21,12);
                                 cout<<"                                                                ";
                                 gotoxy(21,10);
-                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
-                                 gotoxy(72,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia de Nacimiento:           ";
+                                 gotoxy(73,10);
                                 cin >> reg.dia;
                                 gotoxy(21,11);
-                                cout << "Introduce el mes:           ";
-                                gotoxy(38,11);
+                                cout << "Mes de Nacimiento:           ";
+                                gotoxy(39,11);
                                 cin >> reg.mes;
                                 gotoxy(21,12);
-                                cout << "Introduce el anio:          ";
-                                gotoxy(39,12);
+                                cout << "Anio de Nacimiento:          ";
+                                gotoxy(40,12);
                                 cin >> reg.anio;
                             //}  // while del else del rango de dias.
 
@@ -254,16 +254,16 @@ fecha cargar_fecha(){
                                 gotoxy(21,12);
                                 cout<<"                                                                ";
                                 gotoxy(21,10);
-                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
-                                 gotoxy(72,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia de Nacimiento:           ";
+                                gotoxy(73,10);
                                 cin >> reg.dia;
                                 gotoxy(21,11);
-                                cout << "Introduce el mes:           ";
-                                gotoxy(38,11);
+                                cout << "Mes de Nacimiento:           ";
+                                gotoxy(39,11);
                                 cin >> reg.mes;
                                 gotoxy(21,12);
-                                cout << "Introduce el anio:          ";
-                                gotoxy(39,12);
+                                cout << "Anio de Nacimiento:          ";
+                                gotoxy(40,12);
                                 cin >> reg.anio;
                             } // while del else del rango de dias.
 
@@ -282,16 +282,16 @@ fecha cargar_fecha(){
                                 gotoxy(21,12);
                                 cout<<"                                                                ";
                                 gotoxy(21,10);
-                                cout << "Dia Bisiesto Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
-                                 gotoxy(81,10);
+                                cout << "Dia Bisiesto Incorrecto,Vuelva a Empezar - Dia de Nacimiento:           ";
+                                 gotoxy(82,10);
                                 cin >> reg.dia;
                                 gotoxy(21,11);
-                                cout << "Introduce el mes:           ";
-                                gotoxy(38,11);
+                                cout << "Mes de Nacimiento:           ";
+                                gotoxy(39,11);
                                 cin >> reg.mes;
                                 gotoxy(21,12);
-                                cout << "Introduce el anio:          ";
-                                gotoxy(39,12);
+                                cout << "Anio de Nacimiento:          ";
+                                gotoxy(40,12);
                                 cin >> reg.anio;
                               //  }  // while del else del rango de dias.
 
@@ -309,16 +309,16 @@ fecha cargar_fecha(){
                                 gotoxy(21,12);
                                 cout<<"                                                                ";
                                 gotoxy(21,10);
-                                cout << "Dia Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
-                                 gotoxy(72,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia de Nacimiento:           ";
+                                 gotoxy(73,10);
                                 cin >> reg.dia;
                                 gotoxy(21,11);
-                                cout << "Introduce el mes:           ";
-                                gotoxy(38,11);
+                                cout << "Mes de Nacimiento:           ";
+                                gotoxy(39,11);
                                 cin >> reg.mes;
                                 gotoxy(21,12);
-                                cout << "Introduce el anio:          ";
-                                gotoxy(39,12);
+                                cout << "Anio de Nacimiento:          ";
+                                gotoxy(40,12);
                                 cin >> reg.anio;
                                // } // while del else del rango de dias.
 
@@ -340,16 +340,16 @@ fecha cargar_fecha(){
                             gotoxy(21,12);
                             cout<<"                                                                ";
                             gotoxy(21,10);
-                            cout << "Mes Incorrecto,Vuelva a Empezar - Introduce el dia:           ";
-                             gotoxy(72,10);
+                            cout << "Mes Incorrecto,Vuelva a Empezar - Dia de Nacimiento:           ";
+                            gotoxy(73,10);
                             cin >> reg.dia;
                             gotoxy(21,11);
-                            cout << "Introduce el mes:           ";
-                            gotoxy(38,11);
+                            cout << "Mes de Nacimiento:           ";
+                            gotoxy(39,11);
                             cin >> reg.mes;
                             gotoxy(21,12);
-                            cout << "Introduce el anio:          ";
-                            gotoxy(39,12);
+                            cout << "Anio de Nacimiento:          ";
+                            gotoxy(40,12);
                             cin >> reg.anio;
                            // }// while del else del rango de dias.
 

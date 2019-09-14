@@ -280,3 +280,30 @@
 
 1568397677 c:\users\kai anderson\desktop\parcial_laboratorio\tp1lab2c2019\menues.h
 
+1568496097 source:c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<ctime>
+	<vector>
+	"estructuras.h"
+	"libreria_angel.h"
+	"pacientes.h"
+	"medicos.h"
+	"controles.h"
+	"menues.h"
+
+1568496097 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\estructuras.h
+
+1568502389 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\libreria_angel.h
+
+1568501650 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\pacientes.h
+
+1568496097 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\medicos.h
+
+1568496097 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\controles.h
+
+1568443511 c:\users\santiago.ortega04\desktop\santi\tsp-materias\laboratorio2-2019-2c\mio\tp1lab2c2019\menues.h
+

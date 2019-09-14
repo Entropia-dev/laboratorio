@@ -157,7 +157,7 @@ void listarpacientepordni(){
 
     while(buscardnipaciente(aux)==false){
         gotoxy(28,10);
-        cout<<"ERROR: Dni No Encontrado - Ingrese Un Dni Valido:        "<<endl;
+        cout<<"ERROR: Dni No Encontrado - Ingrese Un Dni Valido:               ";
         gotoxy(77,10);
         cin>>aux;
     }
@@ -173,15 +173,32 @@ void listarpacientepordni(){
     }
 
 
-    while(fread(&reg,sizeof reg,1,p)){
 
-        if(aux==reg.dni){
+                while(fread(&reg,sizeof reg,1,p)){
 
-            listarpaciente(reg,modo);
-            fclose(p);
-            return;
-        }
-    }
+                    if(aux==reg.dni && reg.estado == true){
+
+                        listarpaciente(reg,modo);
+                        fclose(p);
+                        return;
+                         }
+                    }
+
+
+
+                gotoxy(28,19);
+                cout<<"-------------------------------------------------";
+                gotoxy(28,20);
+                cout<<"             EL DNI ES INEXISTENTE               ";
+                gotoxy(28,21);
+                cout<<"-------------------------------------------------";
+
+
+
+
+
+
+
     fclose(p);
     return;
 }
@@ -437,7 +454,7 @@ void modificarobrasocial(){
 
         while(fread(&reg,sizeof reg,1,p)){
 
-            if(aux==reg.dni){
+            if(aux==reg.dni && reg.estado == true){
 
                 fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
 
@@ -462,9 +479,32 @@ void modificarobrasocial(){
 
                 fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
                 fclose(p);
-            }
-        }
-    }
+            }else{ // else del if(buscardnipaciente(aux)==true)
+
+
+                gotoxy(28,12);
+                cout<<"-------------------------------------------------";
+                gotoxy(28,13);
+                cout<<"              EL DNI ES INEXISTENTE              ";
+                gotoxy(28,14);
+                cout<<"-------------------------------------------------";
+
+                return;
+            } // else del  if(aux==reg.dni reg.estado == true)
+
+
+         } // while(fread(&reg,sizeof reg,1,p))
+
+
+
+    } // true del if(buscardnipaciente(aux)==true){
+
+        gotoxy(28,15);
+                cout<<"-RETURN-";
+
+
+
+
     fclose(p);
 }
 
