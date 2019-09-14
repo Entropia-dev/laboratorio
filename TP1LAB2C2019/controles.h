@@ -369,7 +369,7 @@ void listar_control_x_id()
     FILE *p;
     struct controles reg;
     cout<<"INGRESE LA ID DEL CONTROL A LISTAR"<<endl;
-    cin>>aux;
+    cin>>aux;                                           /// se almacena el dato ingresado para verificar que sea valido
     if(buscar_codigo_control(aux)== false)
     {
         cout<<"NO SE ENCONTRO LA ID A LISTAR INGRESE OTRA ID"<<endl;
@@ -386,16 +386,22 @@ void listar_control_x_id()
         }
         while(fread(&reg,sizeof reg,1,p))
         {
-            if(aux==reg.id)
+            if(aux==reg.id)                     ///se busca el registro que contenga la misma id que solicito el usuario
             {
-                mostrarcontrol(reg);
+                mostrarcontrol(reg);    ///se envia el registro en caso de ser encontrado a la funcion mostrar control para
+                 fclose(p);                       ///que el usuario pueda ver la informacion que solicito
                 system("pause");
+                 return;
             }
+
         }
 
 
     }
-    fclose(p);
+
+          cout<<"NO SE ENCONTRO EL REGISTRO CON LA ID INGRESADA"<<endl;     ///a estas llaves solo se llega en caso de fallar en el
+            cout<<"INTENTELO NUEVAMENTE"<<endl;                             ///segundo intento de ingresar  la ID A LISTAR
+            system("pause");
 }
 
 
