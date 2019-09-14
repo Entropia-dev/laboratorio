@@ -175,13 +175,15 @@ void MenuPacientes(){
             break;
 
         case 4:
-                system("cls");
+            system("cls");
             listartodoslospacientes();
             return;
             break;
 
         case 5:
             eliminarpaciente();
+            gotoxy(20,27);
+            system("pause");
             return;
             break;
 

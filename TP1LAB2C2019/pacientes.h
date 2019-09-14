@@ -216,7 +216,7 @@ void altaPaciente(){
 
 
 paciente CargarPaciente(){
-    char aux_genero_2;
+
     bool auxGen=true;
     struct paciente reg;
     int aux;
@@ -224,9 +224,9 @@ paciente CargarPaciente(){
     system("cls");
     recuadro(20,1,75,25);
     gotoxy(45,2);
-    cout<<" **** CLINICA SAN SIMON ****"<<endl;
+    cout<<" **** CLINICA SAN SIMON ****";
     gotoxy(45,3);
-    cout<<"      ALTA DE PACIENTES     "<<endl;
+    cout<<"      ALTA DE PACIENTES     ";
 
     // ************************************** INGRESO NUMERO 1 *******************************************************
     gotoxy(21,5);
@@ -237,25 +237,29 @@ paciente CargarPaciente(){
 
 
     // ************************************** VALIDACION  1 *******************************************************
+
+
     while(reg.dni<1){
+
+
         gotoxy(21,5);
         cout<<"Ingrese Un Numero De Dni Valido:                            ";
         gotoxy(53,5);
         cin>>reg.dni;
         aux=reg.dni;
-    }
 
+          while(buscardnipaciente(aux)==true){
 
+                    gotoxy(21,5);
+                    cout<<"DNI Duplicado - Por favor ingrese uno valido:                      ";
+                    gotoxy(66,5);
+                    cin>>reg.dni;
+                    aux=reg.dni;
 
-    while(buscardnipaciente(aux)==true){
+                }
 
-        gotoxy(21,5);
-        cout<<"DNI Duplicado - Por favor ingrese uno valido:                      ";
-        gotoxy(66,5);
-        cin>>reg.dni;
-        aux=reg.dni;
+   }
 
-    }
 
     // ************************************** INGRESO NUMERO 2 *******************************************************
 
@@ -319,10 +323,6 @@ paciente CargarPaciente(){
 
 
     // ************************************** INGRESO NUMERO 6 FECHA ****************************************************
-
-
-
-
 
 
     reg.fecha_nacimiento=cargar_fecha();
@@ -485,6 +485,7 @@ bool buscardnipaciente(int a){
 
     FILE *p;
     p=fopen("pacientes.dat","rb");
+
     struct paciente reg;
     if (p==NULL){
         exit(1);
@@ -559,18 +560,44 @@ int buscarposiciondni(int aux){
 
 
 
-void eliminarpaciente()
-{
+void eliminarpaciente(){
+
     FILE *p;
     int aux;
     struct paciente reg;
-    cout<<"INGRESE DNI DEL PACIENTE A ELIMINAR"<<endl;
+
+    system("cls");
+    recuadro(20,1,75,25);
+    gotoxy(45,2);
+    cout<<" **** CLINICA SAN SIMON ****";
+    gotoxy(45,3);
+    cout<<"   ELIMINACION DE PACIENTE     ";
+    gotoxy(30,6);
+    cout<<"---------------------------------------";
+    gotoxy(30,7);
+    cout<<"Menu de Eliminacion de Paciente por Dni";
+    gotoxy(30,8);
+    cout<<"---------------------------------------";
+
+    gotoxy(21,9);
+    cout<<"Ingrese Dni Del Paciente a Eliminar:                     ";
+    gotoxy(57,9);
     cin>>aux;
-    if(buscarposiciondni(aux) == false )
-    {
-        cout<<"DNI NO ENCONTRADO INGRESE UN DNI VALIDO"<<endl;
-        cin>>aux;
-    }
+
+
+    while (buscardnipaciente(aux) == false ){
+
+            while(aux<1){
+
+                    gotoxy(21,9);
+                    cout<<"Ingrese Un Numero De Dni Valido:                            ";
+                    gotoxy(53,9);
+                    cin>>aux;
+                 }
+
+          }
+
+
 
     if(buscardnipaciente(aux)==true){
 
@@ -589,7 +616,22 @@ void eliminarpaciente()
                 fclose(p);
             }
         }
+
+
      } // BUSCARDNIPACIENTE == TRUE
+
+
+        gotoxy(21,20);
+        cout<<"------------------------------------------------------------------------";
+        gotoxy(21,21);
+        cout<<"                     PACIENTE ELIMINADO CON EXITO                       ";
+        gotoxy(21,22);
+        cout<<"-----------------------------------------------------------------------";
+
+
+
+
+
 }
 
 
