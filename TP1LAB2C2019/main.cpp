@@ -21,39 +21,11 @@ using namespace std;
 
 /// Notas/Tareas :
 /// IMPORTANTES:
-/// Esteticos :
-/// 3) agregar indicadores de "fin de listado medicos" , "presione una tecla para continuar" , "registro cargado con exito"
-/// 4)Aniadir funcion que lea un solo registro ?. CONSULTAR
+/// PREGUNTAR SI EL FTELL(); NECESITA EL ARCHIVO ABIERTO PREVIAMENTE
+/// FUNCIONES CASI DUPLICADAS LISTAR CONTROL Y MOSTRAR CONTROL PREGUNTAR SI ES PREFERIBLE ELIMINAR ALGUNA
+/// REVISAR LOS WARNINGS
 
 /// EJEMPLO DE FSEEK : fseek(p, -sizeof reg , 1 ,p).
-
-
-/// cargar uno mostrar / uno mostrar todos / modificar un articulo / buscar articulo / verificar si existe
-/// hacer que buscar articulo devuelva un entero / devuelve un registro de articulo leer un registro (pasarle la posicion de registro)/
-/// para buscar el un registro
-/// si existe
-///leer registro a registro
-/// comparo el cpodigo con el codigo leido
-/// cierro el archivo y devolver la pocision del registro que encontre
-/// si no existe
-/// devolver -1
-
-/// articulo leer articulo
-
-
-/** ideas para los puntos de la segunda parte
-
-el campo auto numerico se puede hacer con una funcion como la de inicializar los archivos
-como en "contar registros paciente"
-
-el dni como en buscardnipacientes
-
-para el nro de matricula se va a necesitar buscar matricula
-buscar funcion "CTIME"
-
-despues usar las bases de las funciones pacientes/medicos
-
-**/
 
 void inicializar_archivos()
 {

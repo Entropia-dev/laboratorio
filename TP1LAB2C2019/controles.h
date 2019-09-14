@@ -6,7 +6,7 @@ void listar_control_x_id();
 void listar_todos_controles();
 void cancelar_control();
 
-controles leer_control(int pos)
+controles leer_control(int pos)     ///lee el control en la ubicasion indicada
 {
     FILE *p;
     struct controles reg;
@@ -16,8 +16,8 @@ controles leer_control(int pos)
         cout<<"error de archivo en la funcion leer control"<<endl;
         exit(1);
     }
-    fseek(p, sizeof(controles)*pos, SEEK_SET);
-    fread(&reg, sizeof(controles), 1, p);
+    fseek(p, sizeof(controles)*pos, SEEK_SET);  ///lleva el puntero a la posicion indicada por "pos"
+    fread(&reg, sizeof(controles), 1, p);   ///lee el registro elegido
     fclose(p);
     return reg;
 }
@@ -25,7 +25,7 @@ controles leer_control(int pos)
 
 
 
-void listar_control(struct controles reg)
+void listar_control(struct controles reg)       ///lista un control enviado por parametro en caso de que el estado de este sea "activo"
 {
     if(reg.estado==true)
     {
@@ -36,12 +36,12 @@ void listar_control(struct controles reg)
         cout<<"FECHA: "<<reg.fecha_control.dia<<"/"<<reg.fecha_control.mes<<"/"<<reg.fecha_control.anio<<endl;
         cout<<"DURACION: "<<reg.duracion<<endl;
         cout<<"=================================================================================================="<<endl;
-    }///fin del if
+    }
 }
 
 
 
-void mostrarcontrol(controles reg)
+void mostrarcontrol(controles reg)      ///muestra un control enviado como parametro ( es preferible eliminarla ?)
 {
     cout<<"ID DEL CONTROL :"<<reg.id<<endl;
     cout<<"FECHA DEL CONTROL :"<<reg.fecha_control.dia<<"/"<<reg.fecha_control.mes<<"/"<<reg.fecha_control.anio<<endl;
@@ -193,17 +193,17 @@ int contarregistroscontroles()  ///cuenta los registros en el archivo y los devu
     struct controles reg;
 
     FILE *p;
-    p=fopen("controles.dat","rb");
+    p=fopen("controles.dat","rb");  ///se abre el archivo controles para poder ver su contenido y verificar que este exista
     if(p==NULL)
     {
         cout<<"error de archivo ";
         exit(1);
     }
-    fseek(p, 0, SEEK_END);
-    tam_archivo=ftell(p);
-    fclose(p);
-    int cantidad_registros =  tam_archivo / sizeof (reg);
-    return cantidad_registros;
+    fseek(p, 0, SEEK_END);      ///se dirije el puntero de lectura hasta el final del archivo
+    tam_archivo=ftell(p);       ///se obtiene en bytes el peso del archivo
+    fclose(p);                  /// se cierra el archivo ya que no es necesario para continuar con la funcion
+    int cantidad_registros =  tam_archivo / sizeof (controles);   ///se obtiene la cantidad de registros en el archivo dividiendo el peso total
+    return cantidad_registros;                              ///por lo que pesa cada registro del tipo que contiene el archivo
 }
 
 
@@ -297,9 +297,10 @@ bool sobreescribir_control (controles reg, int pos){    ///guarda un nuevo regis
     return false;
   }
   int aux=pos-1;                                ///se le resta 1 a la posicion para evitar el -sizeof
-  fseek(p, sizeof(controles)*aux, 0);
-    fwrite(&reg, sizeof(controles), 1, p);
+  fseek(p, sizeof(controles)*aux, 0);       ///se lleva el puntero de lectura al registro sobre el cual se busca escribir
+    fwrite(&reg, sizeof(controles), 1, p);         ///se escribe el registro enviado en la pocision elegida
   fclose(p);
+  return true;
 }
 
 
