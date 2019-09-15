@@ -27,7 +27,7 @@ controles leer_control(int pos){
             exit(1);
         }
 
-    fseek(p, sizeof(controles)*pos, SEEK_SET);  ///lleva el puntero a la posicion indicada por "pos"
+    fseek(p, sizeof(controles)*pos, 0);  ///lleva el puntero a la posicion indicada por "pos"
 
     fread(&reg, sizeof(controles), 1, p);   ///lee el registro elegido
 
@@ -401,7 +401,9 @@ void listarControles(){
     for(int i=0; i<cantidad_de_registros; i++) ///se usa como tope la cantidad de registros en el archivo
     {
         reg=leer_control(i);    ///se lee el registro que este en la pocisopn "i"
+                if(reg.estado==true){
         mostrarcontrol(reg,modo);    ///se muestra el registro en la pocision "i"
+                }
     }
     system("pause");
 }
@@ -557,26 +559,17 @@ bool buscar_codigo_control(int id_control){
 
 ///guarda un nuevo registro reg en la posicion que se le indique
 
-bool sobreescribir_control (controles reg, int pos){
-
-      FILE *p;
-      p = fopen("controles.dat", "rb+");
-          if (p == NULL){
-            return false;
-          }
-
-     ///se le resta 1 a la posicion para evitar el -sizeof
-      int aux=pos-1;
-
-      fseek(p, sizeof(controles)*aux, 0);       ///se lleva el puntero de lectura al registro sobre el cual se busca escribir
-
-      fwrite(&reg, sizeof(controles), 1, p);         ///se escribe el registro enviado en la pocision elegida
-
-      fclose(p);
-
-
-
-  return true;
+void sobreescribir_control (controles reg, int pos){
+  FILE *p;
+  p = fopen("controles.dat", "rb+");
+  if (p == NULL){
+    return exit(1);
+     cout<<"error en funicon sobreescribir archivo"<<endl;
+    }
+  fseek(p, sizeof(controles)*pos, 0);
+  bool i=fwrite(&reg, sizeof(controles), 1, p);
+  fclose(p);
+    cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
 
 }
 
@@ -620,19 +613,14 @@ void modificar_control(){
     cout<<"Ingrese el ID del Control a Modifcar:                "<<endl;
     gotoxy(65,9);
     cin>>aux;
-
+    reg=leer_control(aux);
     ///chequea que el codigo de control ya exista , en todo caso se solicita el ingreso de uno valido
-    while(buscar_codigo_control(aux)== false){
+    while(buscar_codigo_control(aux)== false || reg.estado == false){
         gotoxy(28,9);
         cout<<"ERROR: ID Inexistente, Ingrese un ID Existente:             "<<endl;
         gotoxy(75,9);
         cin>>aux;
     }
-
-
-   if( reg.estado == true  ){
-
-
         reg=leer_control(aux);  ///se lee el control en la posicion "aux" (el orden de los registros es igual a su id)
         gotoxy(28,10);
         cout<<"Ingrese la Nueva Duracion del Control:             "<<endl;
@@ -655,12 +643,6 @@ void modificar_control(){
       return;
 
 }
-
-
-
-
-}
-
 
 
 
