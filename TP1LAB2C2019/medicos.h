@@ -242,7 +242,7 @@ medicos CargarMedico(){
     aux=reg.numero_matricula;
 
 
-    while(reg.numero_matricula<0 || buscarMatricula(aux)==true ){
+    while(reg.numero_matricula < 1 || buscarMatricula(aux)==true  ){
 
             gotoxy(21,5);
             cout<<"Ingrese Un Numero De Matricula Valida:                  ";
@@ -251,7 +251,7 @@ medicos CargarMedico(){
             aux=reg.numero_matricula;
 
 
-                while(buscarMatricula(aux)==true){
+                while(buscarMatricula(aux)==true  ){
 
                     gotoxy(21,5);
                     cout<<"Matricula Duplicada - Por Favor,Ingrese Matricula Unica:                ";
@@ -315,7 +315,7 @@ medicos CargarMedico(){
         cin>>reg.especialidad;
 
 
-            while(reg.especialidad < 1 || reg.especialidad > 20 ){
+            while(reg.especialidad < 1 || reg.especialidad > 20  ){
 
                         gotoxy(21,8);
                         cout<<"La Especialidad Debe ser Numero entre(1 y 20):                     ";
@@ -333,7 +333,7 @@ medicos CargarMedico(){
         gotoxy(50,9);
         cin>>reg.sueldo;
 
-                while(reg.sueldo<0){
+                while(reg.sueldo < 1  ){
 
                     gotoxy(21,9);
                     cout<<"Ingrese un Monto Valido:               ";
@@ -430,13 +430,15 @@ void modificarmedicos(){
     cin>>aux;
 
 
-    while(buscarMatricula(aux)==false){
 
-        gotoxy(28,9);
-        cout<<"ERROR:No Existe Matricula, Ingrese Matricula Existente:       "<<endl;
-        gotoxy(83,9);
-        cin>>aux;
-    }
+
+    while(buscarMatricula(aux)==false   ){
+
+                gotoxy(28,9);
+                cout<<"ERROR:No Existe Matricula, Ingrese Matricula Existente:       "<<endl;
+                gotoxy(83,9);
+                cin>>aux;
+            }
 
 
             p=fopen("medicos.dat","rb+");
@@ -453,6 +455,17 @@ void modificarmedicos(){
                             cout<<"Ingrese el Nuevo Sueldo del Medico:             "<<endl;
                             gotoxy(63,10);
                             cin>>reg.sueldo;
+
+                        while ( reg.sueldo < 0 ){
+
+                            gotoxy(28,10);
+                            cout<<"Ingrese un Sueldo Valido:                                  "<<endl;
+                            gotoxy(53,10);
+                            cin>>reg.sueldo;
+
+                        }
+
+
 
                             fseek(p,-sizeof reg,1);
                             fwrite(&reg, sizeof(reg),1,p);

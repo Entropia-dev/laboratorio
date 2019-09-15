@@ -157,12 +157,10 @@ void listarpacientepordni(){
 
     while(buscardnipaciente(aux)==false){
         gotoxy(28,10);
-        cout<<"ERROR: Dni No Encontrado - Ingrese Un Dni Existente:               ";
-        gotoxy(77,10);
+        cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:               ";
+        gotoxy(78,10);
         cin>>aux;
     }
-
-
 
 
     p=fopen("pacientes.dat","rb");
@@ -186,11 +184,11 @@ void listarpacientepordni(){
 
 
 
-                gotoxy(28,19);
+                gotoxy(28,12);
                 cout<<"-------------------------------------------------";
-                gotoxy(28,20);
-                cout<<"             EL DNI ES INEXISTENTE               ";
-                gotoxy(28,21);
+                gotoxy(28,13);
+                cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
+                gotoxy(28,14);
                 cout<<"-------------------------------------------------";
 
 
@@ -241,7 +239,8 @@ paciente CargarPaciente(){
     gotoxy(45,3);
     cout<<"      ALTA DE PACIENTES     ";
 
-    // ************************************** INGRESO NUMERO 1 *******************************************************
+   // ************************************** VALIDACION  1 *******************************************************
+
     gotoxy(21,5);
     cout<<"Ingrese El Dni Del Paciente:                                   ";
     gotoxy(49,5);
@@ -249,10 +248,10 @@ paciente CargarPaciente(){
     aux=reg.dni;
 
 
-    // ************************************** VALIDACION  1 *******************************************************
 
 
-    while(reg.dni<1 ||  buscardnipaciente(aux)==true  ){
+
+    while(reg.dni < 1 ||  buscardnipaciente(aux)==true  ){
 
         gotoxy(21,5);
         cout<<"Ingrese Un Numero De Dni Valido:                            ";
@@ -311,22 +310,22 @@ paciente CargarPaciente(){
         gotoxy(21,8);
         cout<<"Ingrese Genero Del Paciente      |Femenino|  |Masculino|  |Otros|    ";
         gotoxy(21,9);
-        cout<<"                                 |   F    |  |    M    |  |  O   |:   ";
-        gotoxy(88,9);
+        cout<<"                                 |   F    |  |    M    |  |  O  |:   ";
+        gotoxy(87,9);
         cin>>reg.genero;
          if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
     {
     }
     else
-    {
-        while( auxGen == true )
         {
-            gotoxy(21,10);
-            cout<<"INGRESE UN GENERO VALIDO:     ";
-            gotoxy(46,10);
+        while( auxGen == true ){
+
+            gotoxy(21,9);
+            cout<<"Ingrese un Genero Valido         |   F    |  |    M    |  |  O  |:   ";
+            gotoxy(87,9);
             cin>>reg.genero;
-            if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
-            {
+
+            if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
                 auxGen = false;
             }  // IF
         }	 // WHILE
@@ -348,7 +347,7 @@ paciente CargarPaciente(){
     gotoxy(57,13);
     cin>>reg.obra_social;
 
-    while(reg.obra_social  <   1 || reg.obra_social > 50){
+    while(reg.obra_social < 1 || reg.obra_social > 50){
     gotoxy(21,13);
     cout<<"La Obra Social debe ser (1 al 50) - Ingrese Un Numero Valido:        ";
     gotoxy(82,13);
@@ -358,11 +357,11 @@ paciente CargarPaciente(){
     reg.estado=true;
 
 
-    gotoxy(21,20);
+    gotoxy(21,15);
     cout<<"------------------------------------------------------------------------";
-    gotoxy(21,21);
+    gotoxy(21,16);
     cout<<"                     PACIENTE AGREGADO CON EXITO                        ";
-    gotoxy(21,22);
+    gotoxy(21,17);
     cout<<"-----------------------------------------------------------------------";
     gotoxy(20,27);
     system("pause");
@@ -431,8 +430,8 @@ void modificarobrasocial(){
     while(buscardnipaciente(aux)==false){
 
         gotoxy(28,10);
-        cout<<"No Existe Dni de Paciente - Ingrese Un Nuevo Dni:          "<<endl;
-        gotoxy(77,10);
+        cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:           "<<endl;
+        gotoxy(78,10);
         cin>>aux;
     }
 
@@ -474,29 +473,23 @@ void modificarobrasocial(){
 
                 fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
                 fclose(p);
-            }else{ // else del if(buscardnipaciente(aux)==true)
-
-
-                gotoxy(28,12);
-                cout<<"-------------------------------------------------";
-                gotoxy(28,13);
-                cout<<"              EL DNI ES INEXISTENTE              ";
-                gotoxy(28,14);
-                cout<<"-------------------------------------------------";
-
                 return;
-            } // else del  if(aux==reg.dni reg.estado == true)
+            }
 
 
          } // while(fread(&reg,sizeof reg,1,p))
 
+                gotoxy(28,12);
+                cout<<"-------------------------------------------------";
+                gotoxy(28,13);
+                cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
+                gotoxy(28,14);
+                cout<<"-------------------------------------------------";
+
+                return;
 
 
     } // true del if(buscardnipaciente(aux)==true){
-
-        gotoxy(28,15);
-                cout<<"-RETURN-";
-
 
 
 
@@ -622,15 +615,12 @@ void eliminarpaciente(){
 
     while (buscardnipaciente(aux) == false ){
 
-            while(aux<1){
-
                     gotoxy(21,9);
-                    cout<<"Ingrese Un Numero De Dni Valido:                            ";
-                    gotoxy(53,9);
+                    cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:           ";
+                    gotoxy(71,9);
                     cin>>aux;
-                 }
 
-          }
+            }
 
 
 

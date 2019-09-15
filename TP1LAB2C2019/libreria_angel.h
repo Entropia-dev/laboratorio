@@ -358,19 +358,223 @@ fecha cargar_fecha(){
 
     } //  ************************  WHILE DE AUX *******************************
 
+
+
         return reg;
 
 } // CARGAR FECHA
 
+//====================================================================================================================
+// FUNCION    :
+// ACCION     :
+// PARAMETROS :
+//
+//DEVUELVE    :
+//====================================================================================================================
 
 
 
 
+fecha cargar_fecha_control(){
+
+
+    struct fecha reg;
+    bool bisiesto = false;
+    int aux=0;
+
+    gotoxy(21,10);
+    cout << "Ingrese el Dia del Control:               ";
+    gotoxy(48,10);
+    cin >> reg.dia;
+    gotoxy(21,11);
+    cout << "Ingrese el Mes del Control:            ";
+    gotoxy(48,11);
+    cin >> reg.mes;
+    gotoxy(21,12);
+    cout << "Ingrese el Anio del Control:             ";
+    gotoxy(49,12);
+    cin >> reg.anio;
+
+    //Pasos:
+
+    //1)Comprobamos el año,como sigue:SI EL AÑO ES BISIESTO significa que el año tiene 365.A priori ,eso NO ESTÁ MAL.
+    //El dia adicional se le suma a  Febrero.
+
+    //2)Verificar por mes y toda la logica que se muestra en los ifs.
 
 
 
+    while ( aux == 0 ){    // REPITO ABSOLUTAMENTE TODO MIENTRAS QUE "AUX" SEA == 0. CUANDO ES ALGUNA FECHA VALIDA,AUX=1;
+
+//Comprobamos si el año es bisiesto
+    if((reg.anio%4==0 && reg.anio%100!=100) || reg.anio%400==0){
+        bisiesto = true;}else{bisiesto=false;}
 
 
+    if ( reg.mes == 1 || reg.mes == 3 ||
+         reg.mes == 5 || reg.mes == 7 ||
+         reg.mes == 8 || reg.mes == 10 || reg.mes == 12){
+
+            if ( reg.dia > 0 && reg.dia < 32  ){
+                aux++;}else{
+        //while (reg.dia < 1 && reg.dia > 31){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia del Control:           ";
+                                gotoxy(71,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Mes del Control:           ";
+                                gotoxy(37,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Anio del Control:          ";
+                                gotoxy(38,12);
+                                cin >> reg.anio;
+                            //}  // while del else del rango de dias.
+
+                      } // else del if de rango dias.
+
+             }else if( reg.mes == 4 || reg.mes == 6 ||
+                       reg.mes == 9 || reg.mes == 11 ){
+
+            if (reg.dia >0 && reg.dia < 31 ){
+                aux++;}else{
+    //while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+
+
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia del Control:           ";
+                                gotoxy(71,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Mes del Control:           ";
+                                gotoxy(37,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Anio del Control:          ";
+                                gotoxy(38,12);
+                                cin >> reg.anio;
+                            } // while del else del rango de dias.
+
+                     // } // else del if de rango dias.
+
+                }else if ( reg.mes == 2){
+
+                      if (bisiesto == true){
+
+                         if ( reg.dia >0 && reg.dia <30 ){
+                            aux++;}else{
+   // while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+
+
+
+                                gotoxy(21,10);
+                                cout << "Dia Bisiesto Incorrecto,Vuelva a Empezar - Dia del Control:           ";
+                                gotoxy(80,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Mes del Control:           ";
+                                gotoxy(37,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Anio del Control:          ";
+                                gotoxy(38,12);
+                                cin >> reg.anio;
+                              //  }  // while del else del rango de dias.
+
+                           }  // else del if de rango dias.
+                      } // bisiesto == true VERDADERO
+
+                       else{ // bisiesto == true FALSO
+
+                    if ( reg.dia >0 && reg.dia < 29){
+                            aux++;}else{
+       // while (reg.dia < 1 && reg.dia > 30){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                                //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+                                gotoxy(21,11);
+                                cout<<"                                                                ";
+                                gotoxy(21,12);
+                                cout<<"                                                                ";
+
+                                gotoxy(21,10);
+                                cout << "Dia Incorrecto,Vuelva a Empezar - Dia del Control:           ";
+                                gotoxy(71,10);
+                                cin >> reg.dia;
+                                gotoxy(21,11);
+                                cout << "Mes del Control:           ";
+                                gotoxy(37,11);
+                                cin >> reg.mes;
+                                gotoxy(21,12);
+                                cout << "Anio del Control:          ";
+                                gotoxy(38,12);
+                                cin >> reg.anio;
+                               // } // while del else del rango de dias.
+
+                           }  // else del rango de reg.dias
+
+                    } // bisiesto == true FALSO
+
+
+
+                 }else{ // else if de reg.mes== 2
+
+
+                    //SI NO ES NADA DE LO ANTERIOR,ES PORQUE ES UN MES INVALIDO.
+
+   // while (reg.mes < 1 && reg.mes > 12){  // HAGO WHILE CON EL RANGO CONTRARIO HASTA QUE SEA UNA FECHA VALIDA.EN OTRAS PALBRAS MIENTRAS ESTE MAL ,REPITO WHILE.
+
+                            //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+                            gotoxy(21,11);
+                            cout<<"                                                                ";
+                            gotoxy(21,12);
+                            cout<<"                                                                ";
+
+
+                            gotoxy(21,10);
+                            cout << "Mes Incorrecto,Vuelva a Empezar - Dia del Control:           ";
+                            gotoxy(71,10);
+                            cin >> reg.dia;
+                            gotoxy(21,11);
+                            cout << "Mes del Control:           ";
+                            gotoxy(37,11);
+                            cin >> reg.mes;
+                            gotoxy(21,12);
+                            cout << "Anio del Control:          ";
+                            gotoxy(38,12);
+                                cin >> reg.anio;
+                           // }// while del else del rango de dias.
+
+                 }
+
+
+    } //  ************************  WHILE DE AUX *******************************
+
+
+
+        return reg;
+
+} // CARGAR FECHA
 
 
 
