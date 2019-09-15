@@ -6,7 +6,7 @@
 //poner todos los prototipos.(ya puse todas)
 
 
-void listarMedico(struct medicos);
+void listarMedico(struct medicos,int);
 bool buscarMatricula(int);
 medicos CargarMedico();
 void GuardarMedico(struct medicos);
@@ -40,19 +40,26 @@ void listartodoslosmedicos();
 void listartodoslosmedicos(){
 
     medicos reg;
-    FILE *p;
-    p=fopen("medicos.dat","rb");
-    if(p==NULL)
-    {
-        cout<<"error de funcion listar todos los medicos"<<endl;
-        exit(1);
-    }
-    while(fread(&reg,sizeof reg,1,p))
-    {
-        listarMedico(reg);
-    }
+    int modo=2;
+
+
+        FILE *p;
+        p=fopen("medicos.dat","rb");
+
+        if(p==NULL){
+            cout<<"error de funcion listar todos los medicos"<<endl;
+            exit(1);
+        }
+
+            while(fread(&reg,sizeof reg,1,p)){
+                listarMedico(reg,modo);
+            }
+
+
+
     fclose(p);
     system("pause");
+
 }
 
 
@@ -67,28 +74,61 @@ void listartodoslosmedicos(){
 
 void listarmedicoxmatricula(){
 
-    struct medicos reg;
-    FILE *p;
-    int aux;
-    cout<<"INGRESE LA MATRICULA A LISTAR"<<endl;
-    cin>>aux;
-    if(buscarMatricula(aux)==false)
-    {
-        cout<<"NO SE ENCONTRO LA MATRICULA BUSCADA, INGRESE UNA NUEVA MATRICULA"<<endl;
-        cin>>aux;
-    }
+        struct medicos reg;
+        FILE *p;
+        int aux;
+        int modo=1;
 
-    p=fopen("medicos.dat","rb");
-    while(fread(&reg,sizeof reg,1,p))
-    {
-        if(reg.numero_matricula==aux)
-        {
-            listarMedico(reg);
-            fclose(p);
-            system("pause");
-        }
-    }
-    fclose(p);
+
+        system("cls");
+        recuadro(20,1,75,25);
+        gotoxy(45,2);
+        cout<<" **** CLINICA SAN SIMON ****";
+        gotoxy(45,3);
+        cout<<" LISTAR MEDICO POR MATRICULA";
+        gotoxy(28,6);
+        cout<<"----------------------------------------------------";
+        gotoxy(28,7);
+        cout<<"  Listar Medico Mediante una Determinada Matricula  ";
+        gotoxy(28,8);
+        cout<<"----------------------------------------------------";
+
+
+
+
+        gotoxy(28,9);
+        cout<<"Ingrese la Matricula a Listar:                         ";
+        gotoxy(58,9);
+        cin>>aux;
+
+
+            while(buscarMatricula(aux)==false){
+                gotoxy(28,9);
+                cout<<"ERROR:No Existe Matricula, Ingrese Matricula Existente:          ";
+                gotoxy(83,9);
+                cin>>aux;
+            }
+
+
+
+        p=fopen("medicos.dat","rb");
+
+            while(fread(&reg,sizeof reg,1,p)){
+
+                if(reg.numero_matricula==aux){
+                    listarMedico(reg,modo);
+                    fclose(p);
+                    return;
+                }
+
+             }
+
+
+
+
+        fclose(p);
+        return;
+
 }
 
 
@@ -102,16 +142,52 @@ void listarmedicoxmatricula(){
 
 
 
-void listarMedico(struct medicos reg){
+void listarMedico(struct medicos reg,int modo){
 
-    cout<<"====================="<<endl;
-    cout<<"Apellido del medico: "<<reg.apellido<<endl;
-    cout<<"Nombre del medico: "<<reg.nombre<<endl;
-    cout<<"Especialidad: "<<reg.especialidad<<endl;
-    cout<<"Sueldo: "<<reg.sueldo<<endl;
-    cout<<"Matricula: "<<reg.numero_matricula<<endl;
-    cout<<"                   "<<endl;
+
+        if (modo == 1){
+
+            gotoxy(28,10);
+            cout<<"Apellido del medico: "<<reg.apellido;
+            gotoxy(28,11);
+            cout<<"Nombre del medico: "<<reg.nombre;
+            gotoxy(28,12);
+            cout<<"Especialidad: "<<reg.especialidad;
+            gotoxy(28,13);
+            cout<<"Sueldo: "<<reg.sueldo;
+            gotoxy(28,14);
+            cout<<"Matricula: "<<reg.numero_matricula;
+            gotoxy(28,19);
+            cout<<"-------------------------------------------------";
+            gotoxy(28,20);
+            cout<<" **** FIN LISTADO DE MEDICO POR MATRICULA  ****  ";
+            gotoxy(28,21);
+            cout<<"-------------------------------------------------";
+
+
+
+
+
+        }else{  //LISTAMOS TODO EN PANTALLA VACIA SIN RECUADRO
+
+            //gotoxy(28,10);
+            cout<<"Apellido del medico: "<<reg.apellido<<endl;
+            //gotoxy(28,11);
+            cout<<"Nombre del medico: "<<reg.nombre<<endl;
+            //gotoxy(28,12);
+            cout<<"Especialidad: "<<reg.especialidad<<endl;
+            //gotoxy(28,13);
+            cout<<"Sueldo: "<<reg.sueldo<<endl;
+            //gotoxy(28,14);
+            cout<<"Matricula: "<<reg.numero_matricula<<endl;
+            cout<<"====================="<<endl;
+
+          }
+
+
+
     return;
+
 }
 
 
@@ -145,59 +221,143 @@ void altamedicos(){
 
 medicos CargarMedico(){
 
-
     struct medicos reg;
     int aux;
-    cout<<"INGRESE LA MATRICULA DEL MEDICO"<<endl;
+    system("cls");
+    recuadro(20,1,75,25);
+
+
+    gotoxy(45,2);
+    cout<<" **** CLINICA SAN SIMON ****";
+    gotoxy(45,3);
+    cout<<"      ALTA DE MEDICOS     ";
+
+
+    // ************************************** VALIDACION NUMERO 1 *******************************************************
+
+    gotoxy(21,5);
+    cout<<"Ingrese La Matricula Del Medico:                        ";
+    gotoxy(53,5);
     cin>>reg.numero_matricula;
-    if(reg.numero_matricula<0)
-    {
-        cout<<"ingrese un numero de matricula valida"<<endl;
-        cin>>reg.numero_matricula;
-    }
     aux=reg.numero_matricula;
 
-    if(buscarMatricula(aux)==true)
-    {
-        cout<<"la matricula del medico no puede estar duplicado , ingrese un numero valido"<<endl;
-        cin>>reg.numero_matricula;
-    }
-    cout<<"INGRESE EL APELLIDO DEL MEDICO: "<<endl;
-    cin.ignore();
-    cin.getline(reg.apellido, 50);
-    while(reg.apellido[0]== '\0' )
-    {
-        cout<<endl;
-        cout<<"INGRESE UN APELLIDO CORRECTO"<<endl;
-        cin.getline(reg.apellido,50);
-    }
-    cout<<"INGRESE EL NOMBRE DEL MEDICO: "<<endl;
-    while(reg.apellido[0]== '\0' )
-    {
-        cout<<endl;
-        cout<<"INGRESE UN NOMBRE CORRECTO"<<endl;
-        cin.getline(reg.nombre,50);
-    }
-    ///si esta entre dos getline no lleva ignore
 
-    cin.getline(reg.nombre, 50);
-    cout<<"INGRESE LA ESPECIALIDAD DEL MEDICO: "<<endl;
-    cin>>reg.especialidad;
-    if(reg.especialidad < 0 || reg.especialidad > 20 )
-    {
-        cout<<"INGRESE UN CARACTER VALIDO ENTRE 1 Y 20"<<endl;
+    while(reg.numero_matricula<0 || buscarMatricula(aux)==true ){
+
+            gotoxy(21,5);
+            cout<<"Ingrese Un Numero De Matricula Valida:                  ";
+            gotoxy(59,5);
+            cin>>reg.numero_matricula;
+            aux=reg.numero_matricula;
+
+
+                while(buscarMatricula(aux)==true){
+
+                    gotoxy(21,5);
+                    cout<<"Matricula Duplicada - Por Favor,Ingrese Matricula Unica:                ";
+                    gotoxy(77,5);
+                    cin>>reg.numero_matricula;
+                    aux=reg.numero_matricula;
+
+                  }
+
+          }
+
+
+
+
+    // ************************************** VALIDACION NUMERO 2 *******************************************************
+
+
+
+        gotoxy(21,6);
+        cout<<"Ingrese El Apellido Del Medico:                             ";
+        cin.ignore();
+        gotoxy(52,6);
+        cin.getline(reg.apellido, 50);
+
+
+            while(reg.apellido[0]== '\0' ){
+                    gotoxy(21,6);
+                    cout<<"Ingrese un Apellido Correcto:                            ";
+                    gotoxy(50,6);
+                    cin.getline(reg.apellido,50);
+               }
+
+
+        // ************************************** VALIDACION NUMERO 3 *******************************************************
+
+
+        gotoxy(21,7);
+        cout<<"Ingrese el Nombre del Medico:                          ";
+        gotoxy(50,7);
+        cin.getline(reg.nombre, 50);
+
+
+                        while(reg.nombre[0]== '\0' ){
+                            gotoxy(21,7);
+                            cout<<"Ingrese un Nombre Correcto:                     ";
+                            gotoxy(48,7);
+                            cin.getline(reg.nombre,50);
+                        }
+
+
+
+        // ************************************** VALIDACION NUMERO 4 *******************************************************
+
+
+
+        ///si esta entre dos getline no lleva ignore
+
+        gotoxy(21,8);
+        cout<<"Ingrese la Especialidad del Medico(1 al 20):                          ";
+        gotoxy(65,8);
         cin>>reg.especialidad;
-    }
-    cout<<"INGRESE El SUELDO: "<<endl;
-    cin>>reg.sueldo;
-    if(reg.sueldo<0)
-    {
-        cout<<"INGRESE UN MONTO VALIDO"<<endl;
+
+
+            while(reg.especialidad < 1 || reg.especialidad > 20 ){
+
+                        gotoxy(21,8);
+                        cout<<"La Especialidad Debe ser Numero entre(1 y 20):                     ";
+                        gotoxy(67,8);
+                        cin>>reg.especialidad;
+                    }
+
+
+
+        // ************************************** VALIDACION NUMERO 5 *******************************************************
+
+
+        gotoxy(21,9);
+        cout<<"Ingrese el Sueldo del Medico:               ";
+        gotoxy(50,9);
         cin>>reg.sueldo;
-    }
-    cout<<"MEDICO CARGADO CON EXITO"<<endl;
-    system("pause");
-    return reg;
+
+                while(reg.sueldo<0){
+
+                    gotoxy(21,9);
+                    cout<<"Ingrese un Monto Valido:               ";
+                    gotoxy(45,9);
+                    cin>>reg.sueldo;
+                }
+
+
+
+
+
+            gotoxy(21,20);
+            cout<<"------------------------------------------------------------------------";
+            gotoxy(21,21);
+            cout<<"                     MEDICO AGREGADO CON EXITO                          ";
+            gotoxy(21,22);
+            cout<<"-----------------------------------------------------------------------";
+            gotoxy(20,27);
+            system("pause");
+
+
+
+        return reg;
+
 }
 
 
@@ -247,33 +407,73 @@ void modificarmedicos(){
     FILE *p;
     struct medicos reg;
 
-    cout<<"INGRESE UN NUMERO DE MATRICULA"<<endl;
+
+    system("cls");
+    recuadro(20,1,75,25);
+    gotoxy(45,2);
+    cout<<" **** CLINICA SAN SIMON ****"<<endl;
+    gotoxy(45,3);
+    cout<<"       MODIFICAR SUELDO    "<<endl;
+    gotoxy(28,6);
+    cout<<"-----------------------------------------------------"<<endl;
+    gotoxy(28,7);
+    cout<<"Modificacion de Sueldo del Medico Mediante Matricula"<<endl;
+    gotoxy(28,8);
+    cout<<"-----------------------------------------------------"<<endl;
+
+
+
+
+    gotoxy(28,9);
+    cout<<"Ingrese un Numero de Matricula:           ";
+    gotoxy(59,9);
     cin>>aux;
-    if(buscarMatricula(aux)==false)
-    {
-        cout<<"EL NUMERO DE MATRICULA NO EXISTE , INGRESE UN NUMERO VALIDO"<<endl;
+
+
+    while(buscarMatricula(aux)==false){
+
+        gotoxy(28,9);
+        cout<<"ERROR:No Existe Matricula, Ingrese Matricula Existente:       "<<endl;
+        gotoxy(83,9);
         cin>>aux;
     }
-    p=fopen("medicos.dat","rb+");
-    if(p==NULL)
-    {
-        exit(1);
-    }
-    while(fread(&reg,sizeof reg,1,p))
-    {
-        if(reg.numero_matricula==aux)
-        {
-            cout<<"INGRESE EL NUEVO SUELDO DEL MEDICO"<<endl;
-            cin>>reg.sueldo;
-            fseek(p,-sizeof reg,1);
-            fwrite(&reg, sizeof(reg),1,p);
-            fclose(p);
-            return;
-        }
 
-    }
-    fclose(p);
-    return; ///por si en el segundo cin se vuelven a confundir
+
+            p=fopen("medicos.dat","rb+");
+
+            if(p==NULL){
+                exit(1);
+            }
+
+                    while(fread(&reg,sizeof reg,1,p)){
+
+                        if(reg.numero_matricula==aux){
+
+                            gotoxy(28,10);
+                            cout<<"Ingrese el Nuevo Sueldo del Medico:             "<<endl;
+                            gotoxy(63,10);
+                            cin>>reg.sueldo;
+
+                            fseek(p,-sizeof reg,1);
+                            fwrite(&reg, sizeof(reg),1,p);
+                            fclose(p);
+
+                            gotoxy(28,12);
+                            cout<<"-------------------------------------------------"<<endl;
+                            gotoxy(28,13);
+                            cout<<"*****     MODIFICACION DE SUELDO EXITOSA  *****  " <<endl;
+                            gotoxy(28,14);
+                            cout<<"-------------------------------------------------"<<endl;
+
+                            return;
+                         }
+
+                   }
+
+
+
+        fclose(p);
+        return; ///por si en el segundo cin se vuelven a confundir
 }
 
 
@@ -364,21 +564,25 @@ int BuscarPosMatricula(int aux){
 bool buscarMatricula(int a){
 
     struct medicos reg;
-    FILE *p;
-    p=fopen("medicos.dat","rb");
-    if(p==NULL)
-    {
-        exit(1);
-    }
-    while(fread(&reg,sizeof reg,1,p)==1)
-    {
-        if(reg.numero_matricula==a)
-        {
-            fclose(p);
-            return true;    ///retorna verdadero si la matricula ya existe en el archivo
+
+        FILE *p;
+
+        p=fopen("medicos.dat","rb");
+
+        if(p==NULL){
+            exit(1);
         }
-    }
+
+            while(fread(&reg,sizeof reg,1,p)==1){
+                if(reg.numero_matricula==a){
+                    fclose(p);
+                    return true;    ///retorna verdadero si la matricula ya existe en el archivo
+                }
+            }
+
+
     fclose(p);
+
     return false;   ///retorna falso en caso de no encontrar la matricula buscada
 }
 

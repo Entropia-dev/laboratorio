@@ -12,7 +12,7 @@ void altaPaciente();
 int buscarposiciondni(int);
 int contarregistroscontroles();
 void eliminarpaciente();
-void listarpaciente(struct paciente);
+void listarpaciente(struct paciente,int);
 void listarpacientepordni();
 void listartodoslospacientes();
 void modificarobrasocial();
@@ -60,7 +60,7 @@ void listarpaciente(struct paciente reg,int modo){
     gotoxy(28,21);
     cout<<"-------------------------------------------------"<<endl;
 
-     }else{
+     }else{  //LISTAMOS TODO EN PANTALLA VACIA SIN RECUADRO
 
 
 
@@ -157,7 +157,7 @@ void listarpacientepordni(){
 
     while(buscardnipaciente(aux)==false){
         gotoxy(28,10);
-        cout<<"ERROR: Dni No Encontrado - Ingrese Un Dni Valido:               ";
+        cout<<"ERROR: Dni No Encontrado - Ingrese Un Dni Existente:               ";
         gotoxy(77,10);
         cin>>aux;
     }
@@ -192,10 +192,6 @@ void listarpacientepordni(){
                 cout<<"             EL DNI ES INEXISTENTE               ";
                 gotoxy(28,21);
                 cout<<"-------------------------------------------------";
-
-
-
-
 
 
 
@@ -256,8 +252,7 @@ paciente CargarPaciente(){
     // ************************************** VALIDACION  1 *******************************************************
 
 
-    while(reg.dni<1){
-
+    while(reg.dni<1 ||  buscardnipaciente(aux)==true  ){
 
         gotoxy(21,5);
         cout<<"Ingrese Un Numero De Dni Valido:                            ";
@@ -266,16 +261,16 @@ paciente CargarPaciente(){
         aux=reg.dni;
 
           while(buscardnipaciente(aux)==true){
-
                     gotoxy(21,5);
-                    cout<<"DNI Duplicado - Por favor ingrese uno valido:                      ";
+                    cout<<"DNI Duplicado - Por Favor,Ingrese Dni Unico:                      ";
                     gotoxy(66,5);
                     cin>>reg.dni;
                     aux=reg.dni;
-
                 }
 
-   }
+      }
+
+
 
 
     // ************************************** INGRESO NUMERO 2 *******************************************************

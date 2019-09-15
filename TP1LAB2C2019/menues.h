@@ -255,6 +255,8 @@ void MenuMedicos(){
         case 2:
             system("cls");
             modificarmedicos();
+            gotoxy(20,27);
+            system("pause");
             return;
             break;
 
@@ -267,6 +269,8 @@ void MenuMedicos(){
         case 4:
             system("cls");
             listarmedicoxmatricula();
+            gotoxy(20,27);
+            system("pause");
             return;
             break;
 
