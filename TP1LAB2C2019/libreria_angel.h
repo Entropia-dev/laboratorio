@@ -382,6 +382,16 @@ fecha cargar_fecha_control(){
     bool bisiesto = false;
     int aux=0;
 
+
+    //  FECHA/HORA ACTUAL BASADO EN EL SISTEMA ACTUAL.
+ time_t now =  time(0);
+
+ //  OBJETO DE UNA ESTRUCTURA tm  CON FECHA/HORA ACTUAL.
+ tm *time = localtime(&now);
+
+
+
+
     gotoxy(21,10);
     cout << "Ingrese el Dia del Control:               ";
     gotoxy(48,10);
@@ -566,6 +576,41 @@ fecha cargar_fecha_control(){
                            // }// while del else del rango de dias.
 
                  }
+
+
+
+
+    if ( (aux == 1) &&  (reg.dia >= time->tm_mday) &&  (reg.mes >= time->tm_mon+1 ) && (reg.anio  >= time->tm_year+1900) ){
+         aux++;
+         }
+         else{
+             aux=0;
+                 //  ESTAS 4 LINEAS DE ABAJO ESTAN BIEN,SIRVEN PARA BORRAR EL TEXTO ANTERIOR INGRESADO.
+                            gotoxy(21,11);
+                            cout<<"                                                                ";
+                            gotoxy(21,12);
+                            cout<<"                                                                ";
+
+
+                            gotoxy(21,10);
+                            cout << "FECHA INVALIDA PARA CONTROL,Vuelva a Empezar - Dia del Control:           ";
+                            gotoxy(84,10);
+                            cin >> reg.dia;
+                            gotoxy(21,11);
+                            cout << "Mes del Control:           ";
+                            gotoxy(37,11);
+                            cin >> reg.mes;
+                            gotoxy(21,12);
+                            cout << "Anio del Control:          ";
+                            gotoxy(38,12);
+                            cin >> reg.anio;
+
+
+             }
+
+
+
+
 
 
     } //  ************************  WHILE DE AUX *******************************
