@@ -16,7 +16,7 @@ struct paciente
     char genero;
     fecha fecha_nacimiento;
     int obra_social;
-    bool estado=true;
+    bool estado;
 };
 
 struct medicos
@@ -36,7 +36,7 @@ struct controles
     float costo;
     fecha fecha_control;
     int duracion;
-    bool estado=true;
+    bool estado;
 };
 
 /// FUNCION PARA REPOSICIONAR EL PUNTERO DE LA CONSOLA

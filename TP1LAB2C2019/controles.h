@@ -199,14 +199,14 @@ controles nuevo_control(){
 
 
     /// prueba de obtencion de datos de sistema
-    time_t now = time(0);
-    tm * time = localtime(&now);
+ ///   time_t now = time(0);
+ ///   tm * time = localtime(&now);
 
     /// cout<<"dia del mes"<<time->tm_mday;      obtiene el dia del mes de sistema
     ///  cout<<"numero de mes"<<time->tm_mon+1;    obtiene el numero de mes (de 0 a 11)
     ///  cout<<"anio del sistema"<<time ->tm_year + 1900;  obtiene cuantos años pasaron desde 1900 hasta el año de sistema
 
-
+    reg.estado=true;
 
     system("cls");
     recuadro(20,1,75,25);
@@ -432,7 +432,6 @@ int contarregistroscontroles() {
 
 
     long int tam_archivo;
-    struct controles reg;
 
     FILE *p;
     p=fopen("controles.dat","rb");  ///se abre el archivo controles para poder ver su contenido y verificar que este exista
@@ -519,8 +518,6 @@ return -1;
 bool buscar_codigo_control(int id_control){
 
     struct controles reg;
-    int pos =0;
-    int r=0;
 
     FILE *p;
     p=fopen("controles.dat","rb");
@@ -570,7 +567,7 @@ void sobreescribir_control (controles reg, int pos){
      cout<<"error en funicon sobreescribir archivo"<<endl;
     }
   fseek(p, sizeof(controles)*pos, 0);
-  bool i=fwrite(&reg, sizeof(controles), 1, p);
+  fwrite(&reg, sizeof(controles), 1, p);
   fclose(p);
     cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
 
@@ -671,7 +668,7 @@ void cancelar_control()
     struct controles reg;
     cout<<"INGRESE LA ID DEL PROCEDIMIENTO A CANCELAR"<<endl;
     cin>>aux;
-    if(buscar_codigo_control(aux)== -1)
+    if(buscar_codigo_control(aux)== false)
     {
         cout<<"NO SE ENCONTRO EL ID DE PROCEDIMIENTO A MODIFICAR INGRESE UN NUEVO DNI"<<endl;
         cin>>aux;

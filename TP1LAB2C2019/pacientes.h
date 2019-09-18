@@ -231,7 +231,7 @@ paciente CargarPaciente(){
     bool auxGen=true;
     struct paciente reg;
     int aux;
-
+    reg.estado=true;
     system("cls");
     recuadro(20,1,75,25);
     gotoxy(45,2);
@@ -485,7 +485,7 @@ void modificarobrasocial(){
                 cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
                 gotoxy(28,14);
                 cout<<"-------------------------------------------------";
-
+                    fclose(p);
                 return;
 
 
@@ -493,7 +493,7 @@ void modificarobrasocial(){
 
 
 
-    fclose(p);
+
 }
 
 
