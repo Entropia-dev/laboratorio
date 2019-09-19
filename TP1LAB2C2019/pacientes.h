@@ -689,7 +689,26 @@ int contarregistrospaciente()
 }
 
 
+paciente leer_paciente(int pos){
 
+    FILE *p;
+    struct paciente reg;
+
+    p=fopen("pacientes.dat","rb");
+
+        if(p==NULL){
+
+            cout<<"error de archivo en la funcion leer paciente"<<endl;
+
+            exit(1);
+        }
+
+    fseek(p, sizeof(paciente)*pos, 0);  ///lleva el puntero a la posicion indicada por "pos"
+    fread(&reg, sizeof(paciente), 1, p);   ///lee el registro elegido
+    fclose(p);
+
+    return reg; ///devuelve en una variable de tipo reg lo leido del disco
+}
 
 
 

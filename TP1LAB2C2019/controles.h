@@ -28,9 +28,7 @@ controles leer_control(int pos){
         }
 
     fseek(p, sizeof(controles)*pos, 0);  ///lleva el puntero a la posicion indicada por "pos"
-
     fread(&reg, sizeof(controles), 1, p);   ///lee el registro elegido
-
     fclose(p);
 
     return reg;
@@ -225,7 +223,7 @@ controles nuevo_control(){
 
             //HACER UN NUMERO AUTO INCREMENTAL Y SE LE MUESTRE AL USUARIO AUTOMATICAMENTE.
             gotoxy(21,6);
-    cout<<"NUMERO INCREMENTAL EN UN ARCHIVO:                  ";
+        //  cout<<"NUMERO INCREMENTAL EN UN ARCHIVO:                  ";
 
 /*
     gotoxy(21,6);
