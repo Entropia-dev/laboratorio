@@ -710,6 +710,20 @@ paciente leer_paciente(int pos){
     return reg; ///devuelve en una variable de tipo reg lo leido del disco
 }
 
+///guarda un  registro reg en la posicion que se le indique
+
+void sobreescribir_paciente (paciente reg, int pos){
+  FILE *p;
+  p = fopen("pacientes.dat", "rb+");
+  if (p == NULL){
+    return exit(1);
+     cout<<"error en funicon sobreescribir paciente"<<endl;
+    }
+  fseek(p, sizeof(paciente)*pos, 0);
+  fwrite(&reg, sizeof(pacien), 1, p);
+  fclose(p);
+    cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
+}
 
 
 #endif // PACIENTES_H_INCLUDED

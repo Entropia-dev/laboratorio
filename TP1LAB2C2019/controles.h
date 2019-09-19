@@ -555,7 +555,7 @@ bool buscar_codigo_control(int id_control){
 //====================================================================================================================
 
 
-///guarda un nuevo registro reg en la posicion que se le indique
+///guarda un  registro reg en la posicion que se le indique
 
 void sobreescribir_control (controles reg, int pos){
   FILE *p;
@@ -568,7 +568,6 @@ void sobreescribir_control (controles reg, int pos){
   fwrite(&reg, sizeof(controles), 1, p);
   fclose(p);
     cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
-
 }
 
 
