@@ -16,7 +16,9 @@ void listarpaciente(struct paciente,int);
 void listarpacientepordni();
 void listartodoslospacientes();
 void modificarobrasocial();
-
+int contarregistrospaciente();
+paciente leer_paciente(int);
+void sobreescribir_paciente (paciente, int );
 
 
 //====================================================================================================================
@@ -35,53 +37,57 @@ void modificarobrasocial();
 
 
 
-void listarpaciente(struct paciente reg,int modo){
+void listarpaciente(struct paciente reg,int modo)
+{
 
-    if ( modo ==1 ){
+    if ( modo ==1 )
+    {
 
-    gotoxy(28,12);
-    cout<<"Apellido del paciente: "<<reg.apellido<<endl;
-    gotoxy(28,13);
-    cout<<"Nombre del paciente: "<<reg.nombre<<endl;
-    gotoxy(28,14);
-    cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
-    gotoxy(28,15);
-    cout<<"Dni del paciente: "<<reg.dni<<endl;
-    gotoxy(28,16);
-    cout<<"Obra social del paciente: "<<reg.obra_social<<endl;
-    gotoxy(28,17);
-    cout<<"Genero del paciente: "<<reg.genero<<endl;
-    gotoxy(28,18);
-    cout<<"====================="<<endl;
-    gotoxy(28,19);
-    cout<<"-------------------------------------------------"<<endl;
-    gotoxy(28,20);
-    cout<<" ******  FIN LISTADO DE PACIENTE POR DNI  ****** "<<endl;
-    gotoxy(28,21);
-    cout<<"-------------------------------------------------"<<endl;
+        gotoxy(28,12);
+        cout<<"Apellido del paciente: "<<reg.apellido<<endl;
+        gotoxy(28,13);
+        cout<<"Nombre del paciente: "<<reg.nombre<<endl;
+        gotoxy(28,14);
+        cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
+        gotoxy(28,15);
+        cout<<"Dni del paciente: "<<reg.dni<<endl;
+        gotoxy(28,16);
+        cout<<"Obra social del paciente: "<<reg.obra_social<<endl;
+        gotoxy(28,17);
+        cout<<"Genero del paciente: "<<reg.genero<<endl;
+        gotoxy(28,18);
+        cout<<"====================="<<endl;
+        gotoxy(28,19);
+        cout<<"-------------------------------------------------"<<endl;
+        gotoxy(28,20);
+        cout<<" ******  FIN LISTADO DE PACIENTE POR DNI  ****** "<<endl;
+        gotoxy(28,21);
+        cout<<"-------------------------------------------------"<<endl;
 
-     }else{  //LISTAMOS TODO EN PANTALLA VACIA SIN RECUADRO
+    }
+    else    //LISTAMOS TODO EN PANTALLA VACIA SIN RECUADRO
+    {
 
 
 
 
-    //gotoxy(2,3);
-    cout<<"Apellido del paciente: "<<reg.apellido<<endl;
-    //gotoxy(2,4);
-    cout<<"Nombre del paciente: "<<reg.nombre<<endl;
-    //gotoxy(2,5);
-    cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
-    //gotoxy(2,6);
-    cout<<"Dni del paciente: "<<reg.dni<<endl;
-    //gotoxy(2,7);
-    cout<<"Obra social del paciente: "<<reg.obra_social<<endl;
-    //gotoxy(2,8);
-    cout<<"Genero del paciente: "<<reg.genero<<endl;
-    //gotoxy(2,9);
-    cout<<"====================="<<endl;
-    //gotoxy(2,10);
+        //gotoxy(2,3);
+        cout<<"Apellido del paciente: "<<reg.apellido<<endl;
+        //gotoxy(2,4);
+        cout<<"Nombre del paciente: "<<reg.nombre<<endl;
+        //gotoxy(2,5);
+        cout<<"Fecha de nacimiento: "<<reg.fecha_nacimiento.dia<<"/"<<reg.fecha_nacimiento.mes<<"/"<<reg.fecha_nacimiento.anio<<endl;
+        //gotoxy(2,6);
+        cout<<"Dni del paciente: "<<reg.dni<<endl;
+        //gotoxy(2,7);
+        cout<<"Obra social del paciente: "<<reg.obra_social<<endl;
+        //gotoxy(2,8);
+        cout<<"Genero del paciente: "<<reg.genero<<endl;
+        //gotoxy(2,9);
+        cout<<"====================="<<endl;
+        //gotoxy(2,10);
 
-     }
+    }
 
 
     return;
@@ -98,25 +104,29 @@ void listarpaciente(struct paciente reg,int modo){
 
 
 
-void listartodoslospacientes(){
+void listartodoslospacientes()
+{
 
     //ESTA VARIABLE ME SIRVE PORQUE SE LA VOY A PASAR A LA FUNCION LISTARPACIENTE INDICANDOLE CUAL MENU LA LLAMO.
     int modo=2;
     struct paciente reg;
     FILE *p;
     p=fopen("pacientes.dat","rb");
-    if(p==NULL){
+    if(p==NULL)
+    {
         cout<<"error de funcion listar todos los pacientes"<<endl;
         exit(1);
     }
-    while(fread(&reg,sizeof reg,1,p)==1){
+    while(fread(&reg,sizeof reg,1,p)==1)
+    {
 
-        if(reg.estado==true){
+        if(reg.estado==true)
+        {
             listarpaciente(reg,modo);
         }
     }
     fclose(p);
-   // gotoxy(20,76);
+    // gotoxy(20,76);
     system("pause");
 }
 
@@ -129,7 +139,8 @@ void listartodoslospacientes(){
 //====================================================================================================================
 
 
-void listarpacientepordni(){
+void listarpacientepordni()
+{
 
     struct paciente reg;
     int aux;
@@ -155,7 +166,8 @@ void listarpacientepordni(){
     cin>>aux;
 
 
-    while(buscardnipaciente(aux)==false){
+    while(buscardnipaciente(aux)==false)
+    {
         gotoxy(28,10);
         cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:               ";
         gotoxy(78,10);
@@ -164,7 +176,8 @@ void listarpacientepordni(){
 
 
     p=fopen("pacientes.dat","rb");
-    if(p==NULL){
+    if(p==NULL)
+    {
         gotoxy(45,8);
         cout<<"error en la funcion listar paciente x dni "<<endl;
         exit(1);
@@ -172,24 +185,26 @@ void listarpacientepordni(){
 
 
 
-                while(fread(&reg,sizeof reg,1,p)){
+    while(fread(&reg,sizeof reg,1,p))
+    {
 
-                    if(aux==reg.dni && reg.estado == true){
+        if(aux==reg.dni && reg.estado == true)
+        {
 
-                        listarpaciente(reg,modo);
-                        fclose(p);
-                        return;
-                         }
-                    }
+            listarpaciente(reg,modo);
+            fclose(p);
+            return;
+        }
+    }
 
 
 
-                gotoxy(28,12);
-                cout<<"-------------------------------------------------";
-                gotoxy(28,13);
-                cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
-                gotoxy(28,14);
-                cout<<"-------------------------------------------------";
+    gotoxy(28,12);
+    cout<<"-------------------------------------------------";
+    gotoxy(28,13);
+    cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
+    gotoxy(28,14);
+    cout<<"-------------------------------------------------";
 
 
 
@@ -207,7 +222,8 @@ void listarpacientepordni(){
 
 
 
-void altaPaciente(){
+void altaPaciente()
+{
 
     paciente reg;
     reg=CargarPaciente();
@@ -226,7 +242,8 @@ void altaPaciente(){
 
 
 
-paciente CargarPaciente(){
+paciente CargarPaciente()
+{
 
     bool auxGen=true;
     struct paciente reg;
@@ -239,7 +256,7 @@ paciente CargarPaciente(){
     gotoxy(45,3);
     cout<<"      ALTA DE PACIENTES     ";
 
-   // ************************************** VALIDACION  1 *******************************************************
+    // ************************************** VALIDACION  1 *******************************************************
 
     gotoxy(21,5);
     cout<<"Ingrese El Dni Del Paciente:                                   ";
@@ -251,7 +268,8 @@ paciente CargarPaciente(){
 
 
 
-    while(reg.dni < 1 ||  buscardnipaciente(aux)==true  ){
+    while(reg.dni < 1 ||  buscardnipaciente(aux)==true  )
+    {
 
         gotoxy(21,5);
         cout<<"Ingrese Un Numero De Dni Valido:                            ";
@@ -259,73 +277,78 @@ paciente CargarPaciente(){
         cin>>reg.dni;
         aux=reg.dni;
 
-          while(buscardnipaciente(aux)==true){
-                    gotoxy(21,5);
-                    cout<<"DNI Duplicado - Por Favor,Ingrese Dni Unico:                      ";
-                    gotoxy(66,5);
-                    cin>>reg.dni;
-                    aux=reg.dni;
-                }
+        while(buscardnipaciente(aux)==true)
+        {
+            gotoxy(21,5);
+            cout<<"DNI Duplicado - Por Favor,Ingrese Dni Unico:                      ";
+            gotoxy(66,5);
+            cin>>reg.dni;
+            aux=reg.dni;
+        }
 
-      }
+    }
 
 
 
 
     // ************************************** INGRESO NUMERO 2 *******************************************************
 
-            gotoxy(21,6);
-            cout<<"Ingrese El Apellido Del Paciente:                      ";
-            cin.ignore();
-            gotoxy(54,6);
-            cin.getline(reg.apellido, 50);
+    gotoxy(21,6);
+    cout<<"Ingrese El Apellido Del Paciente:                      ";
+    cin.ignore();
+    gotoxy(54,6);
+    cin.getline(reg.apellido, 50);
 
-            while(reg.apellido[0]== '\0' ){
+    while(reg.apellido[0]== '\0' )
+    {
 
-                gotoxy(21,6);
-                cout<<"Ingrese Un Apellido Correcto:                      ";
-                gotoxy(50,6);
-                cin.getline(reg.apellido,50);
-         }
+        gotoxy(21,6);
+        cout<<"Ingrese Un Apellido Correcto:                      ";
+        gotoxy(50,6);
+        cin.getline(reg.apellido,50);
+    }
 
     // ************************************** INGRESO NUMERO 3 *******************************************************
 
 
-                gotoxy(21,7);
-                cout<<"Ingrese El Nombre Del Paciente:                                ";
-                ///si esta entre dos getline no lleva ignore
-                gotoxy(52,7);
-                cin.getline(reg.nombre, 50);
+    gotoxy(21,7);
+    cout<<"Ingrese El Nombre Del Paciente:                                ";
+    ///si esta entre dos getline no lleva ignore
+    gotoxy(52,7);
+    cin.getline(reg.nombre, 50);
 
-                while(reg.nombre[0]== '\0' ){
-                gotoxy(21,7);
-                cout<<"Ingrese Un Nombre Correcto:                                     ";
-                gotoxy(48,7);
-                cin.getline(reg.nombre,50);
-                }
+    while(reg.nombre[0]== '\0' )
+    {
+        gotoxy(21,7);
+        cout<<"Ingrese Un Nombre Correcto:                                     ";
+        gotoxy(48,7);
+        cin.getline(reg.nombre,50);
+    }
 
 
     // ************************************** INGRESO NUMERO 4 *******************************************************
 
-        gotoxy(21,8);
-        cout<<"Ingrese Genero Del Paciente      |Femenino|  |Masculino|  |Otros|    ";
-        gotoxy(21,9);
-        cout<<"                                 |   F    |  |    M    |  |  O  |:   ";
-        gotoxy(87,9);
-        cin>>reg.genero;
-         if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
+    gotoxy(21,8);
+    cout<<"Ingrese Genero Del Paciente      |Femenino|  |Masculino|  |Otros|    ";
+    gotoxy(21,9);
+    cout<<"                                 |   F    |  |    M    |  |  O  |:   ";
+    gotoxy(87,9);
+    cin>>reg.genero;
+    if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
     {
     }
     else
+    {
+        while( auxGen == true )
         {
-        while( auxGen == true ){
 
             gotoxy(21,9);
             cout<<"Ingrese un Genero Valido         |   F    |  |    M    |  |  O  |:   ";
             gotoxy(87,9);
             cin>>reg.genero;
 
-            if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' ){
+            if (reg.genero  == 'F'   || reg.genero  =='f' || reg.genero  == 'M' || reg.genero  == 'm' ||reg.genero  == 'O' || reg.genero  == 'o' )
+            {
                 auxGen = false;
             }  // IF
         }	 // WHILE
@@ -347,11 +370,12 @@ paciente CargarPaciente(){
     gotoxy(57,13);
     cin>>reg.obra_social;
 
-    while(reg.obra_social < 1 || reg.obra_social > 50){
-    gotoxy(21,13);
-    cout<<"La Obra Social debe ser (1 al 50) - Ingrese Un Numero Valido:        ";
-    gotoxy(82,13);
-    cin>>reg.obra_social;
+    while(reg.obra_social < 1 || reg.obra_social > 50)
+    {
+        gotoxy(21,13);
+        cout<<"La Obra Social debe ser (1 al 50) - Ingrese Un Numero Valido:        ";
+        gotoxy(82,13);
+        cin>>reg.obra_social;
     }
 
     reg.estado=true;
@@ -378,7 +402,8 @@ paciente CargarPaciente(){
 //====================================================================================================================
 
 
-void GuardarPaciente(struct paciente reg){
+void GuardarPaciente(struct paciente reg)
+{
 
     FILE *p;
     p = fopen("pacientes.dat", "ab");
@@ -387,7 +412,7 @@ void GuardarPaciente(struct paciente reg){
         cout<<"error en funcion guardar paciente"<<endl;
         exit(1);
     }
-        fwrite(&reg, sizeof(reg),1,p);
+    fwrite(&reg, sizeof(reg),1,p);
     fclose(p);
     return ;
 }
@@ -402,7 +427,8 @@ void GuardarPaciente(struct paciente reg){
 
 
 
-void modificarobrasocial(){
+void modificarobrasocial()
+{
 
     int aux;
     FILE *p;
@@ -427,7 +453,8 @@ void modificarobrasocial(){
 
 
 
-    while(buscardnipaciente(aux)==false){
+    while(buscardnipaciente(aux)==false)
+    {
 
         gotoxy(28,10);
         cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:           "<<endl;
@@ -437,18 +464,22 @@ void modificarobrasocial(){
 
 
 
-    if(buscardnipaciente(aux)==true){
+    if(buscardnipaciente(aux)==true)
+    {
 
         p=fopen("pacientes.dat","rb+");
-        if(p==NULL){
+        if(p==NULL)
+        {
             gotoxy(28,11);
             cout<<"Error en la funcion modificar obra social          ||"<<endl;
             exit(1);
         }
 
-        while(fread(&reg,sizeof reg,1,p)){
+        while(fread(&reg,sizeof reg,1,p))
+        {
 
-            if(aux==reg.dni && reg.estado == true){
+            if(aux==reg.dni && reg.estado == true)
+            {
 
                 fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
 
@@ -457,11 +488,12 @@ void modificarobrasocial(){
                 gotoxy(79,11);
                 cin>>reg.obra_social;                                       ///se ingresa el dato a cargar
 
-                while(reg.obra_social < 1 || reg.obra_social > 50 ){
-                gotoxy(28,11);
-                cout<<"Ingrese La Nueva Obra Social del Paciente(1 al 50):          "<<endl;
-                gotoxy(79,11);
-                cin>>reg.obra_social;
+                while(reg.obra_social < 1 || reg.obra_social > 50 )
+                {
+                    gotoxy(28,11);
+                    cout<<"Ingrese La Nueva Obra Social del Paciente(1 al 50):          "<<endl;
+                    gotoxy(79,11);
+                    cin>>reg.obra_social;
                 }
 
                 gotoxy(28,12);
@@ -477,16 +509,16 @@ void modificarobrasocial(){
             }
 
 
-         } // while(fread(&reg,sizeof reg,1,p))
+        } // while(fread(&reg,sizeof reg,1,p))
 
-                gotoxy(28,12);
-                cout<<"-------------------------------------------------";
-                gotoxy(28,13);
-                cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
-                gotoxy(28,14);
-                cout<<"-------------------------------------------------";
-                    fclose(p);
-                return;
+        gotoxy(28,12);
+        cout<<"-------------------------------------------------";
+        gotoxy(28,13);
+        cout<<"      EL DNI ESTA OCUPADO(FUE DADO DE BAJA)      ";
+        gotoxy(28,14);
+        cout<<"-------------------------------------------------";
+        fclose(p);
+        return;
 
 
     } // true del if(buscardnipaciente(aux)==true){
@@ -509,19 +541,23 @@ void modificarobrasocial(){
 
 
 
-bool buscardnipaciente(int a){
+bool buscardnipaciente(int a)
+{
 
     FILE *p;
     p=fopen("pacientes.dat","rb");
 
     struct paciente reg;
-    if (p==NULL){
+    if (p==NULL)
+    {
         exit(1);
     }                     ///If(p==NULL){if(contarregistros == 0){p=fopen(“archivo.dat”,”ab”);}
-                          ///else {Cout<<“error de escritura”; exit(1);}}
+    ///else {Cout<<“error de escritura”; exit(1);}}
 
-    while(fread(&reg,sizeof(paciente),1,p)==1){
-        if(reg.dni==a){
+    while(fread(&reg,sizeof(paciente),1,p)==1)
+    {
+        if(reg.dni==a)
+        {
             fclose(p);
             return true;
         }
@@ -549,7 +585,8 @@ bool buscardnipaciente(int a){
 
 
 
-int buscarposiciondni(int aux){
+int buscarposiciondni(int aux)
+{
 
     int pos=0;
     paciente reg;
@@ -588,7 +625,8 @@ int buscarposiciondni(int aux){
 
 
 
-void eliminarpaciente(){
+void eliminarpaciente()
+{
 
     FILE *p;
     int aux;
@@ -613,45 +651,39 @@ void eliminarpaciente(){
     cin>>aux;
 
 
-    while (buscardnipaciente(aux) == false ){
+    while (buscardnipaciente(aux) == false )
+    {
 
-                    gotoxy(21,9);
-                    cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:           ";
-                    gotoxy(71,9);
-                    cin>>aux;
+        gotoxy(21,9);
+        cout<<"ERROR: Dni Inexistente - Ingrese Un Dni Existente:           ";
+        gotoxy(71,9);
+        cin>>aux;
+    }
 
-            }
+    if(buscardnipaciente(aux)==true)
+    {
 
-
-
-    if(buscardnipaciente(aux)==true){
-
-        p=fopen("pacientes.dat","rb+");
-        if(p==NULL){
-            cout<<"ERROR EN FUNCION ELIMINAR PACIENTE"<<endl;
-            exit(1);}
-
-        while(fread(&reg,sizeof reg,1,p)){
-
-            if(aux==reg.dni){
-
-                fseek(p, -sizeof reg, 1 );      ///retrocede el puntero por que la lectura al final del registro
+        int cantidad_registros_paciente;
+        cantidad_registros_paciente=contarregistrospaciente();
+        for(int i=0; i<cantidad_registros_paciente; i++)
+        {
+            reg=leer_paciente(i);
+            if(reg.dni == aux)
+            {
                 reg.estado=false;
-                fwrite(&reg, sizeof(reg),1,p);      ///se sobre escribe en el mismo lugar
-                fclose(p);
+                sobreescribir_paciente(reg,i);
             }
         }
 
+    } // BUSCARDNIPACIENTE == TRUE
 
-     } // BUSCARDNIPACIENTE == TRUE
 
-
-        gotoxy(21,20);
-        cout<<"------------------------------------------------------------------------";
-        gotoxy(21,21);
-        cout<<"                     PACIENTE ELIMINADO CON EXITO                       ";
-        gotoxy(21,22);
-        cout<<"-----------------------------------------------------------------------";
+    gotoxy(21,20);
+    cout<<"------------------------------------------------------------------------";
+    gotoxy(21,21);
+    cout<<"                     PACIENTE ELIMINADO CON EXITO                       ";
+    gotoxy(21,22);
+    cout<<"-----------------------------------------------------------------------";
 
 
 
@@ -689,19 +721,21 @@ int contarregistrospaciente()
 }
 
 
-paciente leer_paciente(int pos){
+paciente leer_paciente(int pos)
+{
 
     FILE *p;
     struct paciente reg;
 
     p=fopen("pacientes.dat","rb");
 
-        if(p==NULL){
+    if(p==NULL)
+    {
 
-            cout<<"error de archivo en la funcion leer paciente"<<endl;
+        cout<<"error de archivo en la funcion leer paciente"<<endl;
 
-            exit(1);
-        }
+        exit(1);
+    }
 
     fseek(p, sizeof(paciente)*pos, 0);  ///lleva el puntero a la posicion indicada por "pos"
     fread(&reg, sizeof(paciente), 1, p);   ///lee el registro elegido
@@ -712,16 +746,18 @@ paciente leer_paciente(int pos){
 
 ///guarda un  registro reg en la posicion que se le indique
 
-void sobreescribir_paciente (paciente reg, int pos){
-  FILE *p;
-  p = fopen("pacientes.dat", "rb+");
-  if (p == NULL){
-    return exit(1);
-     cout<<"error en funicon sobreescribir paciente"<<endl;
+void sobreescribir_paciente (paciente reg, int pos)
+{
+    FILE *p;
+    p = fopen("pacientes.dat", "rb+");
+    if (p == NULL)
+    {
+        return exit(1);
+        cout<<"error en funicon sobreescribir paciente"<<endl;
     }
-  fseek(p, sizeof(paciente)*pos, 0);
-  fwrite(&reg, sizeof(pacien), 1, p);
-  fclose(p);
+    fseek(p, sizeof(paciente)*pos, 0);
+    fwrite(&reg, sizeof(paciente), 1, p);
+    fclose(p);
     cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
 }
 
