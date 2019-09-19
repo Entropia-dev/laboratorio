@@ -418,15 +418,14 @@ void GuardarPaciente(struct paciente reg)
 }
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :modificarobrasocial.
+// ACCION     :pide al usuario que ingrese un dni de paciente y luego le permite ingresar una nueva obra social para
+//              dicho paciente en caso de que se necesite actualizar informacion sobre el mismo.
 //
-//DEVUELVE    :
+//PARAMETROS : no necesita  ningun parametro.
+//
+//DEVUELVE    :void.
 //====================================================================================================================
-
-
-
 void modificarobrasocial()
 {
 
@@ -530,16 +529,15 @@ void modificarobrasocial()
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :buscardnipaciente.
 //
-//DEVUELVE    :
+// ACCION     :chequear la existencia previa del dni de un paciente en el archivo "pacientes.dat".
+//
+// PARAMETROS :una variable entera que contenga el dni sobre el cual se desea conocer su existencia.
+//
+//DEVUELVE    : una variable de tipo booleano que en caso de ser true, representa la existencia previa de un registro
+//              que contenga el dni previamente enviado como variable.
 //====================================================================================================================
-
-
-
-
 
 bool buscardnipaciente(int a)
 {
@@ -569,11 +567,13 @@ bool buscardnipaciente(int a)
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :buscarposiciondni.
 //
-//DEVUELVE    :
+// ACCION     :buscar la pocision de un dni de paciente en el archivo "pacientes.dat"
+//
+// PARAMETROS :necesita como parametro una variable de tipo entero que contenga el dni que se desea buscar.
+//
+//DEVUELVE    :una variable de tipo entero que representa la ubicacion del registro en el archivo "pacientes.dat
 //====================================================================================================================
 
 
@@ -615,15 +615,15 @@ int buscarposiciondni(int aux)
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :eliminar paciente.
 //
-//DEVUELVE    :
+// ACCION     :cambiar el estado de un registro paciente de true a false y guardarlo en disco en la
+//              misma pocision de registro que ocupa originalmente
+//
+// PARAMETROS : no necesita  ningun parametro.
+//
+//DEVUELVE    :  void.
 //====================================================================================================================
-
-
-
 
 void eliminarpaciente()
 {
