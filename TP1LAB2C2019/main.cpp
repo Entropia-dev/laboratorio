@@ -106,6 +106,8 @@ PREGUNTAR DENUEVO EL FSEEK DE SOBREESCRIBIR PACIENTE
 
 consultar mejora del sistema de inicializar archivos
 
+  "         si las funciones de lectura es conveniente que tengan un entero indicando la posicion que se desea leer o
+            dejar que el puntero se maneje por si solo
 
 **/
 
