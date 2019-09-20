@@ -27,15 +27,12 @@ void sobreescribir_medico(struct medicos , int tam);
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :listartodoslosmedicos.
+// ACCION     :muestra por pantalla la informacion de todos los medicos cargados en el sistema.
+// PARAMETROS :no necesita el envio de ningun parametro.
 //
-//DEVUELVE    :
+//DEVUELVE    :void.
 //====================================================================================================================
-
-
-
 
 void listartodoslosmedicos(){
 
@@ -64,13 +61,12 @@ void listartodoslosmedicos(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :listarmedicoxmatricula.
+// ACCION     :mostrar los datos de un medico con una matricula en especifico.
+// PARAMETROS :no ecesita ningun el envio parametro.
 //
-//DEVUELVE    :
+//DEVUELVE    :void.
 //====================================================================================================================
-
 
 void listarmedicoxmatricula(){
 
@@ -133,11 +129,12 @@ void listarmedicoxmatricula(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
-//
-//DEVUELVE    :
+// FUNCION    :listarMedico.
+// ACCION     :listar un la informacion por mantalla de un registro de tipo medico ,
+//              con o sin recuadro en caso de ser necesario.
+// PARAMETROS :un registro de tipo medico que se desee listar y un entero indicando la forma
+//              en la que se desea listar dicha informacion.
+//DEVUELVE    :void.
 //====================================================================================================================
 void listarMedico(struct medicos reg,int modo){
 
@@ -582,6 +579,13 @@ bool buscarMatricula(int a){
     return false;   ///retorna falso en caso de no encontrar la matricula buscada
 }
 
+//====================================================================================================================
+// FUNCION    :leer_medico.
+// ACCION     :lee un registro de tipo medico del archivo "medicos.dat".
+// PARAMETROS :no necesita el envio de ningun parametro.
+//DEVUELVE    :un registro de tipo medico con informacion obtenida del disco.
+//====================================================================================================================
+
 medicos leer_medico(){
 FILE *p;
 struct medicos reg;
@@ -591,6 +595,14 @@ if(p==NULL){cout<<"error de archivo en leer medico"<<endl;
 fread(&reg , sizeof(medicos),1,p);
 return reg;
 }
+
+//====================================================================================================================
+// FUNCION    :sobreescribir_medico.
+// ACCION     :guarda un registro de tipo medico en el archivo "medicos.dat" un una pocision deseada.
+// PARAMETROS :un registro de tipo medico que se desee guardar
+//              y una variable de tipo entero que indique la pocision sobre la cual guardar.
+//DEVUELVE    :un registro de tipo medico con informacion obtenida del disco.
+//====================================================================================================================
 
 void sobreescribir_medico(medicos reg,int pos){
   FILE *p;
