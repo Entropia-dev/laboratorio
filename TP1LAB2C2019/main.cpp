@@ -104,9 +104,13 @@ free(matriz);
 
 PREGUNTAR DENUEVO EL FSEEK DE SOBREESCRIBIR PACIENTE
 
+consultar mejora del sistema de inicializar archivos
 
 
 **/
+
+
+
 void inicializar_archivos()
 {
     FILE *p;

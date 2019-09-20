@@ -627,8 +627,6 @@ int buscarposiciondni(int aux)
 
 void eliminarpaciente()
 {
-
-    FILE *p;
     int aux;
     struct paciente reg;
 

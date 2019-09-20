@@ -13,11 +13,11 @@ void GuardarMedico(struct medicos);
 void modificarmedicos();
 void altamedicos();
 int BuscarPosMatricula(int);
-int contarregistroscontroles();
 void listarmedicoxmatricula();
 void listartodoslosmedicos();
-
-
+medicos leer_medico();
+int contarregistrosmedicos();
+void sobreescribir_medico(struct medicos , int tam);
 
 //-------------------------------------------------------------------------------------------------------------------
 //
@@ -139,9 +139,6 @@ void listarmedicoxmatricula(){
 //
 //DEVUELVE    :
 //====================================================================================================================
-
-
-
 void listarMedico(struct medicos reg,int modo){
 
 
@@ -198,7 +195,6 @@ void listarMedico(struct medicos reg,int modo){
 //
 //-------------------------------------------------------------------------------------------------------------------
 
-
 void altamedicos(){
 
     medicos reg;
@@ -210,14 +206,12 @@ void altamedicos(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :Cargarmedico.
+// ACCION     :solicitarle informacion al usuario para cargar un registro de tipo "medicos".
+// PARAMETROS :no necesita ningun parametro.
 //
-//DEVUELVE    :
+//DEVUELVE    :void.
 //====================================================================================================================
-
-
 
 medicos CargarMedico(){
 
@@ -362,14 +356,12 @@ medicos CargarMedico(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
-//
-//DEVUELVE    :
+// FUNCION    :GuardarMedico.
+// ACCION     :guarda un registro de tipo medico en el archivo "medicos.dat"
+// PARAMETROS :necesita que se le envie como parametro el registro de tipo medico que se
+//              desea guardar.
+//DEVUELVE    :void.
 //====================================================================================================================
-
-
 
 void GuardarMedico(struct medicos reg){
 
@@ -391,15 +383,12 @@ void GuardarMedico(struct medicos reg){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :modificarmedicos.
+// ACCION     :cambiar el sueldo de un medico.
+// PARAMETROS :no necesita el envio de ningun parametro.
 //
-//DEVUELVE    :
+//DEVUELVE    :void.
 //====================================================================================================================
-
-
-
 
 void modificarmedicos(){
 
@@ -492,15 +481,13 @@ void modificarmedicos(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :contarregistrosmedicos.
+// ACCION     :contar la cantidad de registros que contiene el archivo "medicos,dat"
+// PARAMETROS :no necesita ningun parametro.
 //
-//DEVUELVE    :
+//DEVUELVE    :una variable de tipo int que representa la cantidad de registros en el archivo
+//              "medicos.dat"
 //====================================================================================================================
-
-
-
 
 int contarregistrosmedicos(){
 
@@ -524,16 +511,16 @@ int contarregistrosmedicos(){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
+// FUNCION    :BuscarPosMatricula.
+// ACCION     :busca la en el archivo "medicos.dat" que numero de registro ocupa la matricula
+//              enviada como parametro.
+// PARAMETROS :una variable de tipo entero que contiene la variable que se desea validar
+//              su existencia
 //
-//DEVUELVE    :
+//DEVUELVE    : una variable de tipo entero que representa el numero de registro en el cual
+//              se encontro la matricula que se deseaba buscar.
 //====================================================================================================================
 
-
-
-///buscar la posicion de la matricula
 int BuscarPosMatricula(int aux){
 
     int pos=0;
@@ -563,16 +550,12 @@ int BuscarPosMatricula(int aux){
 
 
 //====================================================================================================================
-// FUNCION    :
-// ACCION     :
-// PARAMETROS :
-//
-//DEVUELVE    :
+// FUNCION    :buscarmatricula.
+// ACCION     :busca si existe una matricula en el archivo "medicos.dat".
+// PARAMETROS :un entero que contenga el numero de matricula.
+//DEVUELVE    :booleano , verdadero en caso de haber encontrado la matricula en el archivo
+//              , false en caso contrario
 //====================================================================================================================
-
-
-
-///busca el numero de matricula del medico
 
 bool buscarMatricula(int a){
 
@@ -599,7 +582,29 @@ bool buscarMatricula(int a){
     return false;   ///retorna falso en caso de no encontrar la matricula buscada
 }
 
+medicos leer_medico(){
+FILE *p;
+struct medicos reg;
+p=fopen("medicos.dat","rb");
+if(p==NULL){cout<<"error de archivo en leer medico"<<endl;
+                exit(1);}
+fread(&reg , sizeof(medicos),1,p);
+return reg;
+}
 
+void sobreescribir_medico(medicos reg,int pos){
+  FILE *p;
+  p = fopen("medicos.dat", "rb+");
+  if (p == NULL){
+     cout<<"error en funicon sobreescribir medico"<<endl;
+             exit(1);
+    }
+
+  fseek(p, sizeof(medicos)*pos, 0);
+  fwrite(&reg, sizeof(medicos), 1, p);
+  fclose(p);
+    cout<<"MEDICO MODIFICADO CON EXITO"<<endl;
+}
 
 
 

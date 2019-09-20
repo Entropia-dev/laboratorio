@@ -8,7 +8,7 @@ void listar_control_x_id();
 void listar_todos_controles();
 void cancelar_control();
 void mostrarcontrol(struct controles,int);
-
+int contarregistroscontroles();
 
 
 ///lee el control en la ubicasion indicada
@@ -562,7 +562,7 @@ void sobreescribir_control (controles reg, int pos){
   p = fopen("controles.dat", "rb+");
   if (p == NULL){
     return exit(1);
-     cout<<"error en funicon sobreescribir archivo"<<endl;
+     cout<<"error en funicon sobreescribir control"<<endl;
     }
   fseek(p, sizeof(controles)*pos, 0);
   fwrite(&reg, sizeof(controles), 1, p);

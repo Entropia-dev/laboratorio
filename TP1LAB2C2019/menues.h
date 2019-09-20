@@ -28,6 +28,8 @@ void MenuPrincipal(){
          ///  Los otros 2 son ancho y alto del recuadro respectivamente.
          ///  5 y 7 para debug rapido ó 5,5.
          ///  Tamanio aceptable del recuadro: 75 ,25
+
+
         recuadro(20,1,75,25);
 
         gotoxy(45,3);
