@@ -718,6 +718,13 @@ int contarregistrospaciente()
 
 }
 
+//====================================================================================================================
+// FUNCION    :leer_paciente.
+// ACCION     :lee un registro de tipo paciente del archivo "pacientes.dat".
+// PARAMETROS :un entero indicando la pocision que se desee leer
+//DEVUELVE    :un registro de tipo medico con informacion obtenida del disco.
+//====================================================================================================================
+
 
 paciente leer_paciente(int pos)
 {
@@ -742,7 +749,14 @@ paciente leer_paciente(int pos)
     return reg; ///devuelve en una variable de tipo reg lo leido del disco
 }
 
-///guarda un  registro reg en la posicion que se le indique
+//====================================================================================================================
+// FUNCION    :sobreescribir_paciente.
+// ACCION     :guarda un registro de tipo paciente en el archivo "pacientes.dat" un una pocision deseada.
+// PARAMETROS :un registro de tipo paciente que se desee guardar
+//              y una variable de tipo entero que indique la pocision sobre la cual guardar.
+//DEVUELVE    :un registro de tipo paciente con informacion obtenida del disco.
+//====================================================================================================================
+
 
 void sobreescribir_paciente (paciente reg, int pos)
 {
