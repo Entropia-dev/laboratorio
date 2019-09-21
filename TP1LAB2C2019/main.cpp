@@ -10,7 +10,9 @@
 
 using namespace std;
 
+
 #include "estructuras.h"
+#include "configuracion.h"
 #include "libreria_angel.h"
 #include "pacientes.h"
 #include "medicos.h"

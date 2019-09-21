@@ -383,9 +383,41 @@ void MenuReportes()
 
 void MenuConfiguracion()
 {
+    int opcion;
+    system("cls");
+    while(true){
+    cout<<"==================="<<endl;
+    cout<<"MENU DE CONFIGURACION"<<endl;
+    cout<<"==================="<<endl;
+    cout<<"1)REALIZAR BACKUP"<<endl;
+    cout<<"2)RESTAURAR BACKUP"<<endl;
+    cout<<"==================="<<endl;
+    cout<<"0)VOLVER AL MENU ANTERIOR"<<endl;
+    cin>>opcion;
+    switch(opcion){
+        case 1:
+        bckControles();
+        bckMedicos();
+        bckPacientes();
+        system("pause");
+            system("cls");
+        break;
 
-    return;
-}
+        case 2:
+        restaurar_controles();
+        restaurar_medicos();
+        restaurar_pacientes();
+        system("pause");
+        system("cls");
+        break;
 
+        case 0:
+        return;
+
+                }
+
+
+                    }
+    }
 
 #endif // MENUES_H_INCLUDED
