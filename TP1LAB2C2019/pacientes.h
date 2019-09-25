@@ -6,7 +6,7 @@
 //poner todos los prototipos.(ya puse todas)
 
 bool buscardnipaciente(int);
-paciente CargarPaciente();
+void CargarPaciente();
 void GuardarPaciente(struct paciente);
 void altaPaciente();
 int buscarposiciondni(int);
@@ -221,7 +221,7 @@ void listarpacientepordni()
 //====================================================================================================================
 
 
-
+/**
 void altaPaciente()
 {
 
@@ -230,6 +230,7 @@ void altaPaciente()
     GuardarPaciente(reg);
     return;
 }
+**/
 
 //====================================================================================================================
 // FUNCION    :
@@ -242,9 +243,10 @@ void altaPaciente()
 
 
 
-paciente CargarPaciente()
+void CargarPaciente()
 {
-
+    char recarga_paciente;
+    int posicion_dni;
     bool auxGen=true;
     struct paciente reg;
     int aux;
@@ -271,6 +273,24 @@ paciente CargarPaciente()
     while(reg.dni < 1 ||  buscardnipaciente(aux)==true  )
     {
 
+
+            posicion_dni=buscarposiciondni(aux);
+            reg=leer_paciente(posicion_dni);
+            if(reg.estado==false){
+            gotoxy(21,5);
+            cout<<"PACIENTE DADO DE BAJA, DESEA REACTIVARLO S/N?                      ";
+             cin>>recarga_paciente;
+             if(recarga_paciente == 's' || recarga_paciente == 'S'  ){reg.estado = true;
+                                                                        gotoxy(22,5);
+                                                                        sobreescribir_paciente(reg,posicion_dni);
+                                                                        gotoxy(22,6);
+                                                                        system("pause");
+                                                                      return;}
+            if(recarga_paciente == 'n' || recarga_paciente == 'N' ){system("cls");
+                                                                        cout<<"CARGA DE PACIENTE CANCELADA , INTENTE NUEVAMENTE"<<endl;
+                                                                            system("pause");
+                                                                                return;}
+
         gotoxy(21,5);
         cout<<"Ingrese Un Numero De Dni Valido:                            ";
         gotoxy(53,5);
@@ -279,6 +299,8 @@ paciente CargarPaciente()
 
         while(buscardnipaciente(aux)==true)
         {
+
+            }
             gotoxy(21,5);
             cout<<"DNI Duplicado - Por Favor,Ingrese Dni Unico:                      ";
             gotoxy(66,5);
@@ -389,7 +411,9 @@ paciente CargarPaciente()
     cout<<"-----------------------------------------------------------------------";
     gotoxy(20,27);
     system("pause");
-    return reg;
+
+    GuardarPaciente(reg);
+    return;
 }
 
 
@@ -770,7 +794,6 @@ void sobreescribir_paciente (paciente reg, int pos)
     fseek(p, sizeof(paciente)*pos, 0);
     fwrite(&reg, sizeof(paciente), 1, p);
     fclose(p);
-    cout<<"CONTROL MODIFICADO CON EXITO"<<endl;
 }
 
 

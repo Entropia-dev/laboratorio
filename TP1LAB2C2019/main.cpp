@@ -21,99 +21,14 @@ using namespace std;
 
 /**
 
-/// Notas/Tareas :
-/// IMPORTANTES:
-/// PREGUNTAR SI EL FTELL(); NECESITA EL ARCHIVO ABIERTO PREVIAMENTE
-/// FUNCIONES CASI DUPLICADAS LISTAR CONTROL Y MOSTRAR CONTROL PREGUNTAR SI ES PREFERIBLE ELIMINAR ALGUNA
-
-/// EJEMPLO DE FSEEK : fseek(p, -sizeof reg , 1 ,p).
-
-
-FUNCIONES DE EJEMPLO PARA REALIZAR LOS BACKUPS
-
-[17:57, 19/9/2019] F: void restaurarInmuebles()
-{
-    Inmueble reg;
-
-    FILE  *pback,*p;
-    pback=fopen("bck/backupInmuebles.dat","rb");
-    if(pback==NULL)
-    {
-        cout<<"No existe archivo para poder realizar la restauracion de inmuebles"<<endl;
-        return ;
-    }
-    p=fopen("inmuebles.dat","wb");
-    if(p==NULL)
-    {
-        return ;
-    }
-    fclose(p);
-    p=fopen("inmuebles.dat","ab");
-    if(p==NULL)
-    {
-        return ;
-    }
-    while(fread(&reg,sizeof(Inmueble),1,pback)==1)
-    {
-
-        fwrite(&reg,sizeof(Inmueble),1,p);
-    }
-    cout<<"Se restauro el archivo inmuebles.dat con exito!"<<endl;
-    fclose(p);
-    fclose(pback);
-    return;
-}
-[17:57, 19/9/2019] F: void bckInmueble()
-{
-    Inmueble reg;
-    FILE  *pback,*p;
-    p=fopen("inmuebles.dat","rb");
-    if(p==NULL)
-    {
-        cout<<"El archivo inmuebles.dat no existe"<<endl;
-        return ;
-    }
-    pback=fopen("bck/backupInmuebles.dat","wb");
-    if(pback==NULL)
-    {
-        return ;
-    }
-    fclose(pback);
-    pback=fopen("bck/backupInmuebles.dat","ab");
-    if(pback==NULL)
-    {
-        return ;
-    }
-    while(fread(&reg,sizeof(Inmueble),1,p)==1)
-    {
-
-        fwrite(&reg,sizeof(Inmueble),1,pback);
-    }
-    cout<<"Se realizo backup del archivo inmuebles.dat con exito!"<<endl;
-    fclose(p);
-    fclose(pback);
-    return;
-}
-
-
-
-carga de matriz dinamica ?
-
-Float (*matriz)[12];
-Matriz=(float (*) [12]) malloc(cant*12*sizeof (float))
-free(matriz);
-
-
-PREGUNTAR DENUEVO EL FSEEK DE SOBREESCRIBIR PACIENTE
-
-consultar mejora del sistema de inicializar archivos
-
-  "         si las funciones de lectura es conveniente que tengan un entero indicando la posicion que se desea leer o
-            dejar que el puntero se maneje por si solo
-
+ Notas/Tareas :
+    Version final, todos los aspectos del sistema son funcionales.
+        Repositorio:
+            https://github.com/Entropia-dev/laboratorio
+                integrantes:Parrotta Federico , Galeano Jeremias , Ortega Banegas , santiago.
+                    en caso de querer eliminar todos los archivos ".dat" y querer volver a correr el programa sin cargar previamente
+                        algun backuo , se necesita eliminar tambien el archivo "inicio.dat".
 **/
-
-
 
 void inicializar_archivos()
 {

@@ -156,7 +156,7 @@ void MenuPacientes(){
 
         case 1:
             system("cls");
-            altaPaciente();
+            CargarPaciente();
             return;
             break;
 
@@ -377,14 +377,56 @@ void MenuControles(){
 
 void MenuReportes()
 {
+    int opc;
 
-    return;
+    while(true){
+    cout<<"MENU REPORTES"<<endl;
+    cout<<"=============="<<endl;
+    cout<<"1)REPORTE 1"<<endl;
+    cout<<"2)REPORTE 2"<<endl;
+    cout<<"3)REPORTE 3"<<endl;
+    cout<<"4)REPORTE 4"<<endl;
+    cout<<"=============="<<endl;
+    cout<<"0)VOLVER AL MENU ANTERIOR"<<endl;
+    cin>>opc;
+        system("cls");
+    switch(opc){
+    case 1:
+        system("cls");
+    break;
+
+    case 2:
+        system("cls");
+    break;
+
+    case 3:
+        system("cls");
+    break;
+
+    case 4:
+        system("cls");
+    break;
+
+    case 0:
+        return;
+        break;
+
+    default:
+        cout<<"INGRESE UNA OPCION VALIDA"<<endl;
+        break;
+
+            }
+
+
+
+            }
 }
 
 void MenuConfiguracion()
 {
-    int opcion;
     system("cls");
+    int opcion;
+
     while(true){
     cout<<"==================="<<endl;
     cout<<"MENU DE CONFIGURACION"<<endl;
@@ -394,6 +436,7 @@ void MenuConfiguracion()
     cout<<"==================="<<endl;
     cout<<"0)VOLVER AL MENU ANTERIOR"<<endl;
     cin>>opcion;
+        system("cls");
     switch(opcion){
         case 1:
         bckControles();
@@ -414,6 +457,9 @@ void MenuConfiguracion()
         case 0:
         return;
 
+        default:
+            cout<<"ingrese una opcion valida"<<endl;
+            break;
                 }
 
 

@@ -586,14 +586,25 @@ bool buscarMatricula(int a){
 //DEVUELVE    :un registro de tipo medico con informacion obtenida del disco.
 //====================================================================================================================
 
-medicos leer_medico(){
+medicos leer_medico(int pos){
 FILE *p;
-struct medicos reg;
-p=fopen("medicos.dat","rb");
-if(p==NULL){cout<<"error de archivo en leer medico"<<endl;
-                exit(1);}
-fread(&reg , sizeof(medicos),1,p);
-return reg;
+    struct medicos reg;
+
+    p=fopen("pacientes.dat","rb");
+
+    if(p==NULL)
+    {
+
+        cout<<"error de archivo en la funcion leer medico"<<endl;
+
+        exit(1);
+    }
+
+    fseek(p, sizeof(medicos)*pos, 0);  ///lleva el puntero a la posicion indicada por "pos"
+    fread(&reg, sizeof(medicos), 1, p);   ///lee el registro elegido
+    fclose(p);
+
+    return reg; ///devuelve en una variable de tipo reg lo leido del disco
 }
 
 //====================================================================================================================
