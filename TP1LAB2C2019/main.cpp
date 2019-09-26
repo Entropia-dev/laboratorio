@@ -25,9 +25,10 @@ using namespace std;
     Version final, todos los aspectos del sistema son funcionales.
         Repositorio:
             https://github.com/Entropia-dev/laboratorio
-                integrantes:Parrotta Federico , Galeano Jeremias , Ortega Banegas , santiago.
-                    en caso de querer eliminar todos los archivos ".dat" y querer volver a correr el programa sin cargar previamente
-                        algun backuo , se necesita eliminar tambien el archivo "inicio.dat".
+                integrantes:
+                    Parrotta Federico , Galeano Jeremias , Ortega Banegas , santiago.
+                        en caso de querer eliminar todos los archivos ".dat" y querer volver a correr el programa sin cargar previamente
+                            algun backup , se necesita eliminar tambien el archivo "inicio.dat".
 **/
 
 void inicializar_archivos()
