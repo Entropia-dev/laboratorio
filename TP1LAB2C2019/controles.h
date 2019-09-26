@@ -791,5 +791,35 @@ void listar_control_x_id(){
         system("pause");
 }
 
+int buscarposicion_control(int aux)
+{
+
+    int pos=0;
+    controles reg;
+    FILE *p;
+    p=fopen("controles.dat","rb");
+    if( p == NULL)
+    {
+        cout<<"ERROR EN FUNCION BUSCAR POS X MATRICULA" <<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.id == aux)
+        {
+            fclose(p);
+            return pos;
+        }
+
+        pos++;
+    }
+
+
+    fclose(p);
+    return pos;
+}
+
+
+
 
 #endif // CONTROLES_H_INCLUDED

@@ -629,6 +629,33 @@ void sobreescribir_medico(medicos reg,int pos){
     cout<<"MEDICO MODIFICADO CON EXITO"<<endl;
 }
 
+int buscarposicion_matricula(int aux)
+{
+
+    int pos=0;
+    medicos reg;
+    FILE *p;
+    p=fopen("medicos.dat","rb");
+    if( p == NULL)
+    {
+        cout<<"ERROR EN FUNCION BUSCAR POS X MATRICULA" <<endl;
+        exit(1);
+    }
+    while(fread(&reg,sizeof reg,1,p))
+    {
+        if(reg.numero_matricula == aux)
+        {
+            fclose(p);
+            return pos;
+        }
+
+        pos++;
+    }
+
+
+    fclose(p);
+    return pos;
+}
 
 
 #endif // MEDICOS_H_INCLUDED
