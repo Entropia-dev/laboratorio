@@ -15,19 +15,21 @@ void MenuConfiguracion();
 //int aux2=contarregistroscontroles();  //para que iniclice el arhivo y despues el autonumerico
 
 
-void MenuPrincipal(){
+void MenuPrincipal()
+{
 
     char aux;
     int opc;
 
-    while(true){
+    while(true)
+    {
 
         system("cls");
 
-         ///  Los 2 primeros argumentos son los ejes X e Y respectivamente.
-         ///  Los otros 2 son ancho y alto del recuadro respectivamente.
-         ///  5 y 7 para debug rapido ó 5,5.
-         ///  Tamanio aceptable del recuadro: 75 ,25
+        ///  Los 2 primeros argumentos son los ejes X e Y respectivamente.
+        ///  Los otros 2 son ancho y alto del recuadro respectivamente.
+        ///  5 y 7 para debug rapido ó 5,5.
+        ///  Tamanio aceptable del recuadro: 75 ,25
 
 
         recuadro(20,1,75,25);
@@ -92,10 +94,12 @@ void MenuPrincipal(){
             cout<<"Realmente desea salir?(S/N):"<<endl;
             gotoxy(73,19);
             cin>>aux;
-            if(aux == 's' || aux == 'S'){
+            if(aux == 's' || aux == 'S')
+            {
                 return;
             }
-            else{
+            else
+            {
                 break;
             }
         default:
@@ -111,12 +115,14 @@ void MenuPrincipal(){
 
 }
 
-void MenuPacientes(){
+void MenuPacientes()
+{
 
     int opc;
     system("cls");
 
-    while(true){
+    while(true)
+    {
 
         recuadro(20,1,75,25);
 
@@ -152,7 +158,8 @@ void MenuPacientes(){
         gotoxy(64,17);
         cin>>opc;
 
-        switch(opc){
+        switch(opc)
+        {
 
         case 1:
             system("cls");
@@ -206,12 +213,14 @@ void MenuPacientes(){
 
 }
 
-void MenuMedicos(){
+void MenuMedicos()
+{
 
     int opc;
     system("cls");
 
-    while(true){
+    while(true)
+    {
 
         recuadro(20,1,75,25);
 
@@ -292,12 +301,14 @@ void MenuMedicos(){
 }
 
 
-void MenuControles(){
+void MenuControles()
+{
 
     int opc;
     system("cls");
 
-    while(true){
+    while(true)
+    {
 
         recuadro(20,1,75,25);
 
@@ -378,48 +389,86 @@ void MenuControles(){
 void MenuReportes()
 {
     int opc;
+    system("cls");
 
-    while(true){
-    cout<<"MENU REPORTES"<<endl;
-    cout<<"=============="<<endl;
-    cout<<"1)REPORTE 1"<<endl;
-    cout<<"2)REPORTE 2"<<endl;
-    cout<<"3)REPORTE 3"<<endl;
-    cout<<"4)REPORTE 4"<<endl;
-    cout<<"=============="<<endl;
-    cout<<"0)VOLVER AL MENU ANTERIOR"<<endl;
-    cin>>opc;
-        system("cls");
-    switch(opc){
-    case 1:
-        system("cls");
-    break;
+    while(true)
+    {
 
-    case 2:
-        system("cls");
-    break;
+        recuadro(20,1,75,25);
+        gotoxy(45,3);
+        cout<<"**** CLINICA SAN SIMON ****"<<endl;
+        gotoxy(45,6);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,7);
+        cout<<"||    MENU DE REPORTES         ||"<<endl;
+        gotoxy(45,8);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,9);
+        cout<<"||1)REPORTE 1                  ||"<<endl;
+        gotoxy(45,10);
+        cout<<"||2)REPORTE 2                  ||"<<endl;
+        gotoxy(45,11);
+        cout<<"||3)REPORTE 3                  ||"<<endl;
+        gotoxy(45,12);
+        cout<<"||4)REPORTE 4                  ||"<<endl;
+        gotoxy(45,13);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,14);
+        cout<<"||0) VOLVER AL MENU ANTERIOR   ||"<<endl;
+        gotoxy(45,15);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,16);
+        cout<<"||OPCION INGRESADA:            ||"<<endl;
+        gotoxy(45,17);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(64,16);
+        cin>>opc;
 
-    case 3:
-        system("cls");
-    break;
-
-    case 4:
-        system("cls");
-    break;
-
-    case 0:
-        return;
-        break;
-
-    default:
-        cout<<"INGRESE UNA OPCION VALIDA"<<endl;
-        break;
-
-            }
+        //system("cls");
 
 
+        switch(opc)
+        {
+        case 1:
+            //gotoxy(20,27);
+            //system("pause");
+            system("cls");
+            break;
 
-            }
+        case 2:
+            //gotoxy(20,27);
+            //system("pause");
+            system("cls");
+            break;
+
+        case 3:
+            //gotoxy(20,27);
+            //system("pause");
+            system("cls");
+            break;
+
+        case 4:
+            //gotoxy(20,27);
+            //system("pause");
+            system("cls");
+            break;
+
+        case 0:
+            return;
+            break;
+
+        default:
+            gotoxy(45,18);
+            cout<<"Ingrese una opcion correcta:"<<endl;
+            gotoxy(73,18);
+            cin>>opc;
+            break;
+
+        }
+
+
+
+    }
 }
 
 void MenuConfiguracion()
@@ -427,43 +476,77 @@ void MenuConfiguracion()
     system("cls");
     int opcion;
 
-    while(true){
-    cout<<"==================="<<endl;
-    cout<<"MENU DE CONFIGURACION"<<endl;
-    cout<<"==================="<<endl;
-    cout<<"1)REALIZAR BACKUP"<<endl;
-    cout<<"2)RESTAURAR BACKUP"<<endl;
-    cout<<"==================="<<endl;
-    cout<<"0)VOLVER AL MENU ANTERIOR"<<endl;
-    cin>>opcion;
-        system("cls");
-    switch(opcion){
+    while(true)
+    {
+
+        recuadro(20,1,75,25);
+
+        gotoxy(45,3);
+        cout<<"**** CLINICA SAN SIMON ****"<<endl;
+        gotoxy(45,6);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,7);
+        cout<<"||    MENU DE CONFIGURACION    ||"<<endl;
+        gotoxy(45,8);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,9);
+        cout<<"||1)REALIZAR BACKUP            ||"<<endl;
+        gotoxy(45,10);
+        cout<<"||2)RESTAURAR BACKUP           ||"<<endl;
+        gotoxy(45,11);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,12);
+        cout<<"||0) VOLVER AL MENU ANTERIOR   ||"<<endl;
+        gotoxy(45,13);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(45,14);
+        cout<<"||OPCION INGRESADA:            ||"<<endl;
+        gotoxy(45,15);
+        cout<<"||-----------------------------||"<<endl;
+        gotoxy(64,14);
+        cin>>opcion;
+
+
+
+
+        //system("cls");
+
+
+        switch(opcion)
+        {
         case 1:
-        bckControles();
-        bckMedicos();
-        bckPacientes();
-        system("pause");
             system("cls");
-        break;
+            bckControles();
+            bckMedicos();
+            bckPacientes();
+            gotoxy(20,27);
+            system("pause");
+            system("cls");
+            break;
 
         case 2:
-        restaurar_controles();
-        restaurar_medicos();
-        restaurar_pacientes();
-        system("pause");
-        system("cls");
-        break;
+            system("cls");
+            restaurar_controles();
+            restaurar_medicos();
+            restaurar_pacientes();
+            gotoxy(20,27);
+            system("pause");
+            system("cls");
+            break;
 
         case 0:
-        return;
+            return;
 
         default:
-            cout<<"ingrese una opcion valida"<<endl;
+            gotoxy(45,16);
+            cout<<"Ingrese una opcion correcta:"<<endl;
+            gotoxy(73,16);
+            cin>>opcion;
             break;
-                }
+        }
 
 
-                    }
     }
+}
 
 #endif // MENUES_H_INCLUDED

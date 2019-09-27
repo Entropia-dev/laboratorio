@@ -2,8 +2,28 @@
 #define CONFIGURACION_H_INCLUDED
 
 
+void restaurar_controles();
+void restaurar_medicos();
+void restaurar_pacientes();
+void bckControles();
+void bckMedicos();
+void bckPacientes();
+
+
+
 void restaurar_controles()
 {
+
+
+    recuadro(20,1,75,25);
+
+    gotoxy(45,2);
+    cout<<" **** CLINICA SAN SIMON ****";
+    gotoxy(45,3);
+    cout<<"      RESTAURAR BACKUP     ";
+
+
+
     controles reg;
 
     FILE  *pback,*p;
@@ -29,7 +49,10 @@ void restaurar_controles()
 
         fwrite(&reg,sizeof(controles),1,p);
     }
-    cout<<"Se restauro el archivo controles.dat con exito!"<<endl;
+
+    gotoxy(21,5);
+    cout<<"Se Restauro El Archivo Controles.dat Con Exito!"<<endl;
+
     fclose(p);
     fclose(pback);
     return;
@@ -63,7 +86,9 @@ void restaurar_medicos()
 
         fwrite(&reg,sizeof(medicos),1,p);
     }
-    cout<<"Se restauro el archivo medicos.dat con exito!"<<endl;
+
+    gotoxy(21,6);
+    cout<<"Se Restauro El Archivo Medicos.dat Con Exito!"<<endl;
     fclose(p);
     fclose(pback);
     return;
@@ -97,7 +122,9 @@ void restaurar_pacientes()
 
         fwrite(&reg,sizeof(paciente),1,p);
     }
-    cout<<"Se restauro el archivo pacientes.dat con exito!"<<endl;
+
+    gotoxy(21,7);
+    cout<<"Se Restauro El Archivo Pacientes.dat Con Exito!"<<endl;
     fclose(p);
     fclose(pback);
     return;
@@ -107,6 +134,14 @@ void restaurar_pacientes()
 
 void bckControles()
 {
+
+    recuadro(20,1,75,25);
+
+    gotoxy(45,2);
+    cout<<" **** CLINICA SAN SIMON ****";
+    gotoxy(45,3);
+    cout<<"       MENU DE BACKUP     ";
+
     controles reg;
     FILE  *pback,*p;
     p=fopen("controles.dat","rb");
@@ -116,22 +151,32 @@ void bckControles()
         return ;
     }
     pback=fopen("bck/backupControles.dat","wb");
+
+
     if(pback==NULL)
     {
         return ;
     }
+
     fclose(pback);
     pback=fopen("bck/backupControles.dat","ab");
+
+
     if(pback==NULL)
     {
         return ;
     }
+
+
     while(fread(&reg,sizeof(controles),1,p)==1)
     {
 
         fwrite(&reg,sizeof(controles),1,pback);
     }
-    cout<<"Se realizo backup del archivo controles.dat con exito!"<<endl;
+
+
+    gotoxy(21,5);
+    cout<<"Se Realizo Backup del Archivo Controles.dat Con Exito!"<<endl;
     fclose(p);
     fclose(pback);
     return;
@@ -165,7 +210,9 @@ void bckMedicos()
 
         fwrite(&reg,sizeof(medicos),1,pback);
     }
-    cout<<"Se realizo backup del archivo medicos.dat con exito!"<<endl;
+    gotoxy(21,6);
+    cout<<"Se Realizo Backup del Archivo Medicos.dat Con Exito!"<<endl;
+
     fclose(p);
     fclose(pback);
     return;
@@ -197,7 +244,9 @@ void bckPacientes()
 
         fwrite(&reg,sizeof(paciente),1,pback);
     }
-    cout<<"Se realizo backup del archivo Pacientes.dat con exito!"<<endl;
+
+    gotoxy(21,7);
+    cout<<"Se Realizo Backup del Archivo Pacientes.dat Con Exito!"<<endl;
     fclose(p);
     fclose(pback);
     return;
