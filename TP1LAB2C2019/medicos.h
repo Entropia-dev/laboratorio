@@ -590,7 +590,7 @@ medicos leer_medico(int pos){
 FILE *p;
     struct medicos reg;
 
-    p=fopen("pacientes.dat","rb");
+    p=fopen("medicos.dat","rb");
 
     if(p==NULL)
     {
