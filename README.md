@@ -1,3 +1,3 @@
 # laboratorio
 trabajo practico 1 
-Trabajo practico enfocado en el manejo de datos de tipo struct.
+Trabajo practico enfocado en el manejo de datos de tipo struct y el manejo de archivos te dipo binario.
